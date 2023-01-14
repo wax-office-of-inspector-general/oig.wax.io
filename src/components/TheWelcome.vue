@@ -8,5 +8,5 @@ import SupportIcon from "./icons/IconSupport.vue";
 </script>
 
 <template>
-  <p>Content</p>
+  <h2>The Office of Inspector General (OIG)</h2>
 </template>

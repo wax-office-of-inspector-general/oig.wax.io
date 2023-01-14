@@ -6,116 +6,103 @@ import {
   PopoverPanel
 } from "@headlessui/vue";
 import {
+  ArchiveBoxIcon,
   Bars3Icon,
-  BookmarkSquareIcon,
   BriefcaseIcon,
-  BuildingOfficeIcon,
-  ChartBarIcon,
-  CheckCircleIcon,
-  ComputerDesktopIcon,
-  CursorArrowRaysIcon,
-  GlobeAltIcon,
+  ChatBubbleLeftRightIcon,
+  CubeTransparentIcon,
+  BuildingLibraryIcon,
+  BeakerIcon,
   InformationCircleIcon,
-  NewspaperIcon,
-  PhoneIcon,
-  PlayIcon,
   ShieldCheckIcon,
-  Squares2X2Icon,
   UserGroupIcon,
-  XMarkIcon
+  XMarkIcon,
+  WalletIcon
 } from "@heroicons/vue/24/outline";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import HeadingArticles from "./HeadingArticles.vue";
+import WalletButton from "./WalletButton.vue";
 
 const solutions = [
   {
-    name: "Analytics",
+    name: "The OIG",
     description:
-      "Get a better understanding of where your traffic is coming from.",
-    href: "#",
-    icon: ChartBarIcon
+      "Get a better understanding of the OIG and it's role in the WAX ecosystem.",
+    href: "/the-oig",
+    icon: BuildingLibraryIcon,
+    highlight: false
   },
   {
-    name: "Engagement",
-    description: "Speak directly to your customers in a more meaningful way.",
+    name: "WAX Guilds",
+    description:
+      "Explore our validators and how they add value to a growing environment.",
     href: "#",
-    icon: CursorArrowRaysIcon
+    icon: CubeTransparentIcon,
+    highlight: false
   },
   {
-    name: "Security",
-    description: "Your customers' data will be safe and secure.",
+    name: "Guild Evaluations",
+    description:
+      "Our transparent,heuristic and unique aproach to evaluate WAX guilds.",
     href: "#",
-    icon: ShieldCheckIcon
+    icon: ShieldCheckIcon,
+    highlight: false
   },
   {
-    name: "Integrations",
-    description: "Connect with third-party tools that you're already using.",
-    href: "#",
-    icon: Squares2X2Icon
+    name: "Get Involved, Vote now!",
+    description:
+      "Participate in Blockchain governance, be it as a voter, nominator or Nominee!",
+    href: "/oig-election",
+    icon: ArchiveBoxIcon,
+    highlight: true
   }
 ];
 const callsToAction = [
-  { name: "Watch Demo", href: "#", icon: PlayIcon },
-  { name: "View All Products", href: "#", icon: CheckCircleIcon },
-  { name: "Contact Sales", href: "#", icon: PhoneIcon }
+  {
+    name: "Join the Conversation",
+    href: "https://t.me/guilds_wax_io",
+    icon: ChatBubbleLeftRightIcon
+  },
+  {
+    name: "Learn More about WAX",
+    href: "https://www.wax.io/",
+    icon: InformationCircleIcon
+  }
 ];
-const company = [
-  { name: "About", href: "#", icon: InformationCircleIcon },
-  { name: "Customers", href: "#", icon: BuildingOfficeIcon },
-  { name: "Press", href: "#", icon: NewspaperIcon },
-  { name: "Careers", href: "#", icon: BriefcaseIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon }
+const experts = [
+  {
+    name: "Labs",
+    href: "https://labs.wax.io/",
+    icon: BeakerIcon
+  },
+  { name: "Jobs", href: "https://t.me/waxjobs", icon: BriefcaseIcon }
 ];
 const resources = [
   { name: "Community", href: "#", icon: UserGroupIcon },
-  { name: "Partners", href: "#", icon: GlobeAltIcon },
-  { name: "Guides", href: "#", icon: BookmarkSquareIcon },
-  { name: "Webinars", href: "#", icon: ComputerDesktopIcon }
-];
-const blogPosts = [
-  {
-    id: 1,
-    name: "Boost your conversion rate",
-    href: "#",
-    preview:
-      "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80"
-  },
-  {
-    id: 2,
-    name: "How to use search engine optimization to drive traffic to your site",
-    href: "#",
-    preview:
-      "Eget ullamcorper ac ut vulputate fames nec mattis pellentesque elementum. Viverra tempor id mus.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2300&q=80"
-  }
+  { name: "Wallets", href: "#", icon: WalletIcon }
 ];
 </script>
 
 <template>
-  <Popover class="relative bg-white">
-    <div
-      class="pointer-events-none absolute inset-0 z-30 shadow"
-      aria-hidden="true"
-    />
-    <div class="relative z-20">
+  <Popover class="absolute top-0 left-0 w-full z-50">
+    <div class="pointer-events-none absolute inset-0 z-30" aria-hidden="true" />
+    <div class="relative z-50">
       <div
         class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8"
       >
         <div>
-          <a href="#" class="flex">
-            <span class="sr-only">Your Company</span>
+          <a href="/" class="flex">
+            <span class="sr-only">WAX OIG</span>
             <img
-              class="h-8 w-auto sm:h-10"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
+              class="h-8 w-auto sm:h-14"
+              src="@/assets/images/oig-logo.png"
+              alt="WAX OIG Logo"
             />
           </a>
         </div>
         <div class="-my-2 -mr-2 md:hidden">
           <PopoverButton
-            class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:primary"
           >
             <span class="sr-only">Open menu</span>
             <Bars3Icon class="h-6 w-6" aria-hidden="true" />
@@ -129,10 +116,10 @@ const blogPosts = [
               <PopoverButton
                 :class="[
                   open ? 'text-gray-900' : 'text-gray-500',
-                  'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                  'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
                 ]"
               >
-                <span>Solutions</span>
+                <span class="font-serif">Governance</span>
                 <ChevronDownIcon
                   :class="[
                     open ? 'text-gray-600' : 'text-gray-400',
@@ -151,7 +138,7 @@ const blogPosts = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="absolute inset-x-0 top-full z-10 hidden transform bg-white shadow-lg md:block"
+                  class="absolute inset-x-0 bg-secondary top-full z-10 hidden transform  shadow-lg md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -169,7 +156,7 @@ const blogPosts = [
                           >
                             <component
                               :is="item.icon"
-                              class="h-6 w-6"
+                              class="h-7 w-7 text-font"
                               aria-hidden="true"
                             />
                           </span>
@@ -177,16 +164,22 @@ const blogPosts = [
                         <div
                           class="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4"
                         >
-                          <div>
-                            <p class="text-base font-medium text-gray-900">
+                          <div class="relative">
+                            <span
+                              v-if="item.highlight"
+                              class="absolute top-[-5px] left-[-10px] h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
+                            ></span>
+                            <p
+                              class="text-base font-serif font-bold text-gray-900"
+                            >
                               {{ item.name }}
                             </p>
-                            <p class="mt-1 text-sm text-gray-500">
+                            <p class="mt-2 text-sm text-gray-100">
                               {{ item.description }}
                             </p>
                           </div>
                           <p
-                            class="mt-2 text-sm font-medium text-indigo-600 lg:mt-4"
+                            class="font-serif mt-2 text-xs font-medium text-tertiary lg:mt-4"
                           >
                             Learn more
                             <span aria-hidden="true"> &rarr;</span>
@@ -210,10 +203,12 @@ const blogPosts = [
                         >
                           <component
                             :is="item.icon"
-                            class="h-6 w-6 flex-shrink-0 text-gray-400"
+                            class="h-5 w-5 flex-shrink-0 text-font"
                             aria-hidden="true"
                           />
-                          <span class="ml-3">{{ item.name }}</span>
+                          <span class="ml-3 font-serif text-xs text-tertiary">{{
+                            item.name
+                          }}</span>
                         </a>
                       </div>
                     </div>
@@ -221,24 +216,22 @@ const blogPosts = [
                 </PopoverPanel>
               </transition>
             </Popover>
-            <a
-              href="#"
-              class="text-base font-medium text-gray-500 hover:text-gray-900"
-              >Pricing</a
-            >
-            <a
-              href="#"
-              class="text-base font-medium text-gray-500 hover:text-gray-900"
-              >Docs</a
-            >
+            <div class="inline-flex items-center">
+              <a
+                href="https://developer.wax.io/"
+                target="_blank"
+                class="text-base font-serif font-medium text-gray-500 hover:text-gray-900"
+                >Docs</a
+              >
+            </div>
             <Popover v-slot="{ open }">
               <PopoverButton
                 :class="[
                   open ? 'text-gray-900' : 'text-gray-500',
-                  'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2'
+                  'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
                 ]"
               >
-                <span>More</span>
+                <span class="font-serif">More</span>
                 <ChevronDownIcon
                   :class="[
                     open ? 'text-gray-600' : 'text-gray-400',
@@ -257,25 +250,27 @@ const blogPosts = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="absolute inset-x-0 top-full z-10 hidden transform shadow-lg md:block"
+                  class="absolute inset-x-0 bg-secondary top-full z-10 hidden transform md:block"
                 >
-                  <div class="absolute inset-0 flex">
-                    <div class="w-1/2 bg-white" />
-                    <div class="w-1/2 bg-gray-50" />
+                  <div class="absolute inset-0 flex bg-secondary">
+                    <div class="w-1/2" />
+                    <div class="w-1/2" />
                   </div>
                   <div
                     class="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2"
                   >
                     <nav
-                      class="grid gap-y-10 bg-white px-4 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12"
+                      class="grid gap-y-10px-4 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12"
                     >
                       <div>
-                        <h3 class="text-base font-medium text-gray-500">
-                          Company
+                        <h3
+                          class="text-base font-serif font-bold text-gray-500"
+                        >
+                          Experts
                         </h3>
                         <ul role="list" class="mt-5 space-y-6">
                           <li
-                            v-for="item in company"
+                            v-for="item in experts"
                             :key="item.name"
                             class="flow-root"
                           >
@@ -285,7 +280,7 @@ const blogPosts = [
                             >
                               <component
                                 :is="item.icon"
-                                class="h-6 w-6 flex-shrink-0 text-gray-400"
+                                class="h-6 w-6 flex-shrink-0 text-font"
                                 aria-hidden="true"
                               />
                               <span class="ml-4">{{ item.name }}</span>
@@ -294,7 +289,9 @@ const blogPosts = [
                         </ul>
                       </div>
                       <div>
-                        <h3 class="text-base font-medium text-gray-500">
+                        <h3
+                          class="text-base font-serif font-bold text-gray-500"
+                        >
                           Resources
                         </h3>
                         <ul role="list" class="mt-5 space-y-6">
@@ -309,7 +306,7 @@ const blogPosts = [
                             >
                               <component
                                 :is="item.icon"
-                                class="h-6 w-6 flex-shrink-0 text-gray-400"
+                                class="h-6 w-6 flex-shrink-0 text-font"
                                 aria-hidden="true"
                               />
                               <span class="ml-4">{{ item.name }}</span>
@@ -321,63 +318,14 @@ const blogPosts = [
                     <div
                       class="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
                     >
-                      <div>
-                        <h3 class="text-base font-medium text-gray-500">
-                          From the blog
-                        </h3>
-                        <ul role="list" class="mt-6 space-y-6">
-                          <li
-                            v-for="post in blogPosts"
-                            :key="post.id"
-                            class="flow-root"
-                          >
-                            <a
-                              :href="post.href"
-                              class="-m-3 flex rounded-lg p-3 hover:bg-gray-100"
-                            >
-                              <div class="hidden flex-shrink-0 sm:block">
-                                <img
-                                  class="h-20 w-32 rounded-md object-cover"
-                                  :src="post.imageUrl"
-                                  alt=""
-                                />
-                              </div>
-                              <div class="w-0 flex-1 sm:ml-8">
-                                <h4
-                                  class="truncate text-base font-medium text-gray-900"
-                                >
-                                  {{ post.name }}
-                                </h4>
-                                <p class="mt-1 text-sm text-gray-500">
-                                  {{ post.preview }}
-                                </p>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="mt-6 text-sm font-medium">
-                        <a
-                          href="#"
-                          class="text-indigo-600 hover:text-indigo-500"
-                        >
-                          View all posts
-                          <span aria-hidden="true"> &rarr;</span>
-                        </a>
-                      </div>
+                      <HeadingArticles />
                     </div>
                   </div>
                 </PopoverPanel>
               </transition>
             </Popover>
           </PopoverGroup>
-          <div class="flex items-center md:ml-12">
-            <a
-              href="#"
-              class="ml-8 inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-              >Login</a
-            >
-          </div>
+          <WalletButton />
         </div>
       </div>
     </div>
@@ -392,23 +340,23 @@ const blogPosts = [
     >
       <PopoverPanel
         focus
-        class="absolute inset-x-0 top-0 z-30 origin-top-right transform p-2 transition md:hidden"
+        class="absolute inset-x-0 top-0 z-50 origin-top-right transform bg-secondary p-2 transition md:hidden"
       >
         <div
-          class="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+          class="divide-y divide-slate-50 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div class="px-5 pt-5 pb-6 sm:pb-8">
             <div class="flex items-center justify-between">
               <div>
                 <img
                   class="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt="Your Company"
+                  src="@/assets/images/oig-logo.png"
+                  alt="WAX OIG Logo"
                 />
               </div>
               <div class="-mr-2">
                 <PopoverButton
-                  class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                  class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:primary"
                 >
                   <span class="sr-only">Close menu</span>
                   <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -417,34 +365,44 @@ const blogPosts = [
             </div>
             <div class="mt-6 sm:mt-8">
               <nav>
-                <div class="grid gap-7 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
+                <div class="grid gap-5 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
                   <a
                     v-for="item in solutions"
                     :key="item.name"
                     :href="item.href"
-                    class="-m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
+                    class="relative -m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
                   >
+                    <span
+                      v-if="item.highlight"
+                      class="absolute top-4 left-4 h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
+                    ></span>
                     <div
                       class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
                     >
                       <component
                         :is="item.icon"
-                        class="h-6 w-6"
+                        class="h-6 w-6 text-font"
                         aria-hidden="true"
                       />
                     </div>
-                    <div class="ml-4 text-base font-medium text-gray-900">
+                    <div
+                      class="ml-3 text-sm font-serif font-bold text-gray-900"
+                    >
                       {{ item.name }}
                     </div>
                   </a>
                 </div>
-                <div class="mt-8 text-base">
+                <div class="mt-8 text-sm flex items-center ">
+                  <component
+                    :is="ChatBubbleLeftRightIcon"
+                    class="h-4 w-4 mr-3 flex-shrink-0 text-gray-400"
+                    aria-hidden="true"
+                  />
                   <a
                     href="#"
-                    class="font-medium text-indigo-600 hover:text-indigo-500"
+                    class="font-medium text-xs font-serif text-tertiary"
                   >
-                    View all products
-                    <span aria-hidden="true"> &rarr;</span>
+                    Join the Conversation
                   </a>
                 </div>
               </nav>
@@ -454,48 +412,32 @@ const blogPosts = [
             <div class="grid grid-cols-2 gap-4">
               <a
                 href="#"
-                class="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                >Pricing</a
-              >
-              <a
-                href="#"
-                class="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
+                class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
                 >Docs</a
               >
               <a
                 href="#"
-                class="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                >Company</a
+                class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
+                >Community</a
               >
               <a
                 href="#"
-                class="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                >Resources</a
+                class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
+                >Labs</a
               >
               <a
                 href="#"
-                class="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                >Blog</a
-              >
-              <a
-                href="#"
-                class="rounded-md text-base font-medium text-gray-900 hover:text-gray-700"
-                >Contact Sales</a
+                class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
+                >Wallets</a
               >
             </div>
             <div class="mt-6">
+
               <a
                 href="#"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                >Sign up</a
+                class="bg-tertiary w-full inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 font-serif font-bold px-4 py-2 text-sm text-white shadow-sm hover:bg-indigo-700"
+                >Login</a
               >
-              <p class="mt-6 text-center text-base font-medium text-gray-500">
-                Existing customer?
-                {{ " " }}
-                <a href="#" class="text-indigo-600 hover:text-indigo-500"
-                  >Sign in</a
-                >
-              </p>
             </div>
           </div>
         </div>
