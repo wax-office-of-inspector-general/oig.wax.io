@@ -10,11 +10,20 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.4",
     "@heroicons/vue": "^2.0.13",
+    "@waxio/waxjs": "^1.2.0-beta.2",
+    "inter-ui": "^3.19.3",
+    "ual-anchor": "^1.3.0",
+    "ual-plainjs-renderer": "^0.3.0",
+    "ual-wax": "^1.1.0",
+    "ual-wombat": "^0.3.3",
+    "universal-authenticator-library": "^0.3.0",
     "vue": "^3.2.41",
-    "vue-router": "^4.1.5"
+    "vue-router": "^4.1.5",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
+    "@tailwindcss/typography": "^0.5.9",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/eslint-config-prettier": "^7.0.0",
     "autoprefixer": "^10.4.13",
