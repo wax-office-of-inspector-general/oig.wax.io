@@ -4,31 +4,31 @@ import {
   AdjustmentsHorizontalIcon,
   ScaleIcon,
   TrophyIcon
-} from "@heroicons/vue/24/outline";
+} from '@heroicons/vue/24/outline';
 
 const features = [
   {
-    name: "Oversight",
+    name: 'Oversight',
     description:
-      "Evaluate WAX Guilds using an evolving heuristic. The OIG determines which service providers are best suited to operate the network based on competence, value add, and other metrics.",
+      'Evaluate WAX Guilds using an evolving heuristic. The OIG determines which service providers are best suited to operate the network based on competence, value add, and other metrics.',
     icon: EyeIcon
   },
   {
-    name: "Responsibilities",
+    name: 'Responsibilities',
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
     icon: ScaleIcon
   },
   {
-    name: "Competitiveness",
+    name: 'Competitiveness',
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
     icon: TrophyIcon
   },
   {
-    name: "Fairness",
+    name: 'Fairness',
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
     icon: AdjustmentsHorizontalIcon
   }
 ];

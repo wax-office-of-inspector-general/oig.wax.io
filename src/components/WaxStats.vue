@@ -3,26 +3,26 @@ import {
   UserGroupIcon,
   CubeTransparentIcon,
   BuildingLibraryIcon
-} from "@heroicons/vue/24/outline";
+} from '@heroicons/vue/24/outline';
 
 const stats = [
   {
-    num: "33",
-    desc: "Active Guilds",
+    num: '33',
+    desc: 'Active Guilds',
     icon: CubeTransparentIcon,
-    anchor: "#"
+    anchor: '#'
   },
   {
-    num: "500+",
-    desc: "yearly Guild Reports",
+    num: '500+',
+    desc: 'yearly Guild Reports',
     icon: UserGroupIcon,
-    anchor: "#"
+    anchor: '#'
   },
   {
-    num: "3",
-    desc: "IGs",
+    num: '3',
+    desc: 'IGs',
     icon: BuildingLibraryIcon,
-    anchor: "#"
+    anchor: '#'
   }
 ];
 </script>
@@ -40,7 +40,9 @@ const stats = [
       >
         <div v-for="(stat, index) in stats" :key="index">
           <div class="flex flex-col">
-            <dt class="order-2 mt-2 text-xs sm:text-sm font-serif font-medium leading-normal sm:leading-6">
+            <dt
+              class="order-2 mt-2 text-xs sm:text-sm font-serif font-medium leading-normal sm:leading-6"
+            >
               {{ stat.desc }}
             </dt>
             <dd

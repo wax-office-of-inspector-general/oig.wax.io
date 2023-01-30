@@ -1,20 +1,20 @@
 <script setup>
 const faqs = [
   {
-    question: "Can you answer a question a thousand times?",
+    question: 'Can you answer a question a thousand times?',
     answer:
       "Why you shouldn't do it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. At vero eos et accusam et justo duo dolores et ea rebum."
   },
   {
-    question: "Can you answer a question a thousand times?",
+    question: 'Can you answer a question a thousand times?',
     answer:
       "Why you shouldn't do it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. At vero eos et accusam et justo duo dolores et ea rebum."
   },
   {
-    question: "Can you answer a question a thousand times?",
+    question: 'Can you answer a question a thousand times?',
     answer:
       "Why you shouldn't do it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat. At vero eos et accusam et justo duo dolores et ea rebum."
-  },
+  }
 ];
 </script>
 <template>
