@@ -9,23 +9,23 @@ const getters = {
   articles: (state) => {
     return state.articles;
   }
-}
+};
 
 // actions
 const actions = {
   fetchArticles({ commit }) {
     console.log('fetch');
     fetch(
-      "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@waxoig"
+      'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@waxoig'
     )
       .then((res) => res.json())
       .then((res) => {
-        commit("pushArticles", res.items);
-        commit("toggleLoading");
+        commit('pushArticles', res.items);
+        commit('toggleLoading');
       })
       .catch((err) => {
-        commit("setError", err);
-        commit("toggleLoading");
+        commit('setError', err);
+        commit('toggleLoading');
       });
   }
 };
@@ -40,7 +40,7 @@ const mutations = {
   },
   setError(state, error) {
     state.error = error;
-  },
+  }
 };
 
 export default {
@@ -49,4 +49,4 @@ export default {
   getters,
   actions,
   mutations
-}
+};

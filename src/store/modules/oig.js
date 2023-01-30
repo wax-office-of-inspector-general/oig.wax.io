@@ -8,23 +8,23 @@ const state = () => ({
 const getters = {
   oigs: (state) => {
     return state.oigs;
-  },
+  }
 };
 
 // actions
 const actions = {
   fetchOigs({ commit }) {
-    fetch("https://wax.eosphere.io/v1/chain/get_table_rows", {
-      method: "POST",
+    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
+      method: 'POST',
       headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json"
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         json: true,
-        code: "treasury.oig",
-        scope: "treasury.oig",
-        table: "oig",
+        code: 'treasury.oig',
+        scope: 'treasury.oig',
+        table: 'oig',
         limit: 40,
         reverse: false,
         show_payer: false
@@ -32,12 +32,12 @@ const actions = {
     })
       .then((res) => res.json())
       .then((res) => {
-        commit("pushOigs", res.rows);
-        commit("toggleLoading");
+        commit('pushOigs', res.rows);
+        commit('toggleLoading');
       })
       .catch((err) => {
-        commit("setError", err);
-        commit("toggleLoading");
+        commit('setError', err);
+        commit('toggleLoading');
       });
   }
 };

@@ -1,26 +1,23 @@
 <script setup>
-import UalTrigger from "./UalTrigger.vue";
+import UalTrigger from './UalTrigger.vue';
 // import Wombat from "ual-wombat";
-import { Anchor } from "ual-anchor";
-import { Wax } from "ual-wax";
+import { Anchor } from 'ual-anchor';
+import { Wax } from 'ual-wax';
 
-const appName = "WAX OIG Login";
+const appName = 'WAX OIG Login';
 
 const chain = {
-  chainId:
-    "1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4",
-  rpcEndpoints: [{ protocol: "https", host: "wax.eosphere.io", port: 443 }]
-}
+  chainId: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
+  rpcEndpoints: [{ protocol: 'https', host: 'wax.eosphere.io', port: 443 }]
+};
 
 const anchor = new Anchor([chain], { appName: appName });
 const wax = new Wax([chain], { appName: appName });
 
 const opts = {
-  name: "WAX OIG Login",
+  name: 'WAX OIG Login',
   nets: [chain],
-  authenticators: [
-    anchor, wax
-  ]
+  authenticators: [anchor, wax]
 };
 
 async function userCallback(users) {

@@ -1,7 +1,7 @@
 <script setup>
-import { useStore } from "vuex";
-import { computed, onMounted } from "vue";
-import LoadingSpinner from "./LoadingSpinner.vue";
+import { useStore } from 'vuex';
+import { computed, onMounted } from 'vue';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
 
@@ -10,7 +10,7 @@ const fewGuilds = computed(() => store.state.guilds.fewGuilds);
 const loading = computed(() => store.state.guilds.loading);
 
 onMounted(() => {
-  if (!guilds.value.length) store.dispatch("guilds/fetchGuilds");
+  if (!guilds.value.length) store.dispatch('guilds/fetchGuilds');
 });
 </script>
 
@@ -45,7 +45,7 @@ onMounted(() => {
           href="#"
           class="absolute left-[50%] translate-x-[-50%] bottom-4 mx-auto block rounded-lg bg-tertiary px-5 py-2 text-sm font-serif font-normal leading-7 text-white shadow-sm hover:bg-indigo-700 hover:ring-indigo-700"
         >
-          More about Guilds{{ " " }}
+          More about Guilds{{ ' ' }}
           <span class="ml-2 text-white text-base" aria-hidden="true"
             >&rarr;</span
           >

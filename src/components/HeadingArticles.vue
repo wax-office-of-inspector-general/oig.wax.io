@@ -1,7 +1,7 @@
 <script setup>
-import { useStore } from "vuex";
-import { computed, onMounted } from "vue";
-import LoadingSpinner from "./LoadingSpinner.vue";
+import { useStore } from 'vuex';
+import { computed, onMounted } from 'vue';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
 
@@ -9,9 +9,8 @@ const articles = computed(() => store.state.medium.articles);
 const loading = computed(() => store.state.medium.loading);
 
 onMounted(() => {
-  if (!articles.value.length) store.dispatch("medium/fetchArticles");
+  if (!articles.value.length) store.dispatch('medium/fetchArticles');
 });
-
 </script>
 
 <template>
@@ -43,8 +42,9 @@ onMounted(() => {
                 </h4>
                 <p class="mt-1 text-sm text-gray-500">
                   {{
-                    article.description.replace(/<[^>]*>?/gm, "").slice(0, 80)
-                  }} ...
+                    article.description.replace(/<[^>]*>?/gm, '').slice(0, 80)
+                  }}
+                  ...
                 </p>
               </div>
             </a>

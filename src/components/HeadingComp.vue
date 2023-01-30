@@ -4,7 +4,7 @@ import {
   PopoverButton,
   PopoverGroup,
   PopoverPanel
-} from "@headlessui/vue";
+} from '@headlessui/vue';
 import {
   ArchiveBoxIcon,
   Bars3Icon,
@@ -18,68 +18,68 @@ import {
   UserGroupIcon,
   XMarkIcon,
   WalletIcon
-} from "@heroicons/vue/24/outline";
-import { ChevronDownIcon } from "@heroicons/vue/20/solid";
-import HeadingArticles from "./HeadingArticles.vue";
-import WalletButton from "./WalletButton.vue";
+} from '@heroicons/vue/24/outline';
+import { ChevronDownIcon } from '@heroicons/vue/20/solid';
+import HeadingArticles from './HeadingArticles.vue';
+import WalletButton from './WalletButton.vue';
 
 const solutions = [
   {
-    name: "The OIG",
+    name: 'The OIG',
     description:
       "Get a better understanding of the OIG and it's role in the WAX ecosystem.",
-    href: "/the-oig",
+    href: '/the-oig',
     icon: BuildingLibraryIcon,
     highlight: false
   },
   {
-    name: "WAX Guilds",
+    name: 'WAX Guilds',
     description:
-      "Explore our validators and how they add value to a growing environment.",
-    href: "#",
+      'Explore our validators and how they add value to a growing environment.',
+    href: '#',
     icon: CubeTransparentIcon,
     highlight: false
   },
   {
-    name: "Guild Evaluations",
+    name: 'Guild Evaluations',
     description:
-      "Our transparent,heuristic and unique aproach to evaluate WAX guilds.",
-    href: "#",
+      'Our transparent,heuristic and unique aproach to evaluate WAX guilds.',
+    href: '#',
     icon: ShieldCheckIcon,
     highlight: false
   },
   {
-    name: "Get Involved, Vote now!",
+    name: 'Get Involved, Vote now!',
     description:
-      "Participate in Blockchain governance, be it as a voter, nominator or Nominee!",
-    href: "/oig-election",
+      'Participate in Blockchain governance, be it as a voter, nominator or Nominee!',
+    href: '/oig-election',
     icon: ArchiveBoxIcon,
     highlight: true
   }
 ];
 const callsToAction = [
   {
-    name: "Join the Conversation",
-    href: "https://t.me/guilds_wax_io",
+    name: 'Join the Conversation',
+    href: 'https://t.me/guilds_wax_io',
     icon: ChatBubbleLeftRightIcon
   },
   {
-    name: "Learn More about WAX",
-    href: "https://www.wax.io/",
+    name: 'Learn More about WAX',
+    href: 'https://www.wax.io/',
     icon: InformationCircleIcon
   }
 ];
 const experts = [
   {
-    name: "Labs",
-    href: "https://labs.wax.io/",
+    name: 'Labs',
+    href: 'https://labs.wax.io/',
     icon: BeakerIcon
   },
-  { name: "Jobs", href: "https://t.me/waxjobs", icon: BriefcaseIcon }
+  { name: 'Jobs', href: 'https://t.me/waxjobs', icon: BriefcaseIcon }
 ];
 const resources = [
-  { name: "Community", href: "#", icon: UserGroupIcon },
-  { name: "Wallets", href: "#", icon: WalletIcon }
+  { name: 'Community', href: '#', icon: UserGroupIcon },
+  { name: 'Wallets', href: '#', icon: WalletIcon }
 ];
 </script>
 
@@ -138,7 +138,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="absolute inset-x-0 bg-secondary top-full z-10 hidden transform  shadow-lg md:block"
+                  class="absolute inset-x-0 bg-secondary top-full z-10 hidden transform shadow-lg md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -392,7 +392,7 @@ const resources = [
                     </div>
                   </a>
                 </div>
-                <div class="mt-8 text-sm flex items-center ">
+                <div class="mt-8 text-sm flex items-center">
                   <component
                     :is="ChatBubbleLeftRightIcon"
                     class="h-4 w-4 mr-3 flex-shrink-0 text-gray-400"
@@ -432,7 +432,6 @@ const resources = [
               >
             </div>
             <div class="mt-6">
-
               <a
                 href="#"
                 class="bg-tertiary w-full inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 font-serif font-bold px-4 py-2 text-sm text-white shadow-sm hover:bg-indigo-700"

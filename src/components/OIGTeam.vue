@@ -1,7 +1,7 @@
 <script setup>
-import { useStore } from "vuex";
-import { computed, onMounted } from "vue";
-import LoadingSpinner from "./LoadingSpinner.vue";
+import { useStore } from 'vuex';
+import { computed, onMounted } from 'vue';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
 
@@ -9,7 +9,7 @@ const oigs = computed(() => store.state.oig.oigs);
 const loading = computed(() => store.state.oig.loading);
 
 onMounted(() => {
-  if (!oigs.value.length) store.dispatch("oig/fetchOigs");
+  if (!oigs.value.length) store.dispatch('oig/fetchOigs');
 });
 </script>
 <template>
@@ -32,7 +32,9 @@ onMounted(() => {
             class="space-y-12 sm:grid grid-cols-3 sm:gap-12 sm:space-y-0 lg:gap-x-8"
           >
             <li v-for="oig in oigs" :key="oig.id">
-              <div class="bg-primary border-primary border mt-2 py-5 px-7 text-sm font-serif font-medium leading-6 flex items-center space-x-4 lg:space-x-6">
+              <div
+                class="bg-primary border-primary border mt-2 py-5 px-7 text-sm font-serif font-medium leading-6 flex items-center space-x-4 lg:space-x-6"
+              >
                 <div class="space-y-1 text-sm font-medium leading-6">
                   <h3>{{ oig.ig }}</h3>
                 </div>

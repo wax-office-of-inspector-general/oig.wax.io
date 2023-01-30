@@ -1,4 +1,4 @@
-import { defineComponent, provide, ref } from "vue";
+import { defineComponent, provide, ref } from 'vue';
 
 export default defineComponent({
   setup() {
@@ -6,9 +6,9 @@ export default defineComponent({
 
     const ual = () => {
       activeUser.value = !activeUser.value;
-    }
+    };
 
-    provide("ual", ual);
+    provide('ual', ual);
 
     return { ual };
   }

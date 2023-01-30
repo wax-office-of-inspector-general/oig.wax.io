@@ -3,26 +3,26 @@ import {
   UserGroupIcon,
   CubeTransparentIcon,
   BuildingLibraryIcon
-} from "@heroicons/vue/24/outline";
+} from '@heroicons/vue/24/outline';
 
 const features = [
   {
-    title: "Effortlessly build dApps on WAX",
-    desc: "WAX is the ultimate platform for building and deploying decentralized applications. Its fast and free transactions, scalable architecture, and user-friendly tools make it easy for developers of all skill levels to create amazing dApps.",
+    title: 'Effortlessly build dApps on WAX',
+    desc: 'WAX is the ultimate platform for building and deploying decentralized applications. Its fast and free transactions, scalable architecture, and user-friendly tools make it easy for developers of all skill levels to create amazing dApps.',
     icon: CubeTransparentIcon,
-    anchor: "#"
+    anchor: '#'
   },
   {
-    title: "Join the WAX community and thrive",
-    desc: "The WAX community is a vibrant and supportive group of developers and users who are all working towards a common goal: building the decentralized future. With a wealth of resources, events, and support available, WAX is the perfect place to learn, grow, and thrive as a developer or user. Join us today and be a part of something special!",
+    title: 'Join the WAX community and thrive',
+    desc: 'The WAX community is a vibrant and supportive group of developers and users who are all working towards a common goal: building the decentralized future. With a wealth of resources, events, and support available, WAX is the perfect place to learn, grow, and thrive as a developer or user. Join us today and be a part of something special!',
     icon: UserGroupIcon,
-    anchor: "#"
+    anchor: '#'
   },
   {
-    title: "Experience the future of governance",
-    desc: "WAX is leading the charge in decentralized governance with its transparent and democratic model. With WAX, you can have confidence that your voice will be heard and that the platform will always be working for the benefit of its users. Experience the future of blockchain governance with WAX and become part of a remarkable ecosystem.",
+    title: 'Experience the future of governance',
+    desc: 'WAX is leading the charge in decentralized governance with its transparent and democratic model. With WAX, you can have confidence that your voice will be heard and that the platform will always be working for the benefit of its users. Experience the future of blockchain governance with WAX and become part of a remarkable ecosystem.',
     icon: BuildingLibraryIcon,
-    anchor: "#"
+    anchor: '#'
   }
 ];
 </script>

@@ -36,7 +36,7 @@
               >
                 Nomination Period
               </p>
-              <p class="text-base flex justify-between items-center">
+              <div class="text-base flex justify-between items-center">
                 <div class="flex flex-col">
                   <span class="font-serif text-xs font-bold mb-1">Starts</span>
                   <span>{{ new Date(currentElection.nmn_open).toLocaleString() }}</span>
@@ -48,7 +48,7 @@
                   <span class="ont-serif text-xs font-bold mb-1">Ends</span>
                   <span>{{ new Date(currentElection.nmn_close).toLocaleString() }}</span>
                 </div>
-              </p>
+              </div>
             </dt>
           </div>
         </div>
