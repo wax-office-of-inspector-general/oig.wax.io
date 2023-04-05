@@ -33,7 +33,6 @@ const actions = {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.rows);
         commit('pushGuilds', res.rows);
         commit('pushFewGuilds', res.rows);
         commit('toggleLoading');

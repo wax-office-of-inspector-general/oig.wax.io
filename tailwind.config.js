@@ -6,15 +6,6 @@ const plugin = require('tailwindcss/plugin');
 module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    colors: {
-      white: '#fff',
-      black: '#000',
-      gray: '#666',
-      primary: '#fdf8f2',
-      secondary: '#fdf8f2',
-      tertiary: '#193648',
-      font: '#232323'
-    },
     fontSize: {
       xs: '0.75rem',
       sm: '0.9rem',
@@ -26,6 +17,13 @@ module.exports = {
       '3xl': '3.052rem'
     },
     extend: {
+      colors: {
+        primary: '#fdf8f2',
+        secondary: '#fdf8f2',
+        tertiary: '#193648',
+        font: '#232323',
+        ...defaultTheme.colors
+      },
       backgroundImage: {
         hive: "url('@/assets/images/oig-hive.svg')",
         banner: "url('@/assets/images/oig-banner.svg')"
@@ -33,6 +31,10 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
         serif: ['MonoLisa', ...defaultTheme.fontFamily.sans]
+      },
+      zIndex: {
+        '100': '100',
+        ...defaultTheme.zIndex
       },
       typography: (theme) => ({
         DEFAULT: {

@@ -21,7 +21,7 @@ import {
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
-import WalletButton from './WalletButton.vue';
+import AuthButton from './AuthButton.vue';
 
 const solutions = [
   {
@@ -325,7 +325,7 @@ const resources = [
               </transition>
             </Popover>
           </PopoverGroup>
-          <WalletButton />
+          <AuthButton />
         </div>
       </div>
     </div>
@@ -432,11 +432,7 @@ const resources = [
               >
             </div>
             <div class="mt-6">
-              <a
-                href="#"
-                class="bg-tertiary w-full inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 font-serif font-bold px-4 py-2 text-sm text-white shadow-sm hover:bg-indigo-700"
-                >Login</a
-              >
+              <AuthButton />
             </div>
           </div>
         </div>
