@@ -14,7 +14,6 @@ const getters = {
 // actions
 const actions = {
   fetchArticles({ commit }) {
-    console.log('fetch');
     fetch(
       'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@waxoig'
     )
