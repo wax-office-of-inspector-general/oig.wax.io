@@ -1,15 +1,16 @@
-<script setup lang="ts">
-import type { Ref } from 'vue';
+<script setup>
+import { inject, defineProps } from 'vue';
 import { getCurrentInstance } from 'vue';
-import { Session, SessionKit } from '@wharfkit/session';
-defineProps<{ msg: string }>();
+
+defineProps({
+  msg: String
+});
+
 const app = getCurrentInstance();
-let session: Ref<Session | undefined>;
-let sessionKit: SessionKit;
-if (app) {
-  session = app.appContext.config.globalProperties.$session;
-  sessionKit = app.appContext.config.globalProperties.$sessionKit;
-}
+
+const sessionKit = inject('$sessionKit');
+const session = inject('$session');
+
 async function login() {
   const response = await sessionKit.login();
   console.log(app.appContext.config.globalProperties)
