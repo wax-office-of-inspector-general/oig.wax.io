@@ -38,8 +38,8 @@ if (localStorage.getItem(`wharf-${authStorageKey}-sessions`)) {
   });
 }
 
-app.config.globalProperties.$sessionKit = sessionKit;
-app.config.globalProperties.$session = session;
+app.provide('$sessionKit', sessionKit);
+app.provide('$session', session);
 
 app.use(store);
 app.use(router);
