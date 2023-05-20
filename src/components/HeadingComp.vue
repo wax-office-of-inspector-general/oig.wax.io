@@ -21,37 +21,33 @@ import {
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
-import AuthButton from './AuthButton.vue';
 
 const solutions = [
   {
     name: 'The OIG',
-    description:
-      "Get a better understanding of the OIG and it's role in the WAX ecosystem.",
+    description: "What's the OIG and what does it?",
     href: '/the-oig',
     icon: BuildingLibraryIcon,
     highlight: false
   },
   {
     name: 'WAX Guilds',
-    description:
-      'Explore our validators and how they add value to a growing environment.',
+    description: 'Explore validators on WAX',
     href: '#',
     icon: CubeTransparentIcon,
     highlight: false
   },
   {
     name: 'Guild Evaluations',
-    description:
-      'Our transparent,heuristic and unique aproach to evaluate WAX guilds.',
-    href: '#',
+    description: 'What makes a good validator on WAX?',
+    href: '/guild-evaluations',
     icon: ShieldCheckIcon,
     highlight: false
   },
   {
-    name: 'Get Involved, Vote now!',
+    name: 'OIG Election',
     description:
-      'Participate in Blockchain governance, be it as a voter, nominator or Nominee!',
+      'Be part of Blockchain governance',
     href: '/oig-election',
     icon: ArchiveBoxIcon,
     highlight: true
@@ -84,20 +80,20 @@ const resources = [
 </script>
 
 <template>
-  <Popover class="absolute top-0 left-0 w-full z-50">
+  <Popover class="fixed top-0 left-0 w-full z-50 drop-shadow-sm">
     <div class="pointer-events-none absolute inset-0 z-30" aria-hidden="true" />
     <div class="relative z-50">
       <div
-        class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8"
+        class="bg-primary-50 mx-auto flex items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8"
       >
         <div>
-          <a href="/" class="flex">
-            <span class="sr-only">WAX OIG</span>
+          <a href="/" class="flex items-center">
             <img
               class="h-8 w-auto sm:h-14"
               src="@/assets/images/oig-logo.png"
               alt="WAX OIG Logo"
             />
+            <h1 class="text-md font-serif font-bold ml-6">WAX OIG</h1>
           </a>
         </div>
         <div class="-my-2 -mr-2 md:hidden">
@@ -108,21 +104,19 @@ const resources = [
             <Bars3Icon class="h-6 w-6" aria-hidden="true" />
           </PopoverButton>
         </div>
-        <div
-          class="hidden md:flex md:flex-1 md:items-center md:justify-between"
-        >
+        <div class="hidden md:flex md:flex-1 md:items-center md:justify-end">
           <PopoverGroup as="nav" class="flex space-x-10">
             <Popover v-slot="{ open }">
               <PopoverButton
                 :class="[
-                  open ? 'text-gray-900' : 'text-gray-500',
+                  open ? 'text-font' : 'text-tertiary-800',
                   'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
                 ]"
               >
                 <span class="font-serif">Governance</span>
                 <ChevronDownIcon
                   :class="[
-                    open ? 'text-gray-600' : 'text-gray-400',
+                    open ? 'text-tertiary-800' : 'text-gray-300',
                     'ml-2 h-5 w-5 group-hover:text-gray-500'
                   ]"
                   aria-hidden="true"
@@ -138,7 +132,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="absolute inset-x-0 bg-secondary top-full z-10 hidden transform shadow-lg md:block"
+                  class="bg-primary-50 absolute inset-x-0 top-full z-10 hidden transform md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -147,12 +141,12 @@ const resources = [
                       v-for="item in solutions"
                       :key="item.name"
                       :href="item.href"
-                      class="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-gray-50"
+                      class="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-secondary-50"
                     >
                       <div class="flex md:h-full lg:flex-col">
                         <div class="flex-shrink-0">
                           <span
-                            class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                            class="inline-flex h-10 w-10 items-center justify-center rounded-md text-white sm:h-12 sm:w-12"
                           >
                             <component
                               :is="item.icon"
@@ -169,17 +163,15 @@ const resources = [
                               v-if="item.highlight"
                               class="absolute top-[-5px] left-[-10px] h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
                             ></span>
-                            <p
-                              class="text-base font-serif font-bold text-gray-900"
-                            >
+                            <p class="text-md font-serif font-bold text-font">
                               {{ item.name }}
                             </p>
-                            <p class="mt-2 text-sm text-gray-100">
+                            <p class="mt-2 text-sm text-font">
                               {{ item.description }}
                             </p>
                           </div>
                           <p
-                            class="font-serif mt-2 text-xs font-medium text-tertiary lg:mt-4"
+                            class="font-serif mt-2 text-xs font-medium text-font lg:mt-4"
                           >
                             Learn more
                             <span aria-hidden="true"> &rarr;</span>
@@ -188,7 +180,7 @@ const resources = [
                       </div>
                     </a>
                   </div>
-                  <div class="bg-gray-50">
+                  <div class="bg-secondary-50">
                     <div
                       class="mx-auto max-w-7xl space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8"
                     >
@@ -199,16 +191,17 @@ const resources = [
                       >
                         <a
                           :href="item.href"
-                          class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+                          class="-m-3 flex items-center rounded-md py-2 px-4 text-xs font-medium bg-secondary-50 hover:bg-secondary-50"
                         >
                           <component
                             :is="item.icon"
                             class="h-5 w-5 flex-shrink-0 text-font"
                             aria-hidden="true"
                           />
-                          <span class="ml-3 font-serif text-xs text-tertiary">{{
-                            item.name
-                          }}</span>
+                          <span
+                            class="ml-2 font-serif align-middle text-font"
+                            >{{ item.name }}</span
+                          >
                         </a>
                       </div>
                     </div>
@@ -227,8 +220,8 @@ const resources = [
             <Popover v-slot="{ open }">
               <PopoverButton
                 :class="[
-                  open ? 'text-gray-900' : 'text-gray-500',
-                  'group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
+                  open ? 'text-font' : 'text-tertiary-800',
+                  'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
                 ]"
               >
                 <span class="font-serif">More</span>
@@ -325,7 +318,6 @@ const resources = [
               </transition>
             </Popover>
           </PopoverGroup>
-          <AuthButton />
         </div>
       </div>
     </div>
@@ -370,14 +362,14 @@ const resources = [
                     v-for="item in solutions"
                     :key="item.name"
                     :href="item.href"
-                    class="relative -m-3 flex items-center rounded-lg p-3 hover:bg-gray-50"
+                    class="relative -m-3 flex items-center rounded-lg p-3 hover:secondary"
                   >
                     <span
                       v-if="item.highlight"
                       class="absolute top-4 left-4 h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
                     ></span>
                     <div
-                      class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                      class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-secondary text-white sm:h-12 sm:w-12"
                     >
                       <component
                         :is="item.icon"

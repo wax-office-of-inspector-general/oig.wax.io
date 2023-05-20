@@ -1,30 +1,9 @@
 <script setup>
-import {
-  UserGroupIcon,
-  CubeTransparentIcon,
-  BuildingLibraryIcon
-} from '@heroicons/vue/24/outline';
+import ButtonText from './button/ButtonText.vue';
 
-const features = [
-  {
-    title: 'Effortlessly build dApps on WAX',
-    desc: 'WAX is the ultimate platform for building and deploying decentralized applications. Its fast and free transactions, scalable architecture, and user-friendly tools make it easy for developers of all skill levels to create amazing dApps.',
-    icon: CubeTransparentIcon,
-    anchor: '#'
-  },
-  {
-    title: 'Join the WAX community and thrive',
-    desc: 'The WAX community is a vibrant and supportive group of developers and users who are all working towards a common goal: building the decentralized future. With a wealth of resources, events, and support available, WAX is the perfect place to learn, grow, and thrive as a developer or user. Join us today and be a part of something special!',
-    icon: UserGroupIcon,
-    anchor: '#'
-  },
-  {
-    title: 'Experience the future of governance',
-    desc: 'WAX is leading the charge in decentralized governance with its transparent and democratic model. With WAX, you can have confidence that your voice will be heard and that the platform will always be working for the benefit of its users. Experience the future of blockchain governance with WAX and become part of a remarkable ecosystem.',
-    icon: BuildingLibraryIcon,
-    anchor: '#'
-  }
-];
+const title = 'WAX - Most proven blockchain ecosystem';
+const subtitle =
+  'The Office of Inspector General (OIG) is an independent body within the WAX Network, whose purpose is to ensure transparency, integrity, and ongoing development of the ecosystem. The OIG operates independently, providing a neutral and unbiased perspective in its evaluations and recommendations.';
 </script>
 
 <template>
@@ -32,39 +11,78 @@ const features = [
     <div
       class="mx-auto flex flex-col max-w-7xl items-start justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start lg:px-8"
     >
-      <h3
-        class="text-xl mx-auto max-w-xl lg:max-w-2xl font-bold text-center font-serif text-tertiary leading-snug"
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <h2 class="text-xl font-serif tracking-tight text-font sm:text-4xl">
+          {{ title }}
+        </h2>
+        <p class="mt-6 text-base leading-7 text-gray-600">{{ subtitle }}</p>
+      </div>
+
+      <div
+        class="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end"
       >
-        Become part of the most proven blockchain ecosystem
-      </h3>
-      <div class="grid grid-rows-1 lg:grid-cols-3 mt-16 gap-y-10 lg:gap-x-16">
         <div
-          v-for="(feature, index) in features"
-          :key="index"
-          class="prose flex flex-col items-center"
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg bg-primary-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start"
         >
-          <span
-            class="inline-flex h-20 w-20 items-center justify-center rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
-          >
-            <component
-              :is="feature.icon"
-              class="h-12 w-12 text-font"
-              aria-hidden="true"
-            />
-          </span>
-          <h4 class="font-serif text-md text-center mx-10 font-bold mb-4">
-            {{ feature.title }}
-          </h4>
-          <p class="leading-normal text-center">
-            {{ feature.desc }}
+          <p class="flex-none text-xl font-serif tracking-tight text-gray-900">
+            33 Guilds
           </p>
-          <a
-            href="#"
-            class="font-serif mt-2 text-sm no-underline font-medium text-tertiary lg:mt-4"
-          >
-            Learn more
-            <span aria-hidden="true"> &rarr;</span>
-          </a>
+          <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+            <p class="text-md font-semibold tracking-tight text-font">
+              Become a Guild
+            </p>
+            <p class="mt-3 text-base leading-snug text-gray-600">
+              Learn what it takes to become a validator on WAX
+            </p>
+            <ButtonText
+              href="#"
+              text="Apply"
+              cssClass="text-gray-600 mt-6"
+            ></ButtonText>
+          </div>
+        </div>
+        <div
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg bg-tertiary p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44"
+        >
+          <p class="flex-none text-xl font-serif tracking-tight text-white">
+            130+ Proposals
+          </p>
+          <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+            <p class="text-md font-semibold tracking-tight text-white">
+              Start building with funding
+            </p>
+            <p class="mt-3 text-base leading-snug text-white">
+              Eu duis porta aliquam ornare. Elementum eget magna egestas.
+            </p>
+            <ButtonText
+              href="#"
+              text="Start building"
+              cssClass="text-white hover:text-white/80 mt-6"
+            ></ButtonText>
+          </div>
+        </div>
+        <div
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg bg-secondary-50 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28"
+        >
+          <p class="flex-none text-xl font-serif tracking-tight text-tertiary">
+            3 IG's
+          </p>
+          <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
+            <p
+              class="text-md semibold font-semibold tracking-tight text-tertiary"
+            >
+              Help enhancing the network
+            </p>
+            <p class="mt-3 text-base leading-snug text-font">
+              Eu duis porta aliquam ornare. Elementum eget magna egestas. Eu
+              duis porta aliquam ornare.
+            </p>
+            <ButtonText
+              href="#"
+              text="Participate"
+              cssClass="text-secondary-800 mt-6"
+            ></ButtonText>
+          </div>
         </div>
       </div>
     </div>

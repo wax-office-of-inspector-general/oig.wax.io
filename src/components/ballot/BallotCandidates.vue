@@ -92,14 +92,14 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import LoadingSpinner from './LoadingSpinner.vue';
+import LoadingSpinner from '../LoadingSpinner.vue';
 
 const store = useStore();
 
-const candidates = computed(() => store.state.election.candidates);
-const loading = computed(() => store.state.election.loading);
+const candidates = computed(() => store.state.ballot.candidates);
+const loading = computed(() => store.state.ballot.loading);
 
 onMounted(() => {
-  if (!candidates.value.length) store.dispatch('election/fetchCandidates');
+  if (!candidates.value.length) store.dispatch('ballot/fetchCandidates');
 });
 </script>

@@ -1,14 +1,18 @@
 import Vuex from 'vuex';
 import oig from './modules/oig';
-import election from './modules/election';
+import ballot from './modules/ballot';
 import medium from './modules/medium';
 import guilds from './modules/guilds';
+import evaluations from './modules/evaluations';
+import notion from './modules/notion';
 
 export default new Vuex.Store({
   modules: {
     oig,
-    election,
+    ballot,
     guilds,
-    medium
+    medium,
+    evaluations,
+    notion
   }
 });

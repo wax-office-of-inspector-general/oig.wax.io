@@ -5,7 +5,7 @@ import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
 
-const articles = computed(() => store.state.medium.articles);
+const articles = computed(() => store.state.medium.articles.slice(0, 2));
 const loading = computed(() => store.state.medium.loading);
 
 onMounted(() => {
