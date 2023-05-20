@@ -1,6 +1,6 @@
 const state = () => ({
   candidates: [],
-  elections: [],
+  ballots: [],
   loading: true,
   error: null
 });
@@ -10,14 +10,14 @@ const getters = {
   candidates: (state) => {
     return state.candidates;
   },
-  elections: (state) => {
-    return state.elections;
+  ballots: (state) => {
+    return state.ballots;
   }
 };
 
 // actions
 const actions = {
-  fetchElection({ commit }) {
+  fetchBallots({ commit }, forcedState) {
     fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
       method: 'POST',
       headers: {
@@ -37,7 +37,10 @@ const actions = {
       .then((res) => res.json())
       .then((res) => {
         console.log(res.rows);
-        commit('pushElections', res.rows);
+        commit('pushBallots', res.rows);
+        if (forcedState) {
+          commit('forceBallotState', forcedState);
+        }
         commit('toggleLoading');
       })
       .catch((err) => {
@@ -72,13 +75,13 @@ const actions = {
         commit('setError', err);
         commit('toggleLoading');
       });
-  }
+  },
 };
 
 // mutations
 const mutations = {
-  pushElections(state, elections) {
-    state.elections = elections;
+  pushBallots(state, ballots) {
+    state.ballots = ballots;
   },
   pushCandidates(state, candidates) {
     state.candidates = candidates.sort(() => 0.5 - Math.random());
@@ -88,6 +91,9 @@ const mutations = {
   },
   setError(state, error) {
     state.error = error;
+  },
+  forceBallotState(state, forcedState) {
+    state.ballots[0].state = forcedState;
   }
 };
 

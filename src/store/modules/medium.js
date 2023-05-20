@@ -32,7 +32,7 @@ const actions = {
 // mutations
 const mutations = {
   pushArticles(state, articles) {
-    state.articles = articles.slice(0, 2);
+    state.articles = articles;
   },
   toggleLoading(state) {
     state.loading = !state.loading;

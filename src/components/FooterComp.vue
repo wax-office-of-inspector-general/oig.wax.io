@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-white">
-    <div class="mx-auto max-w-7xl overflow-hidden py-12 px-4 sm:px-6 lg:px-8">
+  <footer class="bg-secondary-50 mt-12">
+    <div class="mx-auto max-w-7xl overflow-hidden pt-12 pb-6 px-4 sm:px-6 lg:px-8">
       <nav
         class="-mx-5 -my-2 flex flex-wrap justify-center"
         aria-label="Footer"
@@ -8,24 +8,24 @@
         <div v-for="item in navigation.main" :key="item.name" class="px-5 py-2">
           <a
             :href="item.href"
-            class="text-sm text-gray-500 font-serif hover:text-gray-900"
+            class="text-sm text-font font-serif hover:text-tertiary-800 hover:underline"
             target="_blank"
             >{{ item.name }}</a
           >
         </div>
       </nav>
-      <div class="mt-8 flex justify-center space-x-6">
+      <div class="my-12 flex justify-center space-x-6">
         <a
           v-for="item in navigation.social"
           :key="item.name"
           :href="item.href"
-          class="text-gray-400 hover:text-gray-500"
+          class="text-font hover:text-tertiary-800"
         >
           <span class="sr-only">{{ item.name }}</span>
           <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
         </a>
       </div>
-      <p class="mt-8 text-center text-xs font-serif text-gray-400">
+      <p class="text-center text-xs font-serif text-tertiary-800">
         <sup>&copy;</sup> {{ currentYear }} Office of Inspector General
       </p>
     </div>

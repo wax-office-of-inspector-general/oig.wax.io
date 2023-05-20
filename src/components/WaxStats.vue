@@ -28,7 +28,7 @@ const stats = [
 </script>
 
 <template>
-  <div class="bg-primary my-14 lg:my-24 py-16">
+  <div class="bg-gray-100 my-14 lg:my-24 py-16">
     <div
       class="mx-auto flex flex-col items-start justify-between px-4 sm:px-6 sm:py-4 md:justify-start lg:px-8"
     >

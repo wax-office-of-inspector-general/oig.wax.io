@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import OIGGeneralView from '../views/OIGGeneralView.vue';
 import OIGElectionView from '../views/OIGElectionView.vue';
+import GuildEvaluations from '../views/GuildEvaluations.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,12 @@ const router = createRouter({
       path: '/oig-election',
       name: 'oig-election',
       component: OIGElectionView
+    },
+
+    {
+      path: '/guild-evaluations',
+      name: 'guild-evaluations',
+      component: GuildEvaluations
     },
     {
       path: '/about',
