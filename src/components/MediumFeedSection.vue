@@ -31,46 +31,51 @@ const mediumLink = 'https://waxoig.medium.com/';
       <LoadingSpinner :content="'Loading Articles…'" class="mt-4" />
     </div>
     <div v-if="!loading">
-      <div class="grid grid-cols-1 gap-x-12 gap-y-20 lg:mx-0 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-x-12 gap-y-10 lg:mx-0 lg:grid-cols-3">
         <article
           v-for="article in articles"
           :key="article.guid"
-          class="bg-secondary-50 px-5 py-6 drop-shadow-sm rounded-md"
+          class="relative flex group"
         >
-          <div class="relative w-full hidden">
-            <img
-              :src="article.thumbnail"
-              alt=""
-              class="aspect-[16/9] w-full rounded-lg bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-            />
-          </div>
-          <div>
-            <div class="hidden items-center gap-x-4 text-xs">
-              <span class="text-gray-500">{{ article.pubDate }}</span>
+          <div
+            class="absolute w-full h-full bg-primary-50 z-10 rounded-md drop-shadow-sm translate-x-[-8px] translate-y-[8px] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform"
+          ></div>
+          <div class="bg-secondary-50 px-5 py-6 rounded-md relative z-20">
+            <div class="relative w-full hidden z-20">
+              <img
+                :src="article.thumbnail"
+                alt=""
+                class="aspect-[16/9] w-full rounded-lg bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+              />
             </div>
-            <a
-              :href="article.link"
-              target="_blank"
-              rel="nofollow"
-              class="group relative flex flex-col"
-            >
-              <h3 class="text-base font-serif leading-6 text-font">
-                {{ article.title }}
-              </h3>
-              <p class="mt-5 line-clamp-3 text-base leading-6 text-font">
-                {{
-                  article.description.replace(/<[^>]*>?/gm, '').slice(0, 100)
-                }}
-                …
-              </p>
-              <div class="align-self-end">
-                <ButtonText
-                  :href="article.link"
-                  text="View Article"
-                  cssClass="mt-5 justi inline-block"
-                />
+            <div class="relative z-20">
+              <div class="hidden items-center gap-x-4 text-xs">
+                <span class="text-gray-500">{{ article.pubDate }}</span>
               </div>
-            </a>
+              <a
+                :href="article.link"
+                target="_blank"
+                rel="nofollow"
+                class="group relative flex flex-col"
+              >
+                <h3 class="text-base font-serif leading-6 text-font">
+                  {{ article.title }}
+                </h3>
+                <p class="mt-5 line-clamp-3 text-sm leading-6 text-font">
+                  {{
+                    article.description.replace(/<[^>]*>?/gm, '').slice(0, 100)
+                  }}
+                  …
+                </p>
+                <div class="align-self-end">
+                  <ButtonText
+                    :href="article.link"
+                    text="Read full Article"
+                    cssClass="mt-5 text-xs inline-block"
+                  />
+                </div>
+              </a>
+            </div>
           </div>
         </article>
       </div>

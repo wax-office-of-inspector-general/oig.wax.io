@@ -21,6 +21,7 @@ import {
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
+import ButtonText from './button/ButtonText.vue';
 
 const solutions = [
   {
@@ -170,12 +171,6 @@ const resources = [
                               {{ item.description }}
                             </p>
                           </div>
-                          <p
-                            class="font-serif mt-2 text-xs font-medium text-font lg:mt-4"
-                          >
-                            Learn more
-                            <span aria-hidden="true"> &rarr;</span>
-                          </p>
                         </div>
                       </div>
                     </a>
@@ -227,7 +222,7 @@ const resources = [
                 <span class="font-serif">More</span>
                 <ChevronDownIcon
                   :class="[
-                    open ? 'text-gray-600' : 'text-gray-400',
+                    open ? 'text-font' : 'text-tertiary-800',
                     'ml-2 h-5 w-5 group-hover:text-gray-500'
                   ]"
                   aria-hidden="true"
@@ -243,10 +238,9 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="absolute inset-x-0 bg-secondary top-full z-10 hidden transform md:block"
+                  class="absolute inset-x-0 bg-primary-50 top-full z-10 hidden transform md:block"
                 >
-                  <div class="absolute inset-0 flex bg-secondary">
-                    <div class="w-1/2" />
+                  <div class="absolute inset-0 flex bg-primary-50">
                     <div class="w-1/2" />
                   </div>
                   <div
@@ -257,7 +251,7 @@ const resources = [
                     >
                       <div>
                         <h3
-                          class="text-base font-serif font-bold text-gray-500"
+                          class="text-base font-serif font-semibold text-font"
                         >
                           Experts
                         </h3>
@@ -269,7 +263,7 @@ const resources = [
                           >
                             <a
                               :href="item.href"
-                              class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                              class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-secondary-50"
                             >
                               <component
                                 :is="item.icon"
@@ -283,7 +277,7 @@ const resources = [
                       </div>
                       <div>
                         <h3
-                          class="text-base font-serif font-bold text-gray-500"
+                          class="text-base font-serif font-semibold text-font"
                         >
                           Resources
                         </h3>
@@ -295,7 +289,7 @@ const resources = [
                           >
                             <a
                               :href="item.href"
-                              class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-50"
+                              class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-secondary-50"
                             >
                               <component
                                 :is="item.icon"
@@ -309,7 +303,7 @@ const resources = [
                       </div>
                     </nav>
                     <div
-                      class="bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
+                      class="bg-secondary-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
                     >
                       <HeadingArticles />
                     </div>
@@ -335,7 +329,7 @@ const resources = [
         class="absolute inset-x-0 top-0 z-50 origin-top-right transform bg-secondary p-2 transition md:hidden"
       >
         <div
-          class="divide-y divide-slate-50 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+          class="divide-y rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div class="px-5 pt-5 pb-6 sm:pb-8">
             <div class="flex items-center justify-between">
@@ -366,7 +360,7 @@ const resources = [
                   >
                     <span
                       v-if="item.highlight"
-                      class="absolute top-4 left-4 h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
+                      class="absolute top-3 left-3 h-3 w-3 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
                     ></span>
                     <div
                       class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-secondary text-white sm:h-12 sm:w-12"

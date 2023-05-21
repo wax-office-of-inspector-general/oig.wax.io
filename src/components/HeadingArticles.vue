@@ -16,9 +16,7 @@ onMounted(() => {
 <template>
   <div>
     <div>
-      <h3 class="text-base font-serif font-bold text-gray-500">
-        Latest Articles
-      </h3>
+      <h3 class="text-base font-serif font-bold text-font">Latest Articles</h3>
       <div v-if="loading">
         <LoadingSpinner :content="'Loading Articles…'" class="mt-4" />
       </div>
@@ -31,12 +29,12 @@ onMounted(() => {
             >
               <div class="hidden flex-shrink-0 sm:block">
                 <img
-                  class="h-20 w-32 rounded-md object-cover"
+                  class="hidden h-20 w-32 rounded-md object-cover"
                   :src="article.thumbnail"
                   alt=""
                 />
               </div>
-              <div class="w-0 flex-1 sm:ml-8">
+              <div class="w-0 flex-1">
                 <h4 class="truncate text-base font-medium text-gray-900">
                   {{ article.title }}
                 </h4>
