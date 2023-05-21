@@ -35,7 +35,7 @@ const actions = {
       .then((res) => {
         commit('pushGuilds', res.rows);
         commit('pushFewGuilds', res.rows);
-        commit('toggleLoading');
+        commit('toggleLoading')
       })
       .catch((err) => {
         commit('setError', err);
@@ -50,7 +50,7 @@ const mutations = {
     state.guilds = guilds.sort(() => 0.5 - Math.random());
   },
   pushFewGuilds(state, guilds) {
-    state.fewGuilds = guilds.sort(() => 0.5 - Math.random()).slice(0, 12);
+    state.fewGuilds = guilds.sort(() => 0.5 - Math.random()).slice(0, 15);
   },
   toggleLoading(state) {
     state.loading = !state.loading;

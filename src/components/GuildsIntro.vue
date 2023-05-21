@@ -1,9 +1,10 @@
 <script setup>
 import { useStore } from 'vuex';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, Transition } from 'vue';
 import LoadingSpinner from './LoadingSpinner.vue';
 import ButtonPrimary from './button/ButtonPrimary.vue';
 import ButtonText from './button/ButtonText.vue';
+import GuildCardSmall from './guild/GuildCardSmall.vue';
 
 const store = useStore();
 
@@ -24,31 +25,32 @@ onMounted(() => {
       >
         <div class="lg:pr-4">
           <div class="relative lg:max-w-lg">
-            <div v-if="loading" class="mx-auto my-12">
+            <div
+              v-if="loading"
+              class="mx-auto flex h-60 justify-center items-center my-12"
+            >
               <LoadingSpinner :content="'Loading Guilds'" />
             </div>
-            <div
-              class="mt-20 text-center mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-4"
-            >
-              <div v-for="(guild, index) in fewGuilds" :key="index">
-                <div class="flex flex-col">
-                  <dt
-                    class="bg-secondary-50 mt-2 py-5 px-7 text-xs font-serif font-medium text-font leading-6 rounded-md drop-shadow-sm"
-                  >
-                    {{ guild.producer }}
-                  </dt>
+            <Transition>
+              <div v-if="guilds.length && !loading">
+                <div
+                  class="mt-20 text-center mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6 sm:gap-4"
+                >
+                  <div v-for="(guild, index) in fewGuilds" :key="index">
+                    <GuildCardSmall :title="guild.producer" />
+                  </div>
+                </div>
+                <div
+                  class="text-center absolute bg-gradient-to-t from-[#fff] h-60 w-full bottom-0 left-0 z-30"
+                >
+                  <ButtonPrimary
+                    href="#"
+                    text="More about Guilds"
+                    cssClass="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0"
+                  />
                 </div>
               </div>
-            </div>
-            <div
-              class="text-center absolute bg-gradient-to-t from-[#fff] h-60 w-full bottom-0 left-0"
-            >
-              <ButtonPrimary
-                href="#"
-                text="More about Guilds"
-                cssClass="absolute left-[50%] translate-x-[-50%] bottom-0"
-              />
-            </div>
+            </Transition> 
           </div>
         </div>
         <div>

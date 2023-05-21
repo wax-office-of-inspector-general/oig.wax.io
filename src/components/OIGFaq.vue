@@ -18,7 +18,7 @@ const faqs = [
 ];
 </script>
 <template>
-  <div class="bg-primary-100">
+  <div class="bg-primary-50">
     <div class="mx-auto max-w-7xl py-16 px-6 lg:py-20 lg:px-8">
       <div class="lg:grid lg:grid-cols-3 gap-10 lg:gap-14">
         <div>

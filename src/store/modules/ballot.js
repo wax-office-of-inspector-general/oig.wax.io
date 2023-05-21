@@ -1,5 +1,6 @@
 const state = () => ({
   candidates: [],
+  nominees: [],
   ballots: [],
   loading: true,
   error: null
@@ -36,7 +37,6 @@ const actions = {
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.rows);
         commit('pushBallots', res.rows);
         if (forcedState) {
           commit('forceBallotState', forcedState);
@@ -60,15 +60,41 @@ const actions = {
         code: 'oig',
         scope: 'oig',
         table: 'nominees',
-        limit: 20,
+        limit: 30,
         reverse: false,
         show_payer: false
       })
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.rows);
         commit('pushCandidates', res.rows);
+        commit('toggleLoading');
+      })
+      .catch((err) => {
+        commit('setError', err);
+        commit('toggleLoading');
+      });
+  },
+  fetchNominees({ commit }) {
+    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        json: true,
+        code: 'oig',
+        scope: 'oig',
+        table: 'nominations',
+        limit: 30,
+        reverse: false,
+        show_payer: false
+      })
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        commit('pushNominees', res.rows);
         commit('toggleLoading');
       })
       .catch((err) => {
@@ -85,6 +111,9 @@ const mutations = {
   },
   pushCandidates(state, candidates) {
     state.candidates = candidates.sort(() => 0.5 - Math.random());
+  },
+  pushNominees(state, nominees) {
+    state.nominees = nominees.sort(() => 0.5 - Math.random());
   },
   toggleLoading(state) {
     state.loading = !state.loading;
