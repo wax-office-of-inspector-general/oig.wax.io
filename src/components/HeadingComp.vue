@@ -22,6 +22,7 @@ import {
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
 import ButtonText from './button/ButtonText.vue';
+import LoginTrigger from './LoginTrigger.vue';
 
 const solutions = [
   {
@@ -311,6 +312,10 @@ const resources = [
                 </PopoverPanel>
               </transition>
             </Popover>
+
+            <div class="inline-flex items-center">
+              <LoginTrigger />
+            </div>
           </PopoverGroup>
         </div>
       </div>

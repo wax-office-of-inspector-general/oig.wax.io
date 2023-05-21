@@ -16,6 +16,8 @@ const sessionWallet = 'professorwax';
 const { login, logout, transact } = useSessionKit();
 const session = useSession();
 
+console.log(session.value);
+
 onMounted(() => {
   if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
 });
@@ -28,8 +30,6 @@ onMounted(() => {
           <div class="flex justify-between items-center">
             <h2 class="text-md font-bold font-serif tracking-tight sm:text-lg">
               Nominees
-
-              {{ session }}
             </h2>
 
             <ButtonAction
