@@ -82,11 +82,11 @@ const resources = [
 </script>
 
 <template>
-  <Popover class="fixed top-0 left-0 w-full z-50 drop-shadow-sm">
+  <Popover class="fixed top-0 left-0 w-full z-50">
     <div class="pointer-events-none absolute inset-0 z-30" aria-hidden="true" />
-    <div class="relative z-50">
+    <div class="relative bg-primary-100 z-50">
       <div
-        class="bg-primary-50 mx-auto flex items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8"
+        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8"
       >
         <div>
           <a href="/" class="flex items-center">
@@ -304,7 +304,7 @@ const resources = [
                       </div>
                     </nav>
                     <div
-                      class="bg-secondary-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
+                      class="bg-primary-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
                     >
                       <HeadingArticles />
                     </div>

@@ -1,6 +1,8 @@
 <template>
-  <footer class="bg-secondary-50 mt-12">
-    <div class="mx-auto max-w-7xl overflow-hidden pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+  <footer class="bg-secondary-50">
+    <div
+      class="mx-auto max-w-7xl overflow-hidden pt-12 pb-6 px-4 sm:px-6 lg:px-8"
+    >
       <nav
         class="-mx-5 -my-2 flex flex-wrap justify-center"
         aria-label="Footer"
