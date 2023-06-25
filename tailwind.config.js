@@ -113,7 +113,10 @@ module.exports = {
           color: theme('colors.tertiary.950'),
           '&:hover': {
             color: theme('colors.tertiary.900')
-          }
+          },
+          '&:active': {
+            color: theme('colors.tertiary.900')
+          },
         },
         'h1, h2, h3, h4, h5': {
           fontWeight: 300,

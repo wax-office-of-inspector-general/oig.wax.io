@@ -29,7 +29,7 @@ const duties = [
 </script>
 
 <template>
-  <div class="bg-white my-12 lg:my-20">
+  <div class="bg-white py-12 lg:py-20 my-12 lg:my-20">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
         <h2 class="text-xl font-serif tracking-tight text-font">

@@ -16,8 +16,8 @@ onMounted(() => {
 const mediumLink = 'https://waxoig.medium.com/';
 </script>
 
-<template>
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<template> 
+  <div class="mx-auto max-w-7xl pb-12 lg:pb-20 px-6 lg:px-8">
     <div class="mx-auto max-w-xl text-center mb-10">
       <h2 class="text-xl font-serif tracking-tight text-font">
         From our Medium
