@@ -1,12 +1,11 @@
 <script setup>
+import { CheckIcon } from '@heroicons/vue/20/solid';
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import LoadingSpinner from '../LoadingSpinner.vue';
 
 const store = useStore();
 
 const ballot = computed(() => store.state.ballot.ballots);
-const loading = computed(() => store.state.ballot.loading);
 
 onMounted(() => {
   if (!ballot.value.length) store.dispatch('ballot/fetchBallots', 1);
@@ -14,37 +13,39 @@ onMounted(() => {
 
 const currentBallot = computed(() => ballot.value[0]);
 
+console.log(currentBallot.value);
+
 const ballotStates = [
   {
     state: 1,
     title: 'Preparation',
+    href: '#',
     desc: 'Prepare yourself and get familiar with guilds and the community'
   },
   {
     state: 2,
     title: 'Nominations',
+    href: '#',
     desc: 'Nomiate someone or get nominated...'
   },
   {
     state: 4,
     title: 'Voting',
+    href: '#',
     desc: 'The voting happens and the new winner will be announced at the end'
   }
 ];
 </script>
 
 <template>
-  <div class="py-12 sm:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="mt-12">
+    <div class="py-12 sm:py-0">
       <div class="mb-8 max-w-2xl lg:mx-0">
-        <h2 class="text-xl font-serif tracking-tight text-font sm:text-4xl">
-          Ballot Timeline
+        <h2 class="text-xl font-serif tracking-tight text-primary sm:text-4xl">
+          Election Timeline
         </h2>
       </div>
-      <div v-if="loading && !ballot.length" class="flex justify-center">
-        <LoadingSpinner content="Loading Timeline" />
-      </div>
-      <div else>
+      <div>
         <div v-if="currentBallot">
           <div
             class="mx-auto py-2 grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-3"
@@ -105,7 +106,7 @@ const ballotStates = [
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-2"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-tertiary-50'
+                        ? 'bg-primary-50'
                         : 'bg-secondary-50'
                     "
                   >
@@ -123,7 +124,7 @@ const ballotStates = [
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-3"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-tertiary-50'
+                        ? 'bg-primary-50'
                         : 'bg-secondary-50'
                     "
                   >
@@ -143,7 +144,7 @@ const ballotStates = [
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-3"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-tertiary-50'
+                        ? 'bg-primary-50'
                         : 'bg-secondary-50'
                     "
                   >
@@ -160,7 +161,7 @@ const ballotStates = [
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-2"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-tertiary-50'
+                        ? 'bg-primary-50'
                         : 'bg-secondary-50'
                     "
                   >

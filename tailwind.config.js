@@ -16,21 +16,38 @@ module.exports = {
       '2xl': '2.441rem',
       '3xl': '3.052rem'
     },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1rem',
+        lg: '2rem',
+        xl: '4rem',
+        '2xl': '4rem',
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1240px',
+        '2xl': '1240px'
+      }
+    },
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#252958',
-          50: '#f1f4fd',
-          100: '#e0e7f9',
-          200: '#c8d5f5',
-          300: '#a2bbee',
-          400: '#7696e4',
-          500: '#5674db',
-          600: '#4159cf',
-          700: '#3847bd',
-          800: '#333b9a',
-          900: '#2d357b',
-          950: '#252958'
+          DEFAULT: '#1e3f5c',
+          50: '#f3f7fc',
+          100: '#e6eff8',
+          200: '#c6def1',
+          300: '#94c3e5',
+          400: '#5ba3d5',
+          500: '#3688c1',
+          600: '#266ca3',
+          700: '#1e517b',
+          800: '#1e4a6e',
+          900: '#1e3f5c',
+          950: '#14293d',
         },
         secondary: {
           DEFAULT: '#f59e0b',
@@ -61,18 +78,18 @@ module.exports = {
           950: '#22313f'
         },
         font: {
-          DEFAULT: '#22313f',
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617'
+          DEFAULT: '#222222',
+          50: '#f6f6f6',
+          100: '#e7e7e7',
+          200: '#d1d1d1',
+          300: '#b0b0b0',
+          400: '#888888',
+          500: '#6d6d6d',
+          600: '#5d5d5d',
+          700: '#4f4f4f',
+          800: '#454545',
+          900: '#3d3d3d',
+          950: '#222222'
         },
         ...defaultTheme.colors
       },
@@ -88,29 +105,18 @@ module.exports = {
         100: '100',
         ...defaultTheme.zIndex
       },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: theme('colors.font'),
-            strong: {
-              color: theme('colors.font')
-            }
-          }
-        }
-      })
     }
   },
   plugins: [
     require('@tailwindcss/typography'),
     plugin(({ addBase, theme }) => {
       addBase({
-        // or whichever color you'd like
         html: {
-          color: theme('colors.font'),
+          color: theme('colors.font.700'),
           fontWeight: 300
         },
         a: {
-          color: theme('colors.tertiary.950'),
+          color: theme('colors.primary.950'),
           '&:hover': {
             color: theme('colors.tertiary.900')
           },
@@ -118,9 +124,15 @@ module.exports = {
             color: theme('colors.tertiary.900')
           },
         },
-        'h1, h2, h3, h4, h5': {
+        p: {
           fontWeight: 300,
-          color: theme('colors.tertiar.900')
+          fontFamily: theme('fontFamily.sans'),
+          color: theme('colors.font.700')
+        },
+        'h1,h2,h3,h4,h5': {
+          fontWeight: 700,
+          fontFamily: theme('fontFamily.serif'),
+          color: theme('colors.primary.DEFAULT')
         }
       });
     })

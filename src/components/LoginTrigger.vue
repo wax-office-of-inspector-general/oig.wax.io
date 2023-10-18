@@ -1,7 +1,11 @@
 <script setup>
 import { useSessionKit, useSession } from '../composables/useSession';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
-import { ChevronDownIcon, WalletIcon } from '@heroicons/vue/24/outline';
+import {
+  ChevronDownIcon,
+  WalletIcon,
+  ArrowLongRightIcon
+} from '@heroicons/vue/24/outline';
 import ButtonAction from './button/ButtonAction.vue';
 
 const { login, logout } = useSessionKit();
@@ -12,33 +16,39 @@ const session = useSession();
   <Popover class="relative">
     <PopoverButton
       :class="[
-        session ? 'text-font' : 'text-tertiary-800',
-        'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 ring-transparent focus:border-transparent focus:ring-0 focus:primary focus:ring-offset-2'
+        session ? 'text-white' : 'text-white',
+        'group inline-flex items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-none'
       ]"
     >
       <div
-        class="flex flex-row items-center text-base font-serif font-medium text-gray-500 hover:text-gray-900"
+        class="bg-primary hover:bg-primary rounded-md text-sm font-serif font-medium text-white hover:text-white"
       >
-        <WalletIcon
-          class="mr-2 h-5 w-5 group-hover:text-gray-500 text-font"
-          aria-hidden="true"
-        />
+        <div v-if="session" class="flex flex-row items-center px-8 py-2.5">
+          <WalletIcon
+            class="mr-2 h-5 w-5 group-hover:text-white text-white"
+            aria-hidden="true"
+          />
 
-        <div v-if="session" class="">
           <span>{{ session.actor }}</span>
+        </div>
+        <div
+          v-else
+          @click="login"
+          class="flex flex-row items-center px-8 py-2.5"
+        >
+          <span>Access</span>
 
-          <ChevronDownIcon
-            class="inline-block ml-2 h-4 w-4 group-hover:text-current text-font"
+          <ArrowLongRightIcon
+            class="ml-2 h-5 w-5 group-hover:text-white text-white"
             aria-hidden="true"
           />
         </div>
-        <div v-else @click="login">Login</div>
       </div>
     </PopoverButton>
 
     <PopoverPanel
       v-if="session"
-      class="absolute z-10 w-full flex items-stretch bg-secondary-50"
+      class="absolute z-10 w-full flex items-stretch bg-primary"
     >
       <PopoverButton class="w-full">
         <ButtonAction

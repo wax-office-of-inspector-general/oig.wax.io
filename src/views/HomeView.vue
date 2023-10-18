@@ -1,16 +1,23 @@
 <script setup>
-import HomeHeader from '../components/hero/HomeHeader.vue';
-import WaxFeatures from '../components/WaxFeatures.vue';
-import GuildsIntro from '../components/GuildsIntro.vue';
-import WaxUpdates from '../components/WaxUpdates.vue';
+import TeaserFeatures from '../components/TeaserFeatures.vue';
+import TeaserGovernance from '../components/TeaserGovernance.vue';
+import TeaserDuties from '../components/TeaserDuties.vue';
+import TeaserGuilds from '../components/TeaserGuilds.vue';
 import MediumFeedSection from '../components/MediumFeedSection.vue';
-import OurMissionIntro from '../components/OurMissionIntro.vue';
+import TeaserOIG from '../components/TeaserOIG.vue';
+import SimpleHero from '../components/hero/SimpleHero.vue';
+
+const title = 'Governance on WAX';
+const desc =
+  'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.';
 </script>
 
 <template>
-  <HomeHeader />
-  <WaxFeatures />
-  <OurMissionIntro />
-  <GuildsIntro />
+  <SimpleHero :title="title" :desc="desc" />
+  <TeaserGovernance />
+  <TeaserFeatures />
+  <TeaserOIG />
+  <TeaserDuties />
+  <TeaserGuilds />
   <MediumFeedSection />
 </template>

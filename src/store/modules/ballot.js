@@ -2,8 +2,6 @@ const state = () => ({
   candidates: [],
   nominees: [],
   ballots: [],
-  loading: true,
-  error: null
 });
 
 // getters
@@ -22,7 +20,6 @@ const actions = {
     fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
       method: 'POST',
       headers: {
-        Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -41,11 +38,9 @@ const actions = {
         if (forcedState) {
           commit('forceBallotState', forcedState);
         }
-        commit('toggleLoading');
       })
       .catch((err) => {
-        commit('setError', err);
-        commit('toggleLoading');
+        console.log('setError', err);
       });
   },
   fetchCandidates({ commit }) {
@@ -68,11 +63,9 @@ const actions = {
       .then((res) => res.json())
       .then((res) => {
         commit('pushCandidates', res.rows);
-        commit('toggleLoading');
       })
       .catch((err) => {
-        commit('setError', err);
-        commit('toggleLoading');
+        console.log('setError', err);
       });
   },
   fetchNominees({ commit }) {
@@ -95,11 +88,9 @@ const actions = {
       .then((res) => res.json())
       .then((res) => {
         commit('pushNominees', res.rows);
-        commit('toggleLoading');
       })
       .catch((err) => {
-        commit('setError', err);
-        commit('toggleLoading');
+        console.log('setError', err);
       });
   },
 };
@@ -114,12 +105,6 @@ const mutations = {
   },
   pushNominees(state, nominees) {
     state.nominees = nominees.sort(() => 0.5 - Math.random());
-  },
-  toggleLoading(state) {
-    state.loading = !state.loading;
-  },
-  setError(state, error) {
-    state.error = error;
   },
   forceBallotState(state, forcedState) {
     state.ballots[0].state = forcedState;

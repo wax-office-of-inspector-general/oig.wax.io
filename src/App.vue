@@ -8,7 +8,7 @@ import FooterComp from '@/components/FooterComp.vue';
 <template>
   <HeadingComp />
 
-  <main class="bg-gray-50">
+  <main>
     <RouterView />
   </main>
 
