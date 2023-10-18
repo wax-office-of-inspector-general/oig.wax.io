@@ -9,7 +9,7 @@ import GuildCardSmall from './guild/GuildCardSmall.vue';
 const store = useStore();
 
 const guilds = computed(() => store.state.guilds.guilds);
-const fewGuilds = computed(() => store.state.guilds.fewGuilds);
+const fewGuilds = computed(() => store.state.guilds.guilds.slice(0, 15));
 const loading = computed(() => store.state.guilds.loading);
 
 onMounted(() => {
@@ -18,10 +18,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="my-12 lg:my-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+  <div class="py-12 lg:py-20">
+    <div class="mx-auto container">
       <div
-        class="mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2"
+        class="mx-auto grid grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:grid-cols-2"
       >
         <div class="lg:pr-4">
           <div class="relative lg:max-w-lg">
@@ -34,10 +34,13 @@ onMounted(() => {
             <Transition>
               <div v-if="guilds.length && !loading">
                 <div
-                  class="mt-20 text-center mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6 sm:gap-4"
+                  class="mt-4 text-center mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-6 sm:gap-4"
                 >
                   <div v-for="(guild, index) in fewGuilds" :key="index">
-                    <GuildCardSmall :title="guild.producer" />
+                    <GuildCardSmall
+                      :title="guild.producer"
+                      :score="guild.score"
+                    />
                   </div>
                 </div>
                 <div
@@ -45,12 +48,12 @@ onMounted(() => {
                 >
                   <ButtonPrimary
                     href="#"
-                    text="More about Guilds"
+                    text="View latest Review"
                     cssClass="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0"
                   />
                 </div>
               </div>
-            </Transition> 
+            </Transition>
           </div>
         </div>
         <div>
@@ -58,35 +61,26 @@ onMounted(() => {
             <h1
               class="mt-2 text-xl font-serif leading-snug text-font sm:text-4xl"
             >
-              Explore our thriving Ecosystem
+              Explore a flourish Ecosystem
             </h1>
             <div class="max-w-xl">
               <p class="mt-6">
-                Delve into the vibrant realm of WAX Guilds and witness the
-                dynamic heartbeat of the ecosystem. These Guilds are not only
-                validators but also pioneers, pushing the boundaries of
-                innovation within the WAX Network. Immerse yourself in their
-                technical expertise, community-driven initiatives, and
-                groundbreaking contributions that shape the future of
-                blockchain. Whether you're an investor, developer, or blockchain
-                enthusiast, exploring the thriving Guilds will unveil a world of
-                opportunities and inspire you to be part of the transformative
-                journey. Join the movement and experience the power of
-                collaboration in building a stronger and more inclusive
+                Find out more about WAX Guilds, the core of this dynamic
+                ecosystem. These Guilds are more than validators; they're
+                innovators, driving progress in the WAX Network. Dive into their
+                technical operations, community projects, and other
+                contributions shaping the blockchain's future. Whether you're a
+                prospecting developer, or simply interested in WAX, exploring
+                these Guilds offers opportunities to be part of this journey.
+                Witness how collaboration builds a stronger, more inclusive
                 decentralized ecosystem.
               </p>
-              <p class="mt-8">
-                Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis
-                odio id et. Id blandit molestie auctor fermentum dignissim.
-                Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate
-                et ultrices hac adipiscing egestas. Iaculis convallis ac tempor
-                et ut. Ac lorem vel integer orci.
-              </p>
+              <p class="mt-6"></p>
             </div>
           </div>
 
           <div class="mt-10 flex">
-            <ButtonText href="#" text="Learn more about Guilds" />
+            <ButtonText href="#" text="Learn more about WAX Guilds" />
           </div>
         </div>
       </div>

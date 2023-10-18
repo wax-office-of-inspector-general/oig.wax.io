@@ -8,9 +8,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="relative min-h-[30vh] overflow-hidden">
+  <div class="container border-red border mx-auto relative min-h-[30vh] overflow-hidden">
     <div
-      class="relative mx-auto flex flex-col max-w-7xl items-start justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start lg:px-8 z-40"
+      class="relative mx-auto flex flex-col w-full items-start justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start lg:px-8 z-40"
     >
       <div class="pt-32 pb-32">
         <h2

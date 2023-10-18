@@ -16,15 +16,13 @@ const sessionWallet = 'professorwax';
 const { login, logout, transact } = useSessionKit();
 const session = useSession();
 
-console.log(session.value);
-
 onMounted(() => {
   if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
 });
 </script>
 <template>
   <div class="py-12 lg:py-20">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="container">
       <div class="border border-primary-100 rounded-md">
         <div class="bg-primary-50 px-5 py-3">
           <div class="flex justify-between items-center">

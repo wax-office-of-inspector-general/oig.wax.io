@@ -2,16 +2,24 @@
 import { defineProps } from 'vue';
 
 const props = defineProps({
-  title: String
+  title: String,
+  score: Number
 });
 </script>
 
 <template>
   <div class="flex flex-col relative group">
     <div
-      class="relative bg-secondary-50 py-5 px-7 text-xs font-serif font-medium text-font leading-6 rounded-md drop-shadow-sm z-20"
+      class="relative bg-secondary-50 py-5 px-7rounded-md drop-shadow-sm z-20"
     >
-      <p class="text-center">{{ props.title }}</p>
+      <p
+        class="text-center text-sm font-serif font-medium text-primary leading-6"
+      >
+        {{ props.title }}
+      </p>
+      <p v-if="props.score" class="text-center text-xs text-primary mt-1">
+        {{ parseFloat(props.score / 10000).toFixed(4) }}
+      </p>
     </div>
 
     <div

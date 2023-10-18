@@ -1,48 +1,47 @@
 const state = () => ({
-  evaluations: []
+  proposals: []
 });
 
 // getters
 const getters = {
-  evaluations: (state) => {
-    return state.evaluations;
+  proposals: (state) => {
+    return state.proposals;
   }
 };
 
 // actions
 const actions = {
-  fetchEvaluations({ commit }) {
+  async fetchProposals({ commit }) {
     fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
       method: 'POST',
       headers: {
-        Accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
         json: true,
-        code: 'guilds.oig',
-        scope: 'guilds.oig',
-        table: 'evaluations',
-        limit: 40,
+        code: 'labs.wax',
+        scope: 'labs.wax',
+        table: 'proposals',
+        limit: -1,
         reverse: true,
         show_payer: false
       })
     })
       .then((res) => res.json())
       .then((res) => {
-        commit('pushEvaluations', res.rows);
+        commit('pushProposals', res.rows);
       })
       .catch((err) => {
-        console.log('setError', err);
+        console.error('Request failed: ', err);
       });
   }
 };
 
 // mutations
 const mutations = {
-  pushEvaluations(state, evaluations) {
-    state.evaluations = evaluations;
-  },
+  pushProposals(state, proposals) {
+    state.proposals = proposals.sort(() => 0.5 - Math.random());
+  }
 };
 
 export default {

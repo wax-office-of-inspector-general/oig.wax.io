@@ -2,8 +2,6 @@ import { Client } from '@notionhq/client';
 
 const notion = new Client({ auth: import.meta.env.VITE_NOTION_API_KEY });
 
-console.log(notion)
-
 const state = () => ({
   scores: [],
   guidelines: [],
@@ -34,7 +32,6 @@ const actions = {
     (async () => {
       const pageId = '0e51defdf10641748a253ccc7f5146b1';
       const response = await notion.pages.retrieve({ page_id: pageId });
-      console.log(response);
     })()
   }
 };

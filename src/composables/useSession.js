@@ -2,6 +2,8 @@ import { ref } from 'vue';
 import { BrowserLocalStorage, SessionKit } from '@wharfkit/session';
 import { WalletPluginAnchor } from '@wharfkit/wallet-plugin-anchor';
 import { WalletPluginCloudWallet } from '@wharfkit/wallet-plugin-cloudwallet';
+import { WalletPluginWombat } from '@wharfkit/wallet-plugin-wombat';
+
 import WebRenderer from '@wharfkit/web-renderer';
 
 const ui = new WebRenderer();
@@ -18,7 +20,11 @@ const sessionKit = new SessionKit({
   ],
   storage: new BrowserLocalStorage(authStorageKey),
   ui,
-  walletPlugins: [new WalletPluginAnchor(), new WalletPluginCloudWallet()]
+  walletPlugins: [
+    new WalletPluginAnchor(),
+    new WalletPluginCloudWallet(),
+    new WalletPluginWombat()
+  ]
 });
 
 const session = ref(null);
@@ -32,10 +38,12 @@ export function useSessionKit() {
     const response = await sessionKit.login();
     session.value = response.session;
   };
+
   const logout = async function () {
     await sessionKit.logout(session.value);
     session.value = undefined;
   };
+  
   const transact = async function () {
     if (!session.value) {
       throw new Error('cannot transact without a session');

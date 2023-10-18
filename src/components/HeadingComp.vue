@@ -22,13 +22,14 @@ import {
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
 import ButtonText from './button/ButtonText.vue';
+import AuthButton from './AuthButton.vue';
 import LoginTrigger from './LoginTrigger.vue';
 
 const solutions = [
   {
     name: 'The OIG',
     description: "What's the OIG and what does it?",
-    href: '/the-oig',
+    href: '/the-wax-oig',
     icon: BuildingLibraryIcon,
     highlight: false
   },
@@ -42,15 +43,14 @@ const solutions = [
   {
     name: 'Guild Evaluations',
     description: 'What makes a good validator on WAX?',
-    href: '/guild-evaluations',
+    href: '/guild-reviews',
     icon: ShieldCheckIcon,
     highlight: false
   },
   {
     name: 'OIG Election',
-    description:
-      'Be part of Blockchain governance',
-    href: '/oig-election',
+    description: 'Be part of Blockchain governance',
+    href: '/election',
     icon: ArchiveBoxIcon,
     highlight: true
   }
@@ -82,44 +82,48 @@ const resources = [
 </script>
 
 <template>
-  <Popover class="fixed top-0 left-0 w-full z-50">
+  <Popover class="container mx-auto relative z-50">
+
     <div class="pointer-events-none absolute inset-0 z-30" aria-hidden="true" />
-    <div class="relative bg-primary-100 z-50">
+    <div class="relative bg-transparent z-50 border-b border-b-primary/20">
       <div
-        class="max-w-7xl mx-auto flex items-center justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start md:space-x-10 lg:px-8"
+        class="z-30 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10 "
       >
         <div>
           <a href="/" class="flex items-center">
             <img
-              class="h-8 w-auto sm:h-14"
+              class="h-8 w-auto sm:h-10"
               src="@/assets/images/oig-logo.png"
               alt="WAX OIG Logo"
             />
             <h1 class="text-md font-serif font-bold ml-6">WAX OIG</h1>
           </a>
         </div>
-        <div class="-my-2 -mr-2 md:hidden">
+        <div class="-my-2 -mr-2 md:hidden z-10">
           <PopoverButton
-            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:primary"
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none"
           >
             <span class="sr-only">Open menu</span>
             <Bars3Icon class="h-6 w-6" aria-hidden="true" />
           </PopoverButton>
         </div>
-        <div class="hidden md:flex md:flex-1 md:items-center md:justify-end">
-          <PopoverGroup as="nav" class="flex space-x-10">
+        <div
+          class="hidden md:flex md:flex-1 md:items-center md:justify-end z-10"
+        >
+          <PopoverGroup as="nav" class="flex items-center space-x-10">
             <Popover v-slot="{ open }">
+
               <PopoverButton
                 :class="[
-                  open ? 'text-font' : 'text-tertiary-800',
-                  'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
+                  open ? 'text-primary underline' : 'text-primary',
+                  'group inline-flex hover:underline items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-none'
                 ]"
               >
                 <span class="font-serif">Governance</span>
                 <ChevronDownIcon
                   :class="[
-                    open ? 'text-tertiary-800' : 'text-gray-300',
-                    'ml-2 h-5 w-5 group-hover:text-gray-500'
+                    open ? 'text-primary' : 'text-primary-500',
+                    'ml-1 h-4 w-4 group-hover:text-primary'
                   ]"
                   aria-hidden="true"
                 />
@@ -209,22 +213,22 @@ const resources = [
               <a
                 href="https://developer.wax.io/"
                 target="_blank"
-                class="text-base font-serif font-medium text-gray-500 hover:text-gray-900"
+                class="text-sm mt-[2px] font-serif font-medium text-primary hover:text-primary-900"
                 >Docs</a
               >
             </div>
             <Popover v-slot="{ open }">
               <PopoverButton
                 :class="[
-                  open ? 'text-font' : 'text-tertiary-800',
-                  'group inline-flex items-center rounded-md text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:primary focus:ring-offset-2'
+                  open ? 'text-primary underline' : 'text-primary',
+                  'group inline-flex hover:underline items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-none'
                 ]"
               >
-                <span class="font-serif">More</span>
+                <span class="font-serif"> More </span>
                 <ChevronDownIcon
                   :class="[
-                    open ? 'text-font' : 'text-tertiary-800',
-                    'ml-2 h-5 w-5 group-hover:text-gray-500'
+                    open ? 'text-primary' : 'text-primary-500',
+                    'ml-1 h-4 w-4 group-hover:text-primary'
                   ]"
                   aria-hidden="true"
                 />
@@ -251,9 +255,7 @@ const resources = [
                       class="grid gap-y-10px-4 py-8 sm:grid-cols-2 sm:gap-x-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12"
                     >
                       <div>
-                        <h3
-                          class="text-base font-serif font-semibold text-font"
-                        >
+                        <h3 class="text-sm font-serif font-semibold text-font">
                           Experts
                         </h3>
                         <ul role="list" class="mt-5 space-y-6">
@@ -264,7 +266,7 @@ const resources = [
                           >
                             <a
                               :href="item.href"
-                              class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-secondary-50"
+                              class="-m-3 flex items-center rounded-md p-3 text-sm font-medium text-gray-900 hover:bg-secondary-50"
                             >
                               <component
                                 :is="item.icon"
@@ -277,9 +279,7 @@ const resources = [
                         </ul>
                       </div>
                       <div>
-                        <h3
-                          class="text-base font-serif font-semibold text-font"
-                        >
+                        <h3 class="text-sm font-serif font-semibold text-font">
                           Resources
                         </h3>
                         <ul role="list" class="mt-5 space-y-6">
@@ -290,7 +290,7 @@ const resources = [
                           >
                             <a
                               :href="item.href"
-                              class="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-secondary-50"
+                              class="-m-3 flex items-center rounded-md p-3 text-sm font-medium text-gray-900 hover:bg-secondary-50"
                             >
                               <component
                                 :is="item.icon"

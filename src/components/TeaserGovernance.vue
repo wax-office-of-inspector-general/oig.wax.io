@@ -1,21 +1,40 @@
+
 <script setup>
+import { useStore } from 'vuex';
+import { computed, onMounted } from 'vue';
 import ButtonText from './button/ButtonText.vue';
 
-const title = 'WAX - Most proven blockchain ecosystem';
+const title = 'Most proven Blockchain';
 const subtitle =
-  'The Office of Inspector General (OIG) is an independent body within the WAX Network, whose purpose is to ensure transparency, integrity, and ongoing development of the ecosystem. The OIG operates independently, providing a neutral and unbiased perspective in its evaluations and recommendations.';
+  'We craft a technological framework that enables reliable and performant infrastructure for blockchain game developers and digital artists alike. Our foundation is an organic and thriving community of gaming and art enthusiasts.';
+
+const store = useStore();
+
+const guilds = computed(() => store.state.guilds.guilds);
+const proposals = computed(() => store.state.proposals.proposals);
+
+onMounted(() => {
+  if (!guilds.value.length) store.dispatch('guilds/fetchGuilds');
+  if (!proposals.value.length) store.dispatch('proposals/fetchProposals');
+});
 </script>
 
 <template>
-  <div class="my-12 lg:my-20">
+  <div class="container mx-auto my-12 lg:my-20">
     <div
-      class="mx-auto flex flex-col max-w-7xl items-start justify-between px-4 py-5 sm:px-6 sm:py-4 md:justify-start lg:px-8"
+      class="mx-auto flex flex-col items-start justify-betweenpy-5 sm:py-4 md:justify-start"
     >
-      <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-xl font-serif tracking-tight text-font sm:text-4xl">
+      <div class="mx-auto">
+        <h2 class="text-xl font-serif text-center tracking-tight sm:text-4xl">
           {{ title }}
         </h2>
-        <p class="mt-6 text-base leading-7 text-gray-600">{{ subtitle }}</p>
+        <p class="mt-6 text-base max-w-2xl text-center leading-7">
+          {{ subtitle }}
+        </p>
+        <div class="grid grid-cols-4">
+          <div></div>
+          <div></div>
+        </div>
       </div>
 
       <div
@@ -24,39 +43,39 @@ const subtitle =
         <div
           class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-primary-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start"
         >
-          <p class="flex-none text-xl font-serif tracking-tight text-gray-900">
-            33 Guilds
+          <p class="flex-none text-xl font-serif tracking-tight text-primary">
+            {{ guilds.length }} Guilds
           </p>
           <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
-            <p class="text-md font-semibold tracking-tight text-font">
+            <p class="text-md font-semibold tracking-tight text-primary">
               Become a Guild
             </p>
-            <p class="mt-3 text-base leading-snug text-gray-600">
+            <p class="mt-3 text-base leading-snug text-primary">
               Learn what it takes to become a validator on WAX
             </p>
             <ButtonText
               href="#"
               text="Apply"
-              cssClass="text-gray-600 mt-6"
+              cssClass="text-primary mt-6"
             ></ButtonText>
           </div>
         </div>
         <div
-          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-tertiary p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44"
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-primary p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44"
         >
           <p class="flex-none text-xl font-serif tracking-tight text-white">
-            130+ Proposals
+            {{ proposals.length }} Proposals
           </p>
           <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
             <p class="text-md font-semibold tracking-tight text-white">
-              Start building with funding
+              Buidl with funding
             </p>
             <p class="mt-3 text-base leading-snug text-white">
-              Eu duis porta aliquam ornare. Elementum eget magna egestas.
+              Contribute your expertise to enhance the WAX network
             </p>
             <ButtonText
               href="#"
-              text="Start building"
+              text="View Proposals"
               cssClass="text-white hover:text-white/80 mt-6"
             ></ButtonText>
           </div>
@@ -71,15 +90,14 @@ const subtitle =
             <p
               class="text-md semibold font-semibold tracking-tight text-tertiary"
             >
-              Help enhancing the network
+              Checks and Balances
             </p>
             <p class="mt-3 text-base leading-snug text-font">
-              Eu duis porta aliquam ornare. Elementum eget magna egestas. Eu
-              duis porta aliquam ornare.
+              Participate in our open governance process and help enhance the networks standards
             </p>
             <ButtonText
               href="#"
-              text="Participate"
+              text="Tell me more"
               cssClass="text-secondary-800 mt-6"
             ></ButtonText>
           </div>

@@ -1,15 +1,12 @@
 const state = () => ({
   guilds: [],
-  fewGuilds: [],
-  loading: true,
-  error: null
 });
 
 // getters
 const getters = {
   guilds: (state) => {
     return state.guilds;
-  }
+  },
 };
 
 // actions
@@ -34,14 +31,11 @@ const actions = {
       .then((res) => res.json())
       .then((res) => {
         commit('pushGuilds', res.rows);
-        commit('pushFewGuilds', res.rows);
-        commit('toggleLoading')
       })
       .catch((err) => {
-        commit('setError', err);
-        commit('toggleLoading');
+        console.error('Request failed: ', err);
       });
-  }
+  },
 };
 
 // mutations
@@ -49,15 +43,6 @@ const mutations = {
   pushGuilds(state, guilds) {
     state.guilds = guilds.sort(() => 0.5 - Math.random());
   },
-  pushFewGuilds(state, guilds) {
-    state.fewGuilds = guilds.sort(() => 0.5 - Math.random()).slice(0, 15);
-  },
-  toggleLoading(state) {
-    state.loading = !state.loading;
-  },
-  setError(state, error) {
-    state.error = error;
-  }
 };
 
 export default {
