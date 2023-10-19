@@ -13,8 +13,6 @@ onMounted(() => {
 
 const currentBallot = computed(() => ballot.value[0]);
 
-console.log(currentBallot.value);
-
 const ballotStates = [
   {
     state: 1,

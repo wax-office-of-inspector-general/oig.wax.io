@@ -11,7 +11,7 @@ const ui = new WebRenderer();
 const authStorageKey = 'wax-oig-auth';
 
 const sessionKit = new SessionKit({
-  appName: 'wax-oig',
+  appName: 'WAX OIG website',
   chains: [
     {
       id: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
@@ -34,6 +34,7 @@ sessionKit.restore().then((s) => {
 });
 
 export function useSessionKit() {
+
   const login = async function () {
     const response = await sessionKit.login();
     session.value = response.session;
@@ -44,24 +45,12 @@ export function useSessionKit() {
     session.value = undefined;
   };
   
-  const transact = async function () {
+  const transact = async function (actions) {
     if (!session.value) {
       throw new Error('cannot transact without a session');
     }
-    const action = {
-      account: 'eosio.token',
-      name: 'transfer',
-      authorization: [session.value.permissionLevel],
-      data: {
-        from: session.value.actor,
-        to: 'teamgreymass',
-        quantity: '0.00000001 WAX',
-        memo: 'Yay WharfKit! Thank you <3'
-      }
-    };
-    session.value.transact({ action }, { broadcast: false }).catch((e) => {
-      console.log('error caught in transact', e);
-    });
+
+    session.value.transact({ actions }, { broadcast: false })
   };
 
   return {

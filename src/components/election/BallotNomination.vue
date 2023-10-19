@@ -16,10 +16,6 @@ const store = useStore();
 
 const nominees = computed(() => store.state.ballot.nominees);
 
-onMounted(() => {
-  if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
-});
-
 const isOpen = ref(false);
 
 function closeModal() {
@@ -28,6 +24,13 @@ function closeModal() {
 function openModal() {
   isOpen.value = true;
 }
+
+const nominate = (payload) =>
+  store.dispatch('ballot/nominate', { nominee: payload });
+
+onMounted(() => {
+  if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
+});
 </script>
 <template>
   <div class="border border-gray-200 rounded-md">
@@ -142,10 +145,11 @@ function openModal() {
                   </h3>
                   <div class="mt-2 text-sm max-w-lg text-gray-500">
                     <p>
-                      We charge 100.0000 WAX for every nomination to prevent spam. The funds won't be returned after the election.
+                      We charge 100.0000 WAX for every nomination to prevent
+                      spam. The funds won't be returned after the election.
                     </p>
                   </div>
-                  <form class="mt-6 sm:flex sm:items-center">
+                  <form ref="form" class="mt-6 sm:flex sm:items-center">
                     <div class="w-full sm:max-w-xs">
                       <label for="email" class="sr-only">Nominee Wallet</label>
                       <input
@@ -170,7 +174,7 @@ function openModal() {
                   <button
                     type="button"
                     class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
-                    @click="closeModal"
+                    @click="nominate('sc.b2.wam')"
                   >
                     Nominate!
                   </button>
