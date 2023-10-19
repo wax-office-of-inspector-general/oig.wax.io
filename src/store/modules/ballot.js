@@ -1,7 +1,11 @@
+import useTransaction from '../../composables/useTransaction';
+import useTableRows from '@/composables/useTableRows';
+import { useSession } from '../../composables/useSession';
+
 const state = () => ({
   candidates: [],
   nominees: [],
-  ballots: [],
+  ballots: []
 });
 
 // getters
@@ -17,82 +21,87 @@ const getters = {
 // actions
 const actions = {
   fetchBallots({ commit }, forcedState) {
-    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        json: true,
-        code: 'oig',
-        scope: 'oig',
-        table: 'election',
-        limit: 20,
-        reverse: false,
-        show_payer: false
-      })
+    useTableRows({
+      json: true,
+      code: 'oig',
+      scope: 'oig',
+      table: 'election',
+      limit: 20,
+      reverse: false,
+      show_payer: false
     })
-      .then((res) => res.json())
       .then((res) => {
-        commit('pushBallots', res.rows);
+        commit('pushBallots', res.data.rows);
         if (forcedState) {
           commit('forceBallotState', forcedState);
         }
       })
       .catch((err) => {
-        console.log('setError', err);
+        console.log(err);
       });
   },
   fetchCandidates({ commit }) {
-    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        json: true,
-        code: 'oig',
-        scope: 'oig',
-        table: 'nominees',
-        limit: 30,
-        reverse: false,
-        show_payer: false
-      })
+    useTableRows({
+      json: true,
+      code: 'oig',
+      scope: 'oig',
+      table: 'nominees',
+      limit: 30,
+      reverse: false,
+      show_payer: false
     })
-      .then((res) => res.json())
       .then((res) => {
-        commit('pushCandidates', res.rows);
+        commit('pushCandidates', res.data.rows);
       })
       .catch((err) => {
-        console.log('setError', err);
+        console.log(err);
       });
   },
   fetchNominees({ commit }) {
-    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        json: true,
-        code: 'oig',
-        scope: 'oig',
-        table: 'nominations',
-        limit: 30,
-        reverse: false,
-        show_payer: false
-      })
+    useTableRows({
+      json: true,
+      code: 'oig',
+      scope: 'oig',
+      table: 'nominations',
+      limit: 30,
+      reverse: false,
+      show_payer: false
     })
-      .then((res) => res.json())
       .then((res) => {
-        commit('pushNominees', res.rows);
+        commit('pushNominees', res.data.rows);
       })
       .catch((err) => {
-        console.log('setError', err);
+        console.log(err);
       });
   },
+  nominate({ commit }, payload) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    useTransaction([
+      {
+        account: 'eosio.token',
+        name: 'transfer',
+        authorization: [session.value.permissionLevel],
+        data: {
+          from: session.value.actor,
+          to: 'oig',
+          quantity: '100.00000000 WAX',
+          memo: `nomination fee for ${payload.nominee}`
+        }
+      },
+      {
+        account: 'oig',
+        name: 'nominate',
+        authorization: [session.value.permissionLevel],
+        data: {
+          nominator: session.value.actor,
+          nominee: payload.nominee
+        }
+      }
+    ]);
+  }
 };
 
 // mutations
@@ -110,6 +119,9 @@ const mutations = {
     state.ballots[0].state = forcedState;
   }
 };
+
+
+window.nominate = actions.nominate;
 
 export default {
   namespaced: true,

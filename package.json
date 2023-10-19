@@ -19,6 +19,7 @@
     "@wharfkit/wallet-plugin-cloudwallet": "^1.0.0",
     "@wharfkit/wallet-plugin-wombat": "^1.0.3",
     "@wharfkit/web-renderer": "^1.0.3",
+    "axios": "^1.5.1",
     "inter-ui": "^3.19.3",
     "moment": "^2.29.4",
     "tailwindcss": "^3.3.3",
