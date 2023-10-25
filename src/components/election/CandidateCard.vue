@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import CandidateCardEdit from './CandidateCardEdit.vue';
 
 import {
   TransitionRoot,
@@ -23,6 +24,7 @@ const isOpen = ref(false);
 function closeModal() {
   isOpen.value = false;
 }
+
 function openModal() {
   isOpen.value = true;
 }
@@ -104,9 +106,10 @@ function openModal() {
               >
                 <DialogTitle
                   as="h3"
-                  class="text-lg font-medium leading-6 text-gray-900"
+                  class="text-lg font-medium flex justify-between leading-6 text-gray-900"
                 >
-                  Candidate Details
+                  <span>Candidate Details</span>
+                  <CandidateCardEdit :candidate="props.candidate" />
                 </DialogTitle>
 
                 <div class="mt-6 border-t border-gray-100">
