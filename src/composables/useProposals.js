@@ -5,7 +5,7 @@ export default async () => {
     code: 'labs.wax',
     scope: 'labs.wax',
     table: 'proposals',
-    limit: -1,
+    limit: 1000,
     reverse: true,
     show_payer: false
   });
