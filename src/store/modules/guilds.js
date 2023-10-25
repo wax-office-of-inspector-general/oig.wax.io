@@ -1,4 +1,4 @@
-import useEvaluations from '@/composables/useEvaluations';
+import useGuilds from '@/composables/useGuilds';
 
 const state = () => ({
   guilds: []
@@ -15,7 +15,7 @@ const getters = {
 const actions = {
   async fetchGuilds({ commit }) {
     try {
-      const { rows } = await useEvaluations();
+      const { rows } = await useGuilds();
 
       commit('pushGuilds', rows);
     } catch (err) {
