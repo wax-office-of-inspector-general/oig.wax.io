@@ -11,6 +11,7 @@
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
     "@notionhq/client": "^2.2.13",
+    "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",
     "@waxio/waxjs": "^1.6.1",
     "@wharfkit/antelope": "^0.7.3",
