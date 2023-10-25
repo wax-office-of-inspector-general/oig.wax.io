@@ -1,3 +1,6 @@
+import useTableRows from '@/composables/useTableRows';
+import useEvaluations from '@/composables/useEvaluations';
+
 const state = () => ({
   evaluations: []
 });
@@ -11,30 +14,14 @@ const getters = {
 
 // actions
 const actions = {
-  fetchEvaluations({ commit }) {
-    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        json: true,
-        code: 'guilds.oig',
-        scope: 'guilds.oig',
-        table: 'evaluations',
-        limit: 40,
-        reverse: true,
-        show_payer: false
-      })
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        commit('pushEvaluations', res.rows);
-      })
-      .catch((err) => {
-        console.log('setError', err);
-      });
+  async fetchEvaluations({ commit }) {
+    try {
+      const { rows } = await useEvaluations();
+
+      commit('pushEvaluations', rows);
+    } catch (err) {
+      console.log('setError', err);
+    }
   }
 };
 
@@ -42,7 +29,7 @@ const actions = {
 const mutations = {
   pushEvaluations(state, evaluations) {
     state.evaluations = evaluations;
-  },
+  }
 };
 
 export default {
