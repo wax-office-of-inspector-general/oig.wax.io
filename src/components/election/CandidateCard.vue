@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import CandidateCardEdit from './CandidateCardEdit.vue';
+import { useSession } from '../../composables/useSession';
+import { CheckIcon } from '@heroicons/vue/20/solid';
 
 import {
   TransitionRoot,
@@ -18,6 +20,8 @@ import {
 const props = defineProps({
   candidate: Object
 });
+
+const session = useSession();
 
 const isOpen = ref(false);
 
@@ -64,6 +68,15 @@ function openModal() {
         </div>
         <div class="-ml-px flex w-0 flex-1">
           <a
+            v-if="session?.actor?.toString() == props?.candidate?.owner"
+            href="#"
+            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
+          >
+            <CheckIcon class="h-5 w-5" aria-hidden="true" />
+            Accept
+          </a>
+          <a
+            v-else
             href="#"
             class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
           >
