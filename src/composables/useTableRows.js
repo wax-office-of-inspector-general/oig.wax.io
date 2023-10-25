@@ -1,20 +1,13 @@
-import useConfig from './useConfig';
-import { default as axios } from 'axios';
+import { APIClient } from '@wharfkit/antelope';
+import { CHAIN_API_URL } from '@/constants';
 
-const config = useConfig();
+const waxClient = new APIClient({
+  url: CHAIN_API_URL
+});
 
-const reqHeaders = {
-  headers: {
-    Accept: 'application/json, text/plain, */*',
-    'Content-Type': 'application/json; charset=UTF-8'
-  }
+export default async (payload) => {
+  return await waxClient.v1.chain.get_table_rows({
+    ...payload,
+    json: true
+  });
 };
-
-export default (payload) => {
-  return axios.post(
-    `${config.chainAPIUrl}/v1/chain/get_table_rows`,
-    payload,
-    reqHeaders
-  );
-}
-

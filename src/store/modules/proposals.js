@@ -1,3 +1,5 @@
+import useProposals from '@/composables/useProposals';
+
 const state = () => ({
   proposals: []
 });
@@ -12,28 +14,13 @@ const getters = {
 // actions
 const actions = {
   async fetchProposals({ commit }) {
-    fetch('https://wax.eosphere.io/v1/chain/get_table_rows', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        json: true,
-        code: 'labs.wax',
-        scope: 'labs.wax',
-        table: 'proposals',
-        limit: -1,
-        reverse: true,
-        show_payer: false
-      })
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        commit('pushProposals', res.rows);
-      })
-      .catch((err) => {
-        console.error('Request failed: ', err);
-      });
+    try {
+      const { rows } = await useProposals();
+
+      commit('pushProposals', rows);
+    } catch (err) {
+      console.error('Request failed: ', err);
+    }
   }
 };
 

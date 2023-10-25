@@ -5,6 +5,7 @@ import { WalletPluginCloudWallet } from '@wharfkit/wallet-plugin-cloudwallet';
 import { WalletPluginWombat } from '@wharfkit/wallet-plugin-wombat';
 
 import WebRenderer from '@wharfkit/web-renderer';
+import { CHAIN_API_URL, CHAIN_ID } from '@/constants';
 
 const ui = new WebRenderer();
 
@@ -14,8 +15,8 @@ const sessionKit = new SessionKit({
   appName: 'WAX OIG website',
   chains: [
     {
-      id: '1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4',
-      url: 'https://wax.greymass.com'
+      id: CHAIN_ID,
+      url: CHAIN_API_URL
     }
   ],
   storage: new BrowserLocalStorage(authStorageKey),
@@ -34,7 +35,6 @@ sessionKit.restore().then((s) => {
 });
 
 export function useSessionKit() {
-
   const login = async function () {
     const response = await sessionKit.login();
     session.value = response.session;
@@ -44,13 +44,13 @@ export function useSessionKit() {
     await sessionKit.logout(session.value);
     session.value = undefined;
   };
-  
+
   const transact = async function (actions) {
     if (!session.value) {
       throw new Error('cannot transact without a session');
     }
 
-    session.value.transact({ actions }, { broadcast: false })
+    await session.value.transact({ actions }, { broadcast: false });
   };
 
   return {
