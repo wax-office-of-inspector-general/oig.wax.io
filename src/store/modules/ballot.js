@@ -3,6 +3,8 @@ import { useSession } from '@/composables/useSession';
 import useBallots from '@/composables/useBallots';
 import useCandidates from '@/composables/useCandidates';
 import useNominees from '@/composables/useNominees';
+import transferToOigAction from '@/chainActions/transferToOigAction';
+import nominateAction from '@/chainActions/nominateAction';
 
 const state = () => ({
   candidates: [],
@@ -52,32 +54,22 @@ const actions = {
       console.log(err);
     }
   },
-  nominate({ commit }, payload) {
+  async nominate({ commit }, payload) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
 
-    useTransaction([
-      {
-        account: 'eosio.token',
-        name: 'transfer',
-        authorization: [session.value.permissionLevel],
-        data: {
-          from: session.value.actor,
-          to: 'oig',
-          quantity: '100.00000000 WAX',
-          memo: `nomination fee for ${payload.nominee}`
-        }
-      },
-      {
-        account: 'oig',
-        name: 'nominate',
-        authorization: [session.value.permissionLevel],
-        data: {
-          nominator: session.value.actor,
-          nominee: payload.nominee
-        }
-      }
+    await useTransaction([
+      transferToOigAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        nominee: payload.nominee
+      }),
+      nominateAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        nominee: payload.nominee
+      })
     ]);
   }
 };
