@@ -110,6 +110,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     plugin(({ addBase, theme }) => {
+      // global font styles
       addBase({
         html: {
           color: theme('colors.font.700'),
@@ -134,6 +135,29 @@ module.exports = {
           fontFamily: theme('fontFamily.serif'),
           color: theme('colors.primary.DEFAULT')
         }
+      });
+    }),
+    require('@tailwindcss/forms'),
+    plugin(({ addBase, theme }) => {
+      // global form styles
+      addBase({
+        '.form-input': {
+          borderRadius: theme('borderRadius.md'),
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.leading-tight'),
+          minWidth: '300px'
+        },
+        '.form-input[disabled]': {
+          backgroundColor: theme('colors.font.100'),
+          border: 'none',
+          minWidth: '300px'
+        },
+        '.form-textarea': {
+          borderRadius: theme('borderRadius.md'),
+          fontSize: theme('fontSize.sm'),
+          lineHeight: theme('lineHeight.leading-tight'),
+          minWidth: '300px',
+        },
       });
     })
   ]
