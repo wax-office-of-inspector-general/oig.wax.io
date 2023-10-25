@@ -1,4 +1,4 @@
-import useBallots from '@/composables/useBallots';
+import useOigs from '@/composables/useOigs';
 
 const state = () => ({
   oigs: [],
@@ -17,7 +17,7 @@ const getters = {
 const actions = {
   async fetchOigs({ commit }) {
     try {
-      const { rows } = await useBallots();
+      const { rows } = await useOigs();
 
       commit('pushOigs', rows);
       commit('toggleLoading');
