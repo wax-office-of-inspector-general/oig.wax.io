@@ -1,5 +1,7 @@
 <script setup>
 import { useStore } from 'vuex';
+import { useSession } from '../../composables/useSession';
+import CandidateCardEdit from './CandidateCardEdit.vue';
 import { computed, onMounted, ref } from 'vue';
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
 
@@ -16,6 +18,8 @@ import { PlusCircleIcon } from '@heroicons/vue/24/outline';
 const accountRegEx = /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/;
 
 const store = useStore();
+
+const session = useSession();
 
 const nominees = computed(() => store.state.ballot.nominees);
 
@@ -76,6 +80,7 @@ onMounted(() => {
                   class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-70 outline-none"
                   >accepted</span
                 >
+                <CandidateCardEdit v-else-if="session?.actor?.toString() == nominee?.nominee" :candidate="nominee" :acceptance="true" />
                 <span
                   v-else
                   class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-medium text-font outline-none"

@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
 import CandidateCardEdit from './CandidateCardEdit.vue';
+import { useSession } from '../../composables/useSession';
+import { XCircleIcon } from '@heroicons/vue/20/solid';
 
 import {
   TransitionRoot,
@@ -18,6 +20,8 @@ import {
 const props = defineProps({
   candidate: Object
 });
+
+const session = useSession();
 
 const isOpen = ref(false);
 
@@ -64,12 +68,22 @@ function openModal() {
         </div>
         <div class="-ml-px flex w-0 flex-1">
           <a
+            v-if="session?.actor?.toString() == props?.candidate?.owner"
             href="#"
             class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
           >
+            <XCircleIcon class="h-5 w-5" aria-hidden="true" />
+            Delete
+          </a>
+          <!-- <a
+            v-else
+            href="#"
+            class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
+            disabled
+          >
             <StarIcon class="h-5 w-5" aria-hidden="true" />
             Vote
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
@@ -109,7 +123,6 @@ function openModal() {
                   class="text-lg font-medium flex justify-between leading-6 text-gray-900"
                 >
                   <span>Candidate Details</span>
-                  <CandidateCardEdit :candidate="props.candidate" />
                 </DialogTitle>
 
                 <div class="mt-6 border-t border-gray-100">
@@ -210,7 +223,7 @@ function openModal() {
                   </dl>
                 </div>
 
-                <div class="mt-6 flex justify-end">
+                <div class="mt-6 flex justify-end gap-4">
                   <button
                     type="button"
                     class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none"
@@ -218,13 +231,16 @@ function openModal() {
                   >
                     Close
                   </button>
-                  <button
+                  <CandidateCardEdit v-if="session?.actor?.toString() == props?.candidate?.owner" :candidate="props.candidate" :acceptance="false" />
+                  <!-- <button
+                    v-else
                     type="button"
-                    class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
+                    class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
                     @click="closeModal"
+                    disabled
                   >
                     Vote for this Candidate!
-                  </button>
+                  </button> -->
                 </div>
               </DialogPanel>
             </TransitionChild>

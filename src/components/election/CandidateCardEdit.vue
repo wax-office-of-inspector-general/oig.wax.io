@@ -9,7 +9,8 @@ import {
 } from '@headlessui/vue';
 
 const props = defineProps({
-  candidate: Object
+  candidate: Object,
+  acceptance: Boolean
 });
 
 const formData = toRef(props, 'candidate');
@@ -25,6 +26,13 @@ function openModal() {
 }
 
 function submit(evt) {
+  // TODO: Implement Candidate Details update and/or Nomination acceptance
+  if (acceptance) {
+    console.log("Accepting Nomination");
+  } else {
+    console.log("Updating Candidate Details");
+  }
+  
   console.log(evt);
 }
 </script>
@@ -32,9 +40,9 @@ function submit(evt) {
   <div>
     <button
       @click="openModal"
-      class="relative items-center justify-center border border-transparent py-2 px-3 text-xs font-serif text-white bg-primary hover:bg-primary/90 hover:text-white"
+      class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
     >
-      Edit Candidate Details
+      {{ acceptance ? "Accept" : "Edit Candidate Details" }}
     </button>
 
     <TransitionRoot appear :show="isOpen" as="template">
@@ -71,7 +79,7 @@ function submit(evt) {
                   as="h3"
                   class="text-lg font-medium leading-6 text-gray-900"
                 >
-                  Edit Candidate Details
+                  {{ acceptance ? "Accept Candidacy" : "Edit Candidate Details" }}
                 </DialogTitle>
 
                 <div class="mt-6 border-t border-gray-100">
@@ -215,7 +223,7 @@ function submit(evt) {
                             type="submit"
                             class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
                           >
-                            Update Details
+                            {{ acceptance ? "Accept" : "Update Details" }}
                           </button>
                         </dd>
                       </div>
