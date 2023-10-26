@@ -1,5 +1,5 @@
 <script setup>
-import Simplehero from '../components/hero/Simplehero.vue';
+import SimpleHero from '../components/hero/SimpleHero.vue';
 import OIGExplanation from '../components/OIGExplanation.vue';
 import OIGElectionProcess from '../components/OIGElectionProcess.vue';
 import OIGTeam from '../components/OIGTeam.vue';
@@ -9,7 +9,7 @@ const desc =
   '3 Inspector Generals, elected by the WAX community decentralized the WAX network.';
 </script>
 <template>
-  <Simplehero :title="title" :desc="desc" />
+  <SimpleHero :title="title" :desc="desc" />
   <OIGExplanation />
   <OIGTeam />
   <OIGElectionProcess />

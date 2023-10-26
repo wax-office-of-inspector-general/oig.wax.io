@@ -1,6 +1,10 @@
 import useTransaction from '../../composables/useTransaction';
-import useTableRows from '@/composables/useTableRows';
-import { useSession } from '../../composables/useSession';
+import { useSession } from '@/composables/useSession';
+import useBallots from '@/composables/useBallots';
+import useCandidates from '@/composables/useCandidates';
+import useNominees from '@/composables/useNominees';
+import transferToOigAction from '@/chainActions/transferToOigAction';
+import nominateAction from '@/chainActions/nominateAction';
 
 const state = () => ({
   candidates: [],
@@ -20,86 +24,52 @@ const getters = {
 
 // actions
 const actions = {
-  fetchBallots({ commit }, forcedState) {
-    useTableRows({
-      json: true,
-      code: 'oig',
-      scope: 'oig',
-      table: 'election',
-      limit: 20,
-      reverse: false,
-      show_payer: false
-    })
-      .then((res) => {
-        commit('pushBallots', res.data.rows);
-        if (forcedState) {
-          commit('forceBallotState', forcedState);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async fetchBallots({ commit }, forcedState) {
+    try {
+      const { rows } = await useBallots();
+
+      commit('pushBallots', rows);
+      if (forcedState) {
+        commit('forceBallotState', forcedState);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   },
-  fetchCandidates({ commit }) {
-    useTableRows({
-      json: true,
-      code: 'oig',
-      scope: 'oig',
-      table: 'nominees',
-      limit: 30,
-      reverse: false,
-      show_payer: false
-    })
-      .then((res) => {
-        commit('pushCandidates', res.data.rows);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async fetchCandidates({ commit }) {
+    try {
+      const { rows } = await useCandidates();
+
+      commit('pushCandidates', rows);
+    } catch (err) {
+      console.log(err);
+    }
   },
-  fetchNominees({ commit }) {
-    useTableRows({
-      json: true,
-      code: 'oig',
-      scope: 'oig',
-      table: 'nominations',
-      limit: 30,
-      reverse: false,
-      show_payer: false
-    })
-      .then((res) => {
-        commit('pushNominees', res.data.rows);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async fetchNominees({ commit }) {
+    try {
+      const { rows } = await useNominees();
+
+      commit('pushNominees', rows);
+    } catch (err) {
+      console.log(err);
+    }
   },
-  nominate({ commit }, payload) {
+  async nominate({ commit }, payload) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
 
-    useTransaction([
-      {
-        account: 'eosio.token',
-        name: 'transfer',
-        authorization: [session.value.permissionLevel],
-        data: {
-          from: session.value.actor,
-          to: 'oig',
-          quantity: '100.00000000 WAX',
-          memo: `nomination fee for ${payload.nominee}`
-        }
-      },
-      {
-        account: 'oig',
-        name: 'nominate',
-        authorization: [session.value.permissionLevel],
-        data: {
-          nominator: session.value.actor,
-          nominee: payload.nominee
-        }
-      }
+    await useTransaction([
+      transferToOigAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        nominee: payload.nominee
+      }),
+      nominateAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        nominee: payload.nominee
+      })
     ]);
   }
 };
@@ -119,7 +89,6 @@ const mutations = {
     state.ballots[0].state = forcedState;
   }
 };
-
 
 window.nominate = actions.nominate;
 

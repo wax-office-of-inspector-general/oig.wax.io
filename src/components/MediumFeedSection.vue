@@ -3,6 +3,7 @@ import { useStore } from 'vuex';
 import { onMounted, computed } from 'vue';
 import ButtonText from './button/ButtonText.vue';
 import ButtonSecondary from './button/ButtonSecondary.vue';
+import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
 
@@ -16,7 +17,7 @@ onMounted(() => {
 const mediumLink = 'https://waxoig.medium.com/';
 </script>
 
-<template> 
+<template>
   <div class="mx-auto container py-12 lg:py-20">
     <div class="mx-auto max-w-xl text-center mb-10">
       <h2 class="text-xl font-serif tracking-tight text-font">
