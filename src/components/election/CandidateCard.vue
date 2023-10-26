@@ -223,7 +223,7 @@ function openModal() {
                   </dl>
                 </div>
 
-                <div class="mt-6 flex justify-end">
+                <div class="mt-6 flex justify-end gap-4">
                   <button
                     type="button"
                     class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none"
@@ -231,11 +231,11 @@ function openModal() {
                   >
                     Close
                   </button>
-                  <CandidateCardEdit v-if="session?.actor?.toString() == props?.candidate?.owner" :candidate="props.candidate" />
+                  <CandidateCardEdit v-if="session?.actor?.toString() == props?.candidate?.owner" :candidate="props.candidate" :acceptance="false" />
                   <!-- <button
                     v-else
                     type="button"
-                    class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
+                    class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
                     @click="closeModal"
                     disabled
                   >
