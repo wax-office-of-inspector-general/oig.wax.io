@@ -1,6 +1,7 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted, ref } from 'vue';
+import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
 
 import {
   TransitionRoot,
@@ -12,17 +13,25 @@ import {
 
 import { PlusCircleIcon } from '@heroicons/vue/24/outline';
 
+const accountRegEx = /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/;
+
 const store = useStore();
 
 const nominees = computed(() => store.state.ballot.nominees);
 
 const isOpen = ref(false);
+const nominee = ref('');
+const isValidAccount = computed(() => {
+  return accountRegEx.test(nominee.value);
+});
 
 function closeModal() {
   isOpen.value = false;
 }
+
 function openModal() {
   isOpen.value = true;
+  nominee.value = '';
 }
 
 const nominate = (payload) =>
@@ -156,9 +165,24 @@ onMounted(() => {
                         type="text"
                         name="nominee"
                         id="nominee"
+                        v-model="nominee"
                         class="block w-full rounded-sm px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-none outline-none sm:text-sm sm:leading-6"
+                        :class="{
+                          'border-red-700': !isValidAccount,
+                          'focus:border-red-700': !isValidAccount
+                        }"
                         placeholder="yourwallet.wam"
                       />
+                      <div
+                        v-if="!isValidAccount"
+                        class="text-red-700 mt-2 flex gap-1 items-center"
+                      >
+                        <ExclamationCircleIcon
+                          class="h-4 w-4"
+                          aria-hidden="true"
+                        />
+                        Invalid account name
+                      </div>
                     </div>
                   </form>
                 </div>
@@ -174,7 +198,7 @@ onMounted(() => {
                   <button
                     type="button"
                     class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
-                    @click="nominate('sc.b2.wam')"
+                    @click="nominate(nominee)"
                   >
                     Nominate!
                   </button>
