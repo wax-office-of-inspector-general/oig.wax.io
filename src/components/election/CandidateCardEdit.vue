@@ -25,6 +25,7 @@ function openModal() {
 }
 
 function submit(evt) {
+  // TODO: Implement Candidate Details update and/or Nomination acceptance
   console.log(evt);
 }
 </script>
@@ -32,7 +33,7 @@ function submit(evt) {
   <div>
     <button
       @click="openModal"
-      class="relative items-center justify-center border border-transparent py-2 px-3 text-xs font-serif text-white bg-primary hover:bg-primary/90 hover:text-white"
+      class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
     >
       Edit Candidate Details
     </button>

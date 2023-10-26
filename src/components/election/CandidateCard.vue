@@ -75,14 +75,15 @@ function openModal() {
             <CheckIcon class="h-5 w-5" aria-hidden="true" />
             Accept
           </a>
-          <a
+          <!-- <a
             v-else
             href="#"
             class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
+            disabled
           >
             <StarIcon class="h-5 w-5" aria-hidden="true" />
             Vote
-          </a>
+          </a> -->
         </div>
       </div>
     </div>
@@ -122,7 +123,6 @@ function openModal() {
                   class="text-lg font-medium flex justify-between leading-6 text-gray-900"
                 >
                   <span>Candidate Details</span>
-                  <CandidateCardEdit :candidate="props.candidate" />
                 </DialogTitle>
 
                 <div class="mt-6 border-t border-gray-100">
@@ -231,13 +231,16 @@ function openModal() {
                   >
                     Close
                   </button>
-                  <button
+                  <CandidateCardEdit v-if="session?.actor?.toString() == props?.candidate?.owner" :candidate="props.candidate" />
+                  <!-- <button
+                    v-else
                     type="button"
                     class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
                     @click="closeModal"
+                    disabled
                   >
                     Vote for this Candidate!
-                  </button>
+                  </button> -->
                 </div>
               </DialogPanel>
             </TransitionChild>
