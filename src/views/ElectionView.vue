@@ -4,6 +4,7 @@ import SimpleHero from '../components/hero/SimpleHero.vue';
 import OIGTeam from '../components/OIGTeam.vue';
 import BallotView from '../components/election/BallotView.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
+import { RouterView } from 'vue-router';
 
 const headline = 'OIG Election';
 const subline =
@@ -17,6 +18,7 @@ const tabs = shallowRef({
     import('../components/election/CandidateRequirements.vue')
   )
 });
+
 </script>
 
 <template>
@@ -57,4 +59,5 @@ const tabs = shallowRef({
     </TabGroup>
   </div>
   <OIGTeam />
+  <RouterView />
 </template>

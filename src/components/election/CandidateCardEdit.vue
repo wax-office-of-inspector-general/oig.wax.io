@@ -1,5 +1,5 @@
 <script setup>
-import { ref, toRef } from 'vue';
+import { reactive, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useSession } from '../../composables/useSession';
 import {
@@ -11,6 +11,9 @@ import {
 } from '@headlessui/vue';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 
+import { useVuelidate } from '@vuelidate/core'
+import { required, minLength, url } from '@vuelidate/validators'
+
 const props = defineProps({
   candidate: Object,
   acceptance: Boolean
@@ -20,7 +23,19 @@ const store = useStore();
 
 const session = useSession();
 
-const formData = toRef(props, 'candidate');
+const formData = reactive({...props.candidate});
+
+const regexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
+
+const rules = {
+  name: { required, minLength: minLength(3) },
+  descriptor: { required, minLength: minLength(3) },
+  picture: { required, url },
+  telegram: { regexValidation },
+  twitter: { regexValidation },
+};
+
+const $v = useVuelidate(rules, formData);
 
 const isOpen = ref(false);
 const isConfirmationModalOpen = ref(false);
@@ -55,8 +70,11 @@ const proclaim = () =>
 const nominf = () =>
   store.dispatch('ballot/nominf', formData.value);
 
-function submit() {
-  openConfirmationModal();
+async function submit() {
+  const result = await $v.value.$validate();
+  if (result) {
+    openConfirmationModal();
+  }
 }
 </script>
 <template>
@@ -121,7 +139,9 @@ function submit() {
                             type="text"
                             v-model="formData.name"
                             class="form-input"
+                            :class="{ 'border-red-700': $v.name.$errors.length }"
                           />
+                          <p class="text-red-700" v-for="error in $v.name.$errors" :key="error.$uid">{{ error.$message }}</p>
                         </dd>
                       </div>
                       <div
@@ -170,7 +190,9 @@ function submit() {
                             type="text"
                             v-model.lazy="formData.picture"
                             class="form-input"
+                            :class="{ 'border-red-700': $v.picture.$errors.length }"
                           />
+                          <p class="text-red-700" v-for="error in $v.picture.$errors" :key="error.$uid">{{ error.$message }}</p>
                         </dd>
                       </div>
                       <div
@@ -186,14 +208,16 @@ function submit() {
                             type="text"
                             v-model="formData.telegram"
                             class="form-input"
+                            :class="{ 'border-red-700': $v.telegram.$errors.length }"
                           />
+                          <p class="text-red-700" v-if="$v.telegram.$error">Not a valid Telegram account</p>
                         </dd>
                       </div>
                       <div
                         class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
                       >
                         <dt class="text-sm font-medium leading-6 text-primary">
-                          Twitter
+                          Twitter/X
                         </dt>
                         <dd
                           class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
@@ -202,7 +226,9 @@ function submit() {
                             type="text"
                             v-model="formData.twitter"
                             class="form-input"
+                            :class="{ 'border-red-700': $v.twitter.$errors.length }"
                           />
+                          <p class="text-red-700" v-if="$v.twitter.$error">Not a valid Twitter/X account</p>
                         </dd>
                       </div>
                       <div
@@ -219,8 +245,10 @@ function submit() {
                             v-model="formData.descriptor"
                             rows="10"
                             class="form-textarea w-[450px] max-w-full"
+                            :class="{ 'border-red-700': $v.twitter.$errors.length }"
                           >
                           </textarea>
+                          <p class="text-red-700" v-for="error in $v.descriptor.$errors" :key="error.$uid">{{ error.$message }}</p>
                         </dd>
                       </div>
                     </dl>
