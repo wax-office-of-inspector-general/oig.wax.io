@@ -29,6 +29,7 @@ const nominees = computed(() => store.state.ballot.nominees);
 
 const isOpen = ref(false);
 const isConfirmationModalOpen = ref(false);
+
 const nominee = ref('');
 const isAccountValid = computed(() => {
   return accountRegEx.test(nominee.value) || nominee.value.length < 2;
@@ -246,6 +247,6 @@ onMounted(() => {
       </Dialog>
     </TransitionRoot>
 
-    <ConfirmationModal :show="isConfirmationModalOpen" :on-confirm="confirmNomination" :on-cancel="cancelNomination" :title="`Are you sure you want to Nominate ${nominee}?`" description="This action is final and the WAX cost will be subtracted from your account after this confirmation."/>
+    <ConfirmationModal :show="isConfirmationModalOpen" @confirm="confirmNomination" @cancel="cancelNomination" :title="`Are you sure you want to Nominate ${nominee}?`" description="This action is final and the WAX cost will be subtracted from your account after this confirmation."/>
   </div>
 </template>
