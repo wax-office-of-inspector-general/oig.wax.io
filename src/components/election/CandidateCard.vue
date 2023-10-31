@@ -45,7 +45,7 @@ function openModal() {
       <h3 class="mt-6 text-base font-medium text-gray-900">
         {{ props.candidate.name }}
       </h3>
-      <dl class="mt-1 flex flex-grow flex-col justify-between">
+      <!-- <dl class="mt-1 flex flex-grow flex-col justify-between">
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">
           <span
@@ -53,7 +53,7 @@ function openModal() {
             >123123 VOTE</span
           >
         </dd>
-      </dl>
+      </dl> -->
     </div>
     <div>
       <div class="-mt-px flex divide-x border-t border-t-gray-200">

@@ -1,5 +1,6 @@
 <script setup>
 import { ref, toRef } from 'vue';
+import { useStore } from 'vuex';
 import {
   TransitionRoot,
   TransitionChild,
@@ -7,15 +8,19 @@ import {
   DialogPanel,
   DialogTitle
 } from '@headlessui/vue';
+import ConfirmationModal from '../modal/ConfirmationModal.vue';
 
 const props = defineProps({
   candidate: Object,
   acceptance: Boolean
 });
 
+const store = useStore();
+
 const formData = toRef(props, 'candidate');
 
 const isOpen = ref(false);
+const isConfirmationModalOpen = ref(false);
 
 function closeModal() {
   isOpen.value = false;
@@ -25,15 +30,27 @@ function openModal() {
   isOpen.value = true;
 }
 
-function submit(evt) {
-  // TODO: Implement Candidate Details update and/or Nomination acceptance
-  if (acceptance) {
-    console.log("Accepting Nomination");
-  } else {
-    console.log("Updating Candidate Details");
-  }
-  
-  console.log(evt);
+function openConfirmationModal() {
+  isConfirmationModalOpen.value = true;
+}
+
+function cancelNominationAcceptance() {
+  isConfirmationModalOpen.value = false;
+}
+
+function confirmNominationAcceptance() {
+  proclaim();
+  nominf(formData);
+}
+
+const proclaim = () =>
+  store.dispatch('ballot/proclaim', { decision: true });
+
+const nominf = () =>
+  store.dispatch('ballot/nominf', { formData });
+
+function submit() {
+  openConfirmationModal();
 }
 </script>
 <template>
@@ -236,5 +253,7 @@ function submit(evt) {
         </div>
       </Dialog>
     </TransitionRoot>
+
+    <ConfirmationModal :show="isConfirmationModalOpen" :on-confirm="confirmNominationAcceptance" :on-cancel="cancelNominationAcceptance" :title="`Are you sure you want to accept your nomination?`" description="This action will make you eligible as a candidate for the OIG election."/>
   </div>
 </template>

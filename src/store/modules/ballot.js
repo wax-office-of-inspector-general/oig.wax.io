@@ -1,10 +1,13 @@
-import useTransaction from '../../composables/useTransaction';
+import useTransaction from '@/composables/useTransaction';
 import { useSession } from '@/composables/useSession';
 import useBallots from '@/composables/useBallots';
 import useCandidates from '@/composables/useCandidates';
 import useNominees from '@/composables/useNominees';
 import transferToOigAction from '@/chainActions/transferToOigAction';
 import nominateAction from '@/chainActions/nominateAction';
+import proclaimAction from '@/chainActions/proclaimAction';
+import nominfAction from '@/chainActions/nominfAction';
+import regvoterAction from '@/chainActions/regvoterAction';
 
 const state = () => ({
   candidates: [],
@@ -69,6 +72,74 @@ const actions = {
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         nominee: payload.nominee
+      })
+    ]);
+  },
+  async proclaim({ commit }, payload) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      proclaimAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        decision: payload.decision
+      })
+    ]);
+  },
+  async nominf({ commit }, payload) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      nominfAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        name: payload.name,
+        descriptor: payload.descriptor,
+        picture: payload.picture,
+        telegram: payload.telegram,
+        twitter: payload.twitter,
+        wechat: payload.wechat,
+        remove: payload.remove
+      })
+    ]);
+  },
+  async proclaimAndNominf({ commit }, payload) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      proclaimAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        decision: payload.decision
+      }),
+      nominfAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        name: payload.name,
+        descriptor: payload.descriptor,
+        picture: payload.picture,
+        telegram: payload.telegram,
+        twitter: payload.twitter,
+        wechat: payload.wechat,
+        remove: payload.remove
+      })
+    ]);
+  },
+  async regvoter({ commit }) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      regvoterAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor
       })
     ]);
   }
