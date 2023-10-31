@@ -103,7 +103,7 @@ const actions = {
         telegram: payload.telegram,
         twitter: payload.twitter,
         wechat: payload.wechat,
-        remove: payload.remove
+        remove: false
       })
     ]);
   },

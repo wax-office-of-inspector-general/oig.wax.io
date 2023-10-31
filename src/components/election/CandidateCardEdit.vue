@@ -1,6 +1,7 @@
 <script setup>
 import { ref, toRef } from 'vue';
 import { useStore } from 'vuex';
+import { useSession } from '../../composables/useSession';
 import {
   TransitionRoot,
   TransitionChild,
@@ -16,6 +17,8 @@ const props = defineProps({
 });
 
 const store = useStore();
+
+const session = useSession();
 
 const formData = toRef(props, 'candidate');
 
@@ -39,15 +42,18 @@ function cancelNominationAcceptance() {
 }
 
 function confirmNominationAcceptance() {
-  proclaim();
-  nominf(formData);
+  // TODO: Verify if these actions are not occurring simultaneously
+  if (props.acceptance) {
+    proclaim();
+  }
+  nominf();
 }
 
 const proclaim = () =>
   store.dispatch('ballot/proclaim', { decision: true });
 
 const nominf = () =>
-  store.dispatch('ballot/nominf', { formData });
+  store.dispatch('ballot/nominf', formData.value);
 
 function submit() {
   openConfirmationModal();
@@ -129,7 +135,7 @@ function submit() {
                         >
                           <input
                             type="text"
-                            v-model="formData.owner"
+                            :value="props.acceptance ? session?.actor?.toString() : formData.owner"
                             disabled
                             class="form-input"
                           />
@@ -139,14 +145,14 @@ function submit() {
                         class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
                       >
                         <dt class="text-sm font-medium leading-6 text-primary">
-                          Picture
+                          Picture URL
                         </dt>
                         <dd
                           class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                         >
                           <p
-                            v-if="!props.candidate.picture"
-                            class="relative h-32 w-32 rounded-full bg-font-100"
+                            v-if="!props.candidate.picture && !acceptance"
+                            class="relative mb-6 h-32 w-32 rounded-full bg-font-100"
                           >
                             <span
                               class="absolute inset-x-0 top-[50%] translate-y-[-50%] text-center"
@@ -155,7 +161,7 @@ function submit() {
                             </span>
                           </p>
                           <img
-                            v-else
+                            v-else-if="!acceptance"
                             class="h-32 w-32 flex-shrink-0 rounded-full"
                             :src="props.candidate.picture"
                             alt=""
@@ -163,7 +169,7 @@ function submit() {
                           <input
                             type="text"
                             v-model.lazy="formData.picture"
-                            class="form-input mt-6"
+                            class="form-input"
                           />
                         </dd>
                       </div>
@@ -254,6 +260,6 @@ function submit() {
       </Dialog>
     </TransitionRoot>
 
-    <ConfirmationModal :show="isConfirmationModalOpen" :on-confirm="confirmNominationAcceptance" :on-cancel="cancelNominationAcceptance" :title="`Are you sure you want to accept your nomination?`" description="This action will make you eligible as a candidate for the OIG election."/>
+    <ConfirmationModal :show="isConfirmationModalOpen" @confirm="confirmNominationAcceptance" @cancel="cancelNominationAcceptance" :title="acceptance ? 'Are you sure you want to accept your nomination?' : 'Are you sure you want to update your candidate details?'" :description="acceptance ? 'This action will make you eligible as a candidate for the OIG election as well as fill your candidate details.' : 'This will replace your candidate details with the new information.'"/>
   </div>
 </template>

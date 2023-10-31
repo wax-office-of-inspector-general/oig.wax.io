@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+import { useStore } from 'vuex';
 import CandidateCardEdit from './CandidateCardEdit.vue';
+import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { useSession } from '../../composables/useSession';
 import { XCircleIcon } from '@heroicons/vue/20/solid';
 
@@ -21,9 +23,13 @@ const props = defineProps({
   candidate: Object
 });
 
+const store = useStore();
+
 const session = useSession();
 
 const isOpen = ref(false);
+
+const isDeleteConfirmationModalOpen = ref(false);
 
 function closeModal() {
   isOpen.value = false;
@@ -32,6 +38,22 @@ function closeModal() {
 function openModal() {
   isOpen.value = true;
 }
+
+function openDeleteConfirmationModal() {
+  isDeleteConfirmationModalOpen.value = true;
+}
+
+function cancelDeletion() {
+  isDeleteConfirmationModalOpen.value = false;
+}
+
+function confirmDeletion() {
+  deleteCandidacy();
+  isDeleteConfirmationModalOpen.value = false;
+}
+
+const deleteCandidacy = () =>
+  store.dispatch('ballot/proclaim', { decision: false });
 </script>
 
 <template>
@@ -70,6 +92,7 @@ function openModal() {
           <a
             v-if="session?.actor?.toString() == props?.candidate?.owner"
             href="#"
+            @click="openDeleteConfirmationModal"
             class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
           >
             <XCircleIcon class="h-5 w-5" aria-hidden="true" />
@@ -248,5 +271,7 @@ function openModal() {
         </div>
       </Dialog>
     </TransitionRoot>
+
+    <ConfirmationModal :show="isDeleteConfirmationModalOpen" @confirm="confirmDeletion" @cancel="cancelDeletion" title="Are you sure you want to delete your candidacy?" description="This action is final and cannot be reverted. The WAX amount used for the nomination will not be refunded."/>
   </div>
 </template>
