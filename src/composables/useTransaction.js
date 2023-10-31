@@ -10,7 +10,7 @@ export default async (actions) => {
   try {
     await transact(actions);
     notify({
-      title: "Sucess",
+      title: "Success",
       text: "The action was successful",
       type: "success"
     });
