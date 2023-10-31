@@ -10,6 +10,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
     "@heroicons/vue": "^2.0.18",
+    "@kyvg/vue3-notification": "^3.0.2",
     "@notionhq/client": "^2.2.13",
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",

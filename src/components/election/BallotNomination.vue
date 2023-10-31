@@ -2,7 +2,9 @@
 import { useStore } from 'vuex';
 import { useSession } from '../../composables/useSession';
 import CandidateCardEdit from './CandidateCardEdit.vue';
+import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { computed, onMounted, ref } from 'vue';
+import { useNotification } from "@kyvg/vue3-notification";
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
 
 import {
@@ -17,6 +19,8 @@ import { PlusCircleIcon } from '@heroicons/vue/24/outline';
 
 const accountRegEx = /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/;
 
+const { notify }  = useNotification()
+
 const store = useStore();
 
 const session = useSession();
@@ -24,9 +28,10 @@ const session = useSession();
 const nominees = computed(() => store.state.ballot.nominees);
 
 const isOpen = ref(false);
+const isConfirmationModalOpen = ref(false);
 const nominee = ref('');
-const isValidAccount = computed(() => {
-  return accountRegEx.test(nominee.value);
+const isAccountValid = computed(() => {
+  return accountRegEx.test(nominee.value) || nominee.value.length < 2;
 });
 
 function closeModal() {
@@ -38,8 +43,33 @@ function openModal() {
   nominee.value = '';
 }
 
-const nominate = (payload) =>
-  store.dispatch('ballot/nominate', { nominee: payload });
+function openConfirmationModal() {
+  isConfirmationModalOpen.value = true;
+}
+
+function cancelNomination() {
+  isConfirmationModalOpen.value = false;
+}
+
+function confirmNomination() {
+  nominate();
+  // TODO: Only close confirmation modal on nominate action success
+  isConfirmationModalOpen.value = false;
+  // TODO: Notify on Success and error
+  // notify({
+  //   title: "Sucess",
+  //   text: `${nominee.value} successfully nominated!`,
+  //   type: "success"
+  // });
+  // notify({
+  //   title: "Error",
+  //   text: `${nominee.value} was not nominated.`,
+  //   type: "error"
+  // });
+}
+
+const nominate = () =>
+  store.dispatch('ballot/nominate', { nominee: nominee.value });
 
 onMounted(() => {
   if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
@@ -173,13 +203,13 @@ onMounted(() => {
                         v-model="nominee"
                         class="block w-full rounded-sm px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-none outline-none sm:text-sm sm:leading-6"
                         :class="{
-                          'border-red-700': !isValidAccount,
-                          'focus:border-red-700': !isValidAccount
+                          'border-red-700': !isAccountValid,
+                          'focus:border-red-700': !isAccountValid
                         }"
                         placeholder="yourwallet.wam"
                       />
                       <div
-                        v-if="!isValidAccount"
+                        v-if="!isAccountValid"
                         class="text-red-700 mt-2 flex gap-1 items-center"
                       >
                         <ExclamationCircleIcon
@@ -202,10 +232,11 @@ onMounted(() => {
                   </button>
                   <button
                     type="button"
-                    class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
-                    @click="nominate(nominee)"
+                    class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none disabled:bg-gray-500"
+                    @click="openConfirmationModal"
+                    :disabled="!isAccountValid || nominee.length < 2"
                   >
-                    Nominate!
+                    Nominate
                   </button>
                 </div>
               </DialogPanel>
@@ -214,5 +245,7 @@ onMounted(() => {
         </div>
       </Dialog>
     </TransitionRoot>
+
+    <ConfirmationModal :show="isConfirmationModalOpen" :on-confirm="confirmNomination" :on-cancel="cancelNomination" :title="`Are you sure you want to Nominate ${nominee}?`" description="This action is final and the WAX cost will be subtracted from your account after this confirmation."/>
   </div>
 </template>
