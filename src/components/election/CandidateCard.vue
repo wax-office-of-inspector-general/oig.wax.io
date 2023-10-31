@@ -91,7 +91,6 @@ const deleteCandidacy = () =>
         <div class="-ml-px flex w-0 flex-1">
           <a
             v-if="session?.actor?.toString() == props?.candidate?.owner"
-            href="#"
             @click="openDeleteConfirmationModal"
             class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
           >
