@@ -67,8 +67,9 @@ function confirmNominationAcceptance() {
 const proclaim = () =>
   store.dispatch('ballot/proclaim', { decision: true });
 
-const nominf = () =>
-  store.dispatch('ballot/nominf', formData.value);
+const nominf = () => {
+  store.dispatch('ballot/nominf', formData);
+}
 
 async function submit() {
   const result = await $v.value.$validate();

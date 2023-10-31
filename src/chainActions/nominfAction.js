@@ -5,9 +5,7 @@ export default ({
   descriptor,
   picture,
   telegram,
-  twitter,
-  wechat,
-  remove
+  twitter
 }) => ({
   account: 'oig',
   name: 'nominf',
@@ -19,7 +17,7 @@ export default ({
     picture: picture,
     telegram: telegram,
     twitter: twitter,
-    wechat: wechat,
-    remove: remove
+    wechat: "",
+    remove: false
   }
 });

@@ -170,7 +170,7 @@ const closeModal = () => router.push("/election");
                   >
                     Close
                   </button>
-                  <CandidateCardEdit v-if="session?.actor?.toString() == props?.candidate?.owner" :candidate="candidate" :acceptance="false" />
+                  <CandidateCardEdit v-if="session?.actor?.toString() == candidate?.owner" :candidate="candidate" :acceptance="false" />
                   <!-- <button
                     v-else
                     type="button"
