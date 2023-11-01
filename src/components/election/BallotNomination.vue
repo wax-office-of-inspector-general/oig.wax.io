@@ -4,7 +4,6 @@ import { useSession } from '../../composables/useSession';
 import CandidateCardEdit from './CandidateCardEdit.vue';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { computed, onMounted, ref } from 'vue';
-import { useNotification } from '@kyvg/vue3-notification';
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
 
 import {
@@ -18,8 +17,6 @@ import {
 import { PlusCircleIcon } from '@heroicons/vue/24/outline';
 
 const accountRegEx = /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/;
-
-const { notify } = useNotification();
 
 const store = useStore();
 

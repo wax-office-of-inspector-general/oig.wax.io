@@ -1,7 +1,6 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import { useSessionKit, useSession } from '../../composables/useSession';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline';
 import ButtonAction from '../button/ButtonAction.vue';
 
@@ -10,10 +9,6 @@ const store = useStore();
 const nominees = computed(() => store.state.ballot.nominees);
 
 const sessionWallet = 'professorwax';
-
-const { login, logout, transact } = useSessionKit();
-const session = useSession();
-
 onMounted(() => {
   if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
 });

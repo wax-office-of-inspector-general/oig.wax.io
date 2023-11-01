@@ -1,9 +1,5 @@
 <script setup>
 import LoginTrigger from './LoginTrigger.vue';
-import { useSessionKit, useSession } from '../composables/useSession';
-
-const { login, logout, transact } = useSessionKit();
-const session = useSession();
 </script>
 <template>
   <div class="flex items-center md:ml-12 relative">
