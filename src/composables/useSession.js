@@ -50,7 +50,7 @@ export function useSessionKit() {
       throw new Error('cannot transact without a session');
     }
 
-    await session.value.transact({ actions }, { broadcast: true });
+    await session.value.transact({ actions });
   };
 
   return {
