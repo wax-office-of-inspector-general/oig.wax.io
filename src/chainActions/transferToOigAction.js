@@ -1,4 +1,4 @@
-import { OIG_ACCOUNT } from "../constants";
+import { OIG_ACCOUNT } from '../constants';
 
 export default ({ permissionLevel, actor, nominee }) => ({
   account: 'eosio.token',

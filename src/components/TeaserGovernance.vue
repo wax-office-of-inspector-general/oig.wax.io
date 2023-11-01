@@ -92,7 +92,8 @@ onMounted(() => {
               Checks and Balances
             </p>
             <p class="mt-3 text-base leading-snug text-font">
-              Participate in our open governance process and help enhance the networks standards
+              Participate in our open governance process and help enhance the
+              networks standards
             </p>
             <ButtonText
               href="#"

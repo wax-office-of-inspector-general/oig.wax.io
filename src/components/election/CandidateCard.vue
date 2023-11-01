@@ -6,10 +6,7 @@ import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { useSession } from '../../composables/useSession';
 import { XCircleIcon } from '@heroicons/vue/20/solid';
 
-import {
-  DocumentMagnifyingGlassIcon,
-  StarIcon
-} from '@heroicons/vue/24/outline';
+import { DocumentMagnifyingGlassIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
   candidate: Object

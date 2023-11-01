@@ -1,7 +1,6 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import ButtonText from './button/ButtonText.vue';
 
 const title = 'Unparalleled Blockchain Governance';
 

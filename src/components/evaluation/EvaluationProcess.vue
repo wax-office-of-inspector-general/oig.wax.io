@@ -1,7 +1,7 @@
 <script setup>
 import {
   ServerStackIcon,
-  PresentationChartLineIcon,
+  PresentationChartLineIcon
 } from '@heroicons/vue/20/solid';
 import { CheckCircleIcon } from '@heroicons/vue/24/outline';
 </script>
@@ -207,7 +207,8 @@ import { CheckCircleIcon } from '@heroicons/vue/24/outline';
               aria-hidden="true"
             />
             <span
-              >Digital Products that strategically grow the WAX ecosystem and have an impact on the user
+              >Digital Products that strategically grow the WAX ecosystem and
+              have an impact on the user
             </span>
           </li>
         </ul>

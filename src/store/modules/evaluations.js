@@ -1,4 +1,3 @@
-import useTableRows from '@/composables/useTableRows';
 import useEvaluations from '@/composables/useEvaluations';
 
 const state = () => ({

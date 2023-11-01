@@ -23,7 +23,7 @@ module.exports = {
         sm: '1rem',
         lg: '2rem',
         xl: '4rem',
-        '2xl': '4rem',
+        '2xl': '4rem'
       },
       screens: {
         sm: '640px',
@@ -47,7 +47,7 @@ module.exports = {
           700: '#1e517b',
           800: '#1e4a6e',
           900: '#1e3f5c',
-          950: '#14293d',
+          950: '#14293d'
         },
         secondary: {
           DEFAULT: '#f59e0b',
@@ -104,7 +104,7 @@ module.exports = {
       zIndex: {
         100: '100',
         ...defaultTheme.zIndex
-      },
+      }
     }
   },
   plugins: [
@@ -123,7 +123,7 @@ module.exports = {
           },
           '&:active': {
             color: theme('colors.tertiary.900')
-          },
+          }
         },
         p: {
           fontWeight: 300,
@@ -156,8 +156,8 @@ module.exports = {
           borderRadius: theme('borderRadius.md'),
           fontSize: theme('fontSize.sm'),
           lineHeight: theme('lineHeight.leading-tight'),
-          minWidth: '300px',
-        },
+          minWidth: '300px'
+        }
       });
     })
   ]
