@@ -58,18 +58,25 @@ function cancelNominationAcceptance() {
 
 function confirmNominationAcceptance() {
   // TODO: Verify if these actions are not occurring simultaneously
+  // if (props.acceptance) {
+  //   await proclaim();
+  // }
+  // nominf();
   if (props.acceptance) {
-    proclaim();
+    proclaimAndNominf();
+  } else {
+    nominf();
   }
-  nominf();
 }
 
 const proclaim = () =>
   store.dispatch('ballot/proclaim', { decision: true });
 
-const nominf = () => {
+const nominf = () =>
   store.dispatch('ballot/nominf', formData);
-}
+
+const proclaimAndNominf = () =>
+  store.dispatch('ballot/proclaimAndNominf', formData);
 
 async function submit() {
   const result = await $v.value.$validate();

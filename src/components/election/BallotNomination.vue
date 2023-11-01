@@ -4,7 +4,7 @@ import { useSession } from '../../composables/useSession';
 import CandidateCardEdit from './CandidateCardEdit.vue';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { computed, onMounted, ref } from 'vue';
-import { useNotification } from "@kyvg/vue3-notification";
+import { useNotification } from '@kyvg/vue3-notification';
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
 
 import {
@@ -19,7 +19,7 @@ import { PlusCircleIcon } from '@heroicons/vue/24/outline';
 
 const accountRegEx = /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/;
 
-const { notify }  = useNotification()
+const { notify } = useNotification();
 
 const store = useStore();
 
@@ -111,7 +111,11 @@ onMounted(() => {
                   class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-70 outline-none"
                   >accepted</span
                 >
-                <CandidateCardEdit v-else-if="session?.actor?.toString() == nominee?.nominee" :candidate="nominee" :acceptance="true" />
+                <CandidateCardEdit
+                  v-else-if="session?.actor?.toString() == nominee?.nominee"
+                  :candidate="nominee"
+                  :acceptance="true"
+                />
                 <span
                   v-else
                   class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-medium text-font outline-none"
@@ -247,6 +251,12 @@ onMounted(() => {
       </Dialog>
     </TransitionRoot>
 
-    <ConfirmationModal :show="isConfirmationModalOpen" @confirm="confirmNomination" @cancel="cancelNomination" :title="`Are you sure you want to Nominate ${nominee}?`" description="This action is final and the WAX cost will be subtracted from your account after this confirmation."/>
+    <ConfirmationModal
+      :show="isConfirmationModalOpen"
+      @confirm="confirmNomination"
+      @cancel="cancelNomination"
+      :title="`Are you sure you want to Nominate ${nominee}?`"
+      description="This action is final and the WAX cost will be subtracted from your account after this confirmation."
+    />
   </div>
 </template>

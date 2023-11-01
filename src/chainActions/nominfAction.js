@@ -17,7 +17,7 @@ export default ({
     picture: picture,
     telegram: telegram,
     twitter: twitter,
-    wechat: "",
+    wechat: '',
     remove: false
   }
 });
