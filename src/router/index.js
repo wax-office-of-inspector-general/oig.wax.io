@@ -3,7 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import TheOIGView from '../views/TheOIGView.vue';
 import ElectionView from '../views/ElectionView.vue';
 import EvaluationView from '../views/EvaluationView.vue';
-import CandidateDetails from '@/components/election/CandidateDetails.vue'
+import CandidateDetails from '@/components/election/CandidateDetails.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

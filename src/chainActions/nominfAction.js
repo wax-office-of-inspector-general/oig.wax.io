@@ -1,3 +1,5 @@
+import { OIG_ACCOUNT } from "../constants";
+
 export default ({
   permissionLevel,
   actor,
@@ -5,11 +7,9 @@ export default ({
   descriptor,
   picture,
   telegram,
-  twitter,
-  wechat,
-  remove
+  twitter
 }) => ({
-  account: 'oig',
+  account: OIG_ACCOUNT,
   name: 'nominf',
   authorization: [permissionLevel],
   data: {
@@ -19,7 +19,7 @@ export default ({
     picture: picture,
     telegram: telegram,
     twitter: twitter,
-    wechat: wechat,
-    remove: remove
+    wechat: '',
+    remove: false
   }
 });

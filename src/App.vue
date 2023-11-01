@@ -10,7 +10,7 @@ import FooterComp from '@/components/FooterComp.vue';
 
   <main>
     <RouterView />
-    <notifications position="bottom right"/>
+    <notifications position="bottom right" />
   </main>
 
   <FooterComp />
