@@ -72,9 +72,7 @@ const actions = {
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         nominee: payload.nominee
-      }),
-      success,
-      error
+      })
     ]);
   },
   async proclaim({ commit }, payload, success = () => {}, error = () => {}) {

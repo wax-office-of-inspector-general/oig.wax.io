@@ -1,3 +1,5 @@
+import { OIG_ACCOUNT } from "../constants";
+
 export default ({
   permissionLevel,
   actor,
@@ -7,7 +9,7 @@ export default ({
   telegram,
   twitter
 }) => ({
-  account: 'oig',
+  account: OIG_ACCOUNT,
   name: 'nominf',
   authorization: [permissionLevel],
   data: {
