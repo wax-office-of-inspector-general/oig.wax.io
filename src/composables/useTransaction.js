@@ -9,14 +9,14 @@ export default async (actions, success = () => {}, error = () => {}) => {
 
   try {
     await transact(actions);
-    success();
+    // success();
     notify({
       title: 'Success',
       text: 'The action was successful',
       type: 'success'
     });
   } catch (err) {
-    error(err);
+    // error(err);
     notify({
       title: 'Error',
       text: err,

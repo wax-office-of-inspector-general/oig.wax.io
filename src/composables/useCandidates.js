@@ -1,9 +1,10 @@
 import useTableRows from '@/composables/useTableRows';
+import { OIG_ACCOUNT } from '../constants';
 
 export default async () => {
   return await useTableRows({
-    code: 'oig',
-    scope: 'oig',
+    code: OIG_ACCOUNT,
+    scope: OIG_ACCOUNT,
     table: 'nominees',
     limit: 30,
     reverse: false,
