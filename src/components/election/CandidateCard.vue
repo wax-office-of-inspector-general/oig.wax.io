@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useStore } from 'vuex';
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from 'vue-router';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { useSession } from '../../composables/useSession';
 import { XCircleIcon } from '@heroicons/vue/20/solid';
@@ -99,6 +99,12 @@ const deleteCandidacy = () =>
       </div>
     </div>
 
-    <ConfirmationModal :show="isDeleteConfirmationModalOpen" @confirm="confirmDeletion" @cancel="cancelDeletion" title="Are you sure you want to delete your candidacy?" description="This action is final and cannot be reverted. The WAX amount used for the nomination will not be refunded."/>
+    <ConfirmationModal
+      :show="isDeleteConfirmationModalOpen"
+      @confirm="confirmDeletion"
+      @cancel="cancelDeletion"
+      title="Are you sure you want to delete your candidacy?"
+      description="This action is final and cannot be reverted. The WAX amount used for the nomination will not be refunded."
+    />
   </div>
 </template>
