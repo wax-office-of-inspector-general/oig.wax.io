@@ -4,8 +4,7 @@ import SmallHeader from '../components/hero/SmallHeader.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 
 const title = 'Guild Reviews';
-const desc =
-  `We regularly asses every guilds positive contributions to the network and heuristically analyse their performance and SLA's.<br />View our recent evaluation reports or learn how it works.`;
+const desc = `We regularly asses every guilds positive contributions to the network and heuristically analyse their performance and SLA's.<br />View our recent evaluation reports or learn how it works.`;
 
 const tabs = shallowRef({
   'Recent Evaluations': defineAsyncComponent(() =>

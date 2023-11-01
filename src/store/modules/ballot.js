@@ -57,7 +57,7 @@ const actions = {
       console.log(err);
     }
   },
-  async nominate({ commit }, payload) {
+  async nominate({ commit }, payload, success = () => {}, error = () => {}) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -72,10 +72,12 @@ const actions = {
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         nominee: payload.nominee
-      })
+      }),
+      success,
+      error
     ]);
   },
-  async proclaim({ commit }, payload) {
+  async proclaim({ commit }, payload, success = () => {}, error = () => {}) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -85,10 +87,12 @@ const actions = {
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         decision: payload.decision
-      })
+      }),
+      success,
+      error
     ]);
   },
-  async nominf({ commit }, payload) {
+  async nominf({ commit }, payload, success = () => {}, error = () => {}) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -104,7 +108,9 @@ const actions = {
         twitter: payload.twitter,
         wechat: payload.wechat,
         remove: false
-      })
+      }),
+      success,
+      error
     ]);
   },
   async proclaimAndNominf({ commit }, payload) {
@@ -116,9 +122,10 @@ const actions = {
       proclaimAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        decision: payload.decision
-      }),
-      nominfAction({
+        decision: {decision: true}
+      })],
+      async () => {await useTransaction([
+        nominfAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         name: payload.name,
@@ -128,8 +135,30 @@ const actions = {
         twitter: payload.twitter,
         wechat: payload.wechat,
         remove: payload.remove
-      })
-    ]);
+      })])}
+    );
+
+    // await useTransaction([
+    //   proclaimAction({
+    //     permissionLevel: session.value.permissionLevel,
+    //     actor: session.value.actor,
+    //     decision: {decision: true}
+    //   })
+    // ]);
+
+    // await useTransaction([
+    //   nominfAction({
+    //     permissionLevel: session.value.permissionLevel,
+    //     actor: session.value.actor,
+    //     name: payload.name,
+    //     descriptor: payload.descriptor,
+    //     picture: payload.picture,
+    //     telegram: payload.telegram,
+    //     twitter: payload.twitter,
+    //     wechat: payload.wechat,
+    //     remove: payload.remove
+    //   })
+    // ]);
   },
   async regvoter({ commit }) {
     const session = useSession();
