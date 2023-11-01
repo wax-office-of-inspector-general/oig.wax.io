@@ -1,11 +1,7 @@
 <script setup>
 import { useSessionKit, useSession } from '../composables/useSession';
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
-import {
-  ChevronDownIcon,
-  WalletIcon,
-  ArrowLongRightIcon
-} from '@heroicons/vue/24/outline';
+import { WalletIcon, ArrowLongRightIcon } from '@heroicons/vue/24/outline';
 import ButtonAction from './button/ButtonAction.vue';
 
 const { login, logout } = useSessionKit();

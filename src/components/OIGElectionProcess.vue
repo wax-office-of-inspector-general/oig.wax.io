@@ -16,23 +16,29 @@ import ButtonText from './button/ButtonText.vue';
           >
             <div>
               <p class="mb-4">
-                In the WAX Community, the selection of the Office of the Inspector General (OIG) is conducted through a transparent and structured process. This process unfolds in the following steps:
+                In the WAX Community, the selection of the Office of the
+                Inspector General (OIG) is conducted through a transparent and
+                structured process. This process unfolds in the following steps:
               </p>
               <ButtonText href="/election" text="View current Election" />
             </div>
             <div>
               <ul class="list-disc list-outside ml-4">
                 <li>
-                  Elections are held every six months, with each Inspector General serving an 18-month term.
+                  Elections are held every six months, with each Inspector
+                  General serving an 18-month term.
                 </li>
                 <li>
-                  As soon as a new IG is elected, the previous IG’s tenure ends and they are rotated out.
+                  As soon as a new IG is elected, the previous IG’s tenure ends
+                  and they are rotated out.
                 </li>
                 <li>
-                  The rotation of OIG seats takes place on the first day of February and August every year.
+                  The rotation of OIG seats takes place on the first day of
+                  February and August every year.
                 </li>
                 <li>
-                  The OIG is compensated in WAX Tokens and their salary is paid out of the WAX Worker Proposal fund.
+                  The OIG is compensated in WAX Tokens and their salary is paid
+                  out of the WAX Worker Proposal fund.
                 </li>
               </ul>
             </div>

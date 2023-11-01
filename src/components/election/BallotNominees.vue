@@ -3,8 +3,6 @@ import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import { useSessionKit, useSession } from '../../composables/useSession';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline';
-import CandidateCard from './CandidateCard.vue';
-import ButtonText from '../button/ButtonText.vue';
 import ButtonAction from '../button/ButtonAction.vue';
 
 const store = useStore();
@@ -73,7 +71,9 @@ onMounted(() => {
                   <p class="font-serif text-sm">{{ nominee.nominee }}</p>
 
                   <ButtonAction
-                    v-if="sessionWallet === nominee.nominee && !nominee.accepted"
+                    v-if="
+                      sessionWallet === nominee.nominee && !nominee.accepted
+                    "
                     text="Accept Nomination"
                     href="#"
                     cssClass="text-xs mr-5 px-2 py-1 mt-2"

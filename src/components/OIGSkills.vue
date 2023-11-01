@@ -1,6 +1,4 @@
-<script setup>
-import ButtonText from './button/ButtonText.vue';
-</script>
+<script setup></script>
 <template>
   <div class="py-12 sm:py-20">
     <div class="">

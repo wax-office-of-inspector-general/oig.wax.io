@@ -1,5 +1,4 @@
 <script setup>
-import { CheckIcon } from '@heroicons/vue/20/solid';
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 

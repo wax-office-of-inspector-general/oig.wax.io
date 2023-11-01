@@ -2,7 +2,6 @@
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import SimpleHero from '../components/hero/SimpleHero.vue';
 import OIGTeam from '../components/OIGTeam.vue';
-import BallotView from '../components/election/BallotView.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
@@ -18,12 +17,11 @@ const tabs = shallowRef({
     import('../components/election/CandidateRequirements.vue')
   )
 });
-
 </script>
 
 <template>
   <SimpleHero :title="headline" :desc="subline" />
-  
+
   <div class="container pt-12 pb-16">
     <TabGroup>
       <TabList class="flex items-start space-x-1 border-b border-primary/10">

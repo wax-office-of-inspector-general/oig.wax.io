@@ -59,7 +59,12 @@ const actions = {
       console.log(err);
     }
   },
-  async nominate({ commit, dispatch }, payload, success = () => {}, error = () => {}) {
+  async nominate(
+    { commit, dispatch },
+    payload,
+    success = () => {},
+    error = () => {}
+  ) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -79,7 +84,12 @@ const actions = {
 
     setTimeout(() => dispatch('fetchNominees'), TIMEOUT_SECONDS);
   },
-  async proclaim({ commit, dispatch }, payload, success = () => {}, error = () => {}) {
+  async proclaim(
+    { commit, dispatch },
+    payload,
+    success = () => {},
+    error = () => {}
+  ) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -94,7 +104,12 @@ const actions = {
 
     setTimeout(() => dispatch('fetchCandidates'), TIMEOUT_SECONDS);
   },
-  async nominf({ commit, dispatch }, payload, success = () => {}, error = () => {}) {
+  async nominf(
+    { commit, dispatch },
+    payload,
+    success = () => {},
+    error = () => {}
+  ) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');

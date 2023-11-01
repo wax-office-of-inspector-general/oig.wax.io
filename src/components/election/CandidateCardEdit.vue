@@ -11,8 +11,8 @@ import {
 } from '@headlessui/vue';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 
-import { useVuelidate } from '@vuelidate/core'
-import { required, minLength, url } from '@vuelidate/validators'
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength, url } from '@vuelidate/validators';
 
 const props = defineProps({
   candidate: Object,
@@ -23,7 +23,7 @@ const store = useStore();
 
 const session = useSession();
 
-const formData = reactive({...props.candidate});
+const formData = reactive({ ...props.candidate });
 
 const regexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
 
@@ -32,7 +32,7 @@ const rules = {
   descriptor: { required, minLength: minLength(3) },
   picture: { required, url },
   telegram: { regexValidation },
-  twitter: { regexValidation },
+  twitter: { regexValidation }
 };
 
 const $v = useVuelidate(rules, formData);
@@ -64,8 +64,7 @@ function confirmNominationAcceptance() {
   }
 }
 
-const nominf = () =>
-  store.dispatch('ballot/nominf', formData);
+const nominf = () => store.dispatch('ballot/nominf', formData);
 
 const proclaimAndNominf = () =>
   store.dispatch('ballot/proclaimAndNominf', formData);
@@ -83,7 +82,7 @@ async function submit() {
       @click="openModal"
       class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
     >
-      {{ acceptance ? "Accept" : "Edit Candidate Details" }}
+      {{ acceptance ? 'Accept' : 'Edit Candidate Details' }}
     </button>
 
     <TransitionRoot appear :show="isOpen" as="template">
@@ -120,7 +119,9 @@ async function submit() {
                   as="h3"
                   class="text-lg font-medium leading-6 text-gray-900"
                 >
-                  {{ acceptance ? "Accept Candidacy" : "Edit Candidate Details" }}
+                  {{
+                    acceptance ? 'Accept Candidacy' : 'Edit Candidate Details'
+                  }}
                 </DialogTitle>
 
                 <div class="mt-6 border-t border-gray-100">
@@ -139,9 +140,17 @@ async function submit() {
                             type="text"
                             v-model="formData.name"
                             class="form-input"
-                            :class="{ 'border-red-700': $v.name.$errors.length }"
+                            :class="{
+                              'border-red-700': $v.name.$errors.length
+                            }"
                           />
-                          <p class="text-red-700" v-for="error in $v.name.$errors" :key="error.$uid">{{ error.$message }}</p>
+                          <p
+                            class="text-red-700"
+                            v-for="error in $v.name.$errors"
+                            :key="error.$uid"
+                          >
+                            {{ error.$message }}
+                          </p>
                         </dd>
                       </div>
                       <div
@@ -155,7 +164,11 @@ async function submit() {
                         >
                           <input
                             type="text"
-                            :value="props.acceptance ? session?.actor?.toString() : formData.owner"
+                            :value="
+                              props.acceptance
+                                ? session?.actor?.toString()
+                                : formData.owner
+                            "
                             disabled
                             class="form-input"
                           />
@@ -190,9 +203,17 @@ async function submit() {
                             type="text"
                             v-model.lazy="formData.picture"
                             class="form-input"
-                            :class="{ 'border-red-700': $v.picture.$errors.length }"
+                            :class="{
+                              'border-red-700': $v.picture.$errors.length
+                            }"
                           />
-                          <p class="text-red-700" v-for="error in $v.picture.$errors" :key="error.$uid">{{ error.$message }}</p>
+                          <p
+                            class="text-red-700"
+                            v-for="error in $v.picture.$errors"
+                            :key="error.$uid"
+                          >
+                            {{ error.$message }}
+                          </p>
                         </dd>
                       </div>
                       <div
@@ -208,9 +229,13 @@ async function submit() {
                             type="text"
                             v-model="formData.telegram"
                             class="form-input"
-                            :class="{ 'border-red-700': $v.telegram.$errors.length }"
+                            :class="{
+                              'border-red-700': $v.telegram.$errors.length
+                            }"
                           />
-                          <p class="text-red-700" v-if="$v.telegram.$error">Not a valid Telegram account</p>
+                          <p class="text-red-700" v-if="$v.telegram.$error">
+                            Not a valid Telegram account
+                          </p>
                         </dd>
                       </div>
                       <div
@@ -226,9 +251,13 @@ async function submit() {
                             type="text"
                             v-model="formData.twitter"
                             class="form-input"
-                            :class="{ 'border-red-700': $v.twitter.$errors.length }"
+                            :class="{
+                              'border-red-700': $v.twitter.$errors.length
+                            }"
                           />
-                          <p class="text-red-700" v-if="$v.twitter.$error">Not a valid Twitter/X account</p>
+                          <p class="text-red-700" v-if="$v.twitter.$error">
+                            Not a valid Twitter/X account
+                          </p>
                         </dd>
                       </div>
                       <div
@@ -245,10 +274,18 @@ async function submit() {
                             v-model="formData.descriptor"
                             rows="10"
                             class="form-textarea w-[450px] max-w-full"
-                            :class="{ 'border-red-700': $v.twitter.$errors.length }"
+                            :class="{
+                              'border-red-700': $v.twitter.$errors.length
+                            }"
                           >
                           </textarea>
-                          <p class="text-red-700" v-for="error in $v.descriptor.$errors" :key="error.$uid">{{ error.$message }}</p>
+                          <p
+                            class="text-red-700"
+                            v-for="error in $v.descriptor.$errors"
+                            :key="error.$uid"
+                          >
+                            {{ error.$message }}
+                          </p>
                         </dd>
                       </div>
                     </dl>
@@ -274,7 +311,7 @@ async function submit() {
                             type="submit"
                             class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
                           >
-                            {{ acceptance ? "Accept" : "Update Details" }}
+                            {{ acceptance ? 'Accept' : 'Update Details' }}
                           </button>
                         </dd>
                       </div>
@@ -288,6 +325,20 @@ async function submit() {
       </Dialog>
     </TransitionRoot>
 
-    <ConfirmationModal :show="isConfirmationModalOpen" @confirm="confirmNominationAcceptance" @cancel="cancelNominationAcceptance" :title="acceptance ? 'Are you sure you want to accept your nomination?' : 'Are you sure you want to update your candidate details?'" :description="acceptance ? 'This action will make you eligible as a candidate for the OIG election as well as fill your candidate details.' : 'This will replace your candidate details with the new information.'"/>
+    <ConfirmationModal
+      :show="isConfirmationModalOpen"
+      @confirm="confirmNominationAcceptance"
+      @cancel="cancelNominationAcceptance"
+      :title="
+        acceptance
+          ? 'Are you sure you want to accept your nomination?'
+          : 'Are you sure you want to update your candidate details?'
+      "
+      :description="
+        acceptance
+          ? 'This action will make you eligible as a candidate for the OIG election as well as fill your candidate details.'
+          : 'This will replace your candidate details with the new information.'
+      "
+    />
   </div>
 </template>
