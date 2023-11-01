@@ -120,10 +120,12 @@ const actions = {
       proclaimAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        decision: {decision: true}
-      })],
-      async () => {await useTransaction([
-        nominfAction({
+        decision: true
+      })
+    ]);
+
+    await useTransaction([
+      nominfAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         name: payload.name,
@@ -133,30 +135,8 @@ const actions = {
         twitter: payload.twitter,
         wechat: payload.wechat,
         remove: payload.remove
-      })])}
-    );
-
-    // await useTransaction([
-    //   proclaimAction({
-    //     permissionLevel: session.value.permissionLevel,
-    //     actor: session.value.actor,
-    //     decision: {decision: true}
-    //   })
-    // ]);
-
-    // await useTransaction([
-    //   nominfAction({
-    //     permissionLevel: session.value.permissionLevel,
-    //     actor: session.value.actor,
-    //     name: payload.name,
-    //     descriptor: payload.descriptor,
-    //     picture: payload.picture,
-    //     telegram: payload.telegram,
-    //     twitter: payload.twitter,
-    //     wechat: payload.wechat,
-    //     remove: payload.remove
-    //   })
-    // ]);
+      })
+    ]);
   },
   async regvoter({ commit }) {
     const session = useSession();
