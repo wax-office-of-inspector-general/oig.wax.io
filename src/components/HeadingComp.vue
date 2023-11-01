@@ -21,7 +21,6 @@ import {
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
-import ButtonText from './button/ButtonText.vue';
 import AuthButton from './AuthButton.vue';
 import LoginTrigger from './LoginTrigger.vue';
 
@@ -83,11 +82,10 @@ const resources = [
 
 <template>
   <Popover class="container mx-auto relative z-50">
-
     <div class="pointer-events-none absolute inset-0 z-30" aria-hidden="true" />
     <div class="relative bg-transparent z-50 border-b border-b-primary/20">
       <div
-        class="z-30 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10 "
+        class="z-30 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10"
       >
         <div>
           <a href="/" class="flex items-center">
@@ -112,7 +110,6 @@ const resources = [
         >
           <PopoverGroup as="nav" class="flex items-center space-x-10">
             <Popover v-slot="{ open }">
-
               <PopoverButton
                 :class="[
                   open ? 'text-primary underline' : 'text-primary',
