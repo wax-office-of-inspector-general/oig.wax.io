@@ -1,6 +1,6 @@
 <script setup>
-import ButtonPrimary from './button/ButtonPrimary.vue';
-import ButtonSecondary from './button/ButtonSecondary.vue';
+import ButtonPrimary from '@/components/button/ButtonPrimary.vue';
+import ButtonSecondary from '@/components/button/ButtonSecondary.vue';
 
 const title = 'OIG on WAX';
 </script>

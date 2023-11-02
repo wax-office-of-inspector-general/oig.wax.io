@@ -1,8 +1,8 @@
 <script setup>
 import { useStore } from 'vuex';
 import { onMounted, computed } from 'vue';
-import ButtonText from './button/ButtonText.vue';
-import ButtonSecondary from './button/ButtonSecondary.vue';
+import ButtonText from '@/components/button/ButtonText.vue';
+import ButtonSecondary from '@/components/button/ButtonSecondary.vue';
 import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();

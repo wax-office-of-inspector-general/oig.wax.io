@@ -2,8 +2,8 @@
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import LoadingSpinner from './LoadingSpinner.vue';
-import ButtonPrimary from './button/ButtonPrimary.vue';
-import ButtonText from './button/ButtonText.vue';
+import ButtonPrimary from '@/components/button/ButtonPrimary.vue';
+import ButtonText from '@/components/button/ButtonText.vue';
 import GuildCardSmall from './guild/GuildCardSmall.vue';
 
 const store = useStore();

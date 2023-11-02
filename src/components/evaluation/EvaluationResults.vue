@@ -2,7 +2,7 @@
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import moment from 'moment';
-import ButtonPrimary from '../button/ButtonPrimary.vue';
+import ButtonPrimary from '.@/components/button/ButtonPrimary.vue';
 
 const store = useStore();
 
