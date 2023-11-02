@@ -113,6 +113,7 @@ module.exports = {
       // global font styles
       addBase({
         html: {
+          backgroundColor: theme('colors.gray.50'),
           color: theme('colors.font.700'),
           fontWeight: 300
         },
