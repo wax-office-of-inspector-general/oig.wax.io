@@ -6,7 +6,7 @@ const title = 'OIG on WAX';
 </script>
 
 <template>
-  <div class="container mx-auto bg-white py-12 lg:py-20">
+  <div class="container mx-auto rounded-lg drop-shadow-sm bg-white py-12 lg:py-20">
     <div class="">
       <div class="">
         <h2 class="text-xl text-center lg:text-left font-serif tracking-tight">
