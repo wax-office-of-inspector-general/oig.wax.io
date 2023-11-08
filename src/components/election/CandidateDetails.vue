@@ -150,6 +150,32 @@ const closeModal = () => router.push('/election');
                     class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
                   >
                     <dt class="text-sm font-medium leading-6 text-primary">
+                      OIG prefix (Only visible to you)
+                    </dt>
+                    <dd
+                      class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
+                    >
+                      <span v-if="candidate?.oig_prefix">{{ candidate?.oig_prefix }}</span>
+                      <span v-else>–</span>
+                    </dd>
+                  </div>
+                  <div
+                    class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+                  >
+                    <dt class="text-sm font-medium leading-6 text-primary">
+                      Public Key (Only visible to you)
+                    </dt>
+                    <dd
+                      class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
+                    >
+                      <span v-if="candidate?.pubkey">{{ candidate?.pubkey }}</span>
+                      <span v-else>–</span>
+                    </dd>
+                  </div>
+                  <div
+                    class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+                  >
+                    <dt class="text-sm font-medium leading-6 text-primary">
                       Description
                     </dt>
                     <dd
