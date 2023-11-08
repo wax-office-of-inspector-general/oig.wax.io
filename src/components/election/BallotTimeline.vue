@@ -8,29 +8,29 @@ const store = useStore();
 const ballot = computed(() => store.state.ballot.ballots);
 
 onMounted(() => {
-  if (!ballot.value.length) store.dispatch('ballot/fetchBallots', 1);
+  if (!ballot.value.length) store.dispatch('ballot/fetchBallots');
 });
 
 const currentBallot = computed(() => ballot.value[0]);
 
 const ballotStates = [
   {
-    state: 1,
-    title: 'Preparation',
-    href: '#',
-    desc: 'Prepare yourself and get familiar with guilds and the community'
-  },
-  {
     state: 2,
-    title: 'Nominations',
+    title: 'Nomination',
     href: '#',
-    desc: 'Nomiate someone or get nominated...'
+    desc: 'Nominate someone or get nominated'
   },
   {
     state: 4,
     title: 'Voting',
     href: '#',
     desc: 'The voting happens and the new winner will be announced at the end'
+  },
+  {
+    state: 5,
+    title: 'Election concluded',
+    href: '#',
+    desc: 'The election winner is announced'
   }
 ];
 </script>
@@ -50,7 +50,7 @@ const ballotStates = [
               class="relative md:flex md:flex-1"
             >
               <div
-                v-if="ballotState.state <= currentBallot.state"
+                v-if="ballotState.state < currentBallot.state"
                 :href="ballotState.href"
                 class="group flex w-full items-center flex-wrap"
               >
