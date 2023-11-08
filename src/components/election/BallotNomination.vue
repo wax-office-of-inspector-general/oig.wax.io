@@ -49,6 +49,12 @@ function cancelNomination() {
   isConfirmationModalOpen.value = false;
 }
 
+function onSubmitNominationForm() {
+  if (isAccountValid.value && nominee.value.length > 1) {
+    openConfirmationModal();
+  }
+}
+
 function confirmNomination() {
   nominate();
   // TODO: Only close confirmation modal on nominate action success
@@ -149,7 +155,7 @@ onMounted(() => {
     </div>
 
     <TransitionRoot appear :show="isOpen" as="template">
-      <Dialog as="div" @close="closeModal" class="relative z-10">
+      <Dialog as="div" class="relative z-10">
         <TransitionChild
           as="template"
           enter="duration-300 ease-out"
@@ -195,7 +201,11 @@ onMounted(() => {
                       spam. The funds won't be returned after the election.
                     </p>
                   </div>
-                  <form ref="form" class="mt-6 sm:flex sm:items-center">
+                  <form
+                    @submit.prevent="onSubmitNominationForm"
+                    ref="form"
+                    class="mt-6 sm:flex sm:items-center"
+                  >
                     <div class="w-full sm:max-w-xs">
                       <label for="email" class="sr-only">Nominee Wallet</label>
                       <input
@@ -235,7 +245,7 @@ onMounted(() => {
                   <button
                     type="button"
                     class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none disabled:bg-gray-500"
-                    @click="openConfirmationModal"
+                    @click="onSubmitNominationForm"
                     :disabled="!isAccountValid || nominee.length < 2"
                   >
                     Nominate
