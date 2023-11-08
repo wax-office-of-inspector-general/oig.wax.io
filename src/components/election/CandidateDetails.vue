@@ -147,6 +147,7 @@ const closeModal = () => router.push('/election');
                     </dd>
                   </div>
                   <div
+                    v-if="session?.actor?.toString() == candidate?.owner"
                     class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
                   >
                     <dt class="text-sm font-medium leading-6 text-primary">
@@ -160,6 +161,7 @@ const closeModal = () => router.push('/election');
                     </dd>
                   </div>
                   <div
+                    v-if="session?.actor?.toString() == candidate?.owner"
                     class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
                   >
                     <dt class="text-sm font-medium leading-6 text-primary">
