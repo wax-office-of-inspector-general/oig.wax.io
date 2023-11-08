@@ -27,6 +27,7 @@ const formData = reactive({ ...props.candidate });
 
 const handleRegexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
 const oigPrefixRegexValidation = (value) => /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/.test(value);
+const pubkeyRegexValidation = (value) => /^PUB_K1_[1-9A-HJ-NP-Za-km-z]{50}$|^EOS[1-9A-HJ-NP-Za-km-z]{50}$/.test(value);
 
 const rules = {
   name: { required, minLength: minLength(3) },
@@ -35,7 +36,7 @@ const rules = {
   telegram: { handleRegexValidation },
   twitter: { handleRegexValidation },
   oig_prefix: { required, maxLength: maxLength(8), oigPrefixRegexValidation },
-  pubkey: { required }
+  pubkey: { pubkeyRegexValidation }
 };
 
 const $v = useVuelidate(rules, formData);
@@ -303,12 +304,8 @@ async function submit() {
                               'border-red-700': $v.pubkey.$errors.length
                             }"
                           />
-                          <p
-                            class="text-red-700"
-                            v-for="error in $v.pubkey.$errors"
-                            :key="error.$uid"
-                          >
-                            {{ error.$message }}
+                          <p class="text-red-700" v-if="$v.pubkey.$error">
+                            Not a valid Public Key
                           </p>
                         </dd>
                       </div>
