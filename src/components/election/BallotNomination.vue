@@ -27,6 +27,10 @@ const candidates = computed(() => store.state.ballot.candidates);
 
 const isActorNotACandidate = computed(() => candidates.value.filter((candidate) => session?.value?.actor?.toString() == candidate?.owner).length == 0);
 
+const isNominationOpen = computed(
+  () => store.getters['ballot/isNominationOpen']
+);
+
 const isOpen = ref(false);
 const isConfirmationModalOpen = ref(false);
 
@@ -132,6 +136,7 @@ onMounted(() => {
         </li>
 
         <li
+          v-if="isNominationOpen"
           class="col-span-1 divide-y divide-primary-50 rounded-lg bg-white hover:bg-primary group border border-dashed border-gray-300"
           @click="openModal"
         >
