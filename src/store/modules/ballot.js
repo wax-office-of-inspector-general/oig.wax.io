@@ -24,6 +24,12 @@ const getters = {
   },
   ballots: (state) => {
     return state.ballots;
+  },
+  isNominationOpen: (state) => {
+    return state.ballots[0]?.state === 2 ?? false;
+  },
+  isVotingOpen: (state) => {
+    return state.ballots[0]?.state === 4 ?? false;
   }
 };
 
