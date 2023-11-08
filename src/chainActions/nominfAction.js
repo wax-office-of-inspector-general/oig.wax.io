@@ -7,7 +7,9 @@ export default ({
   descriptor,
   picture,
   telegram,
-  twitter
+  twitter,
+  oig_prefix,
+  pubkey,
 }) => ({
   account: OIG_ACCOUNT,
   name: 'nominf',
@@ -20,6 +22,8 @@ export default ({
     telegram: telegram,
     twitter: twitter,
     wechat: '',
+    oig_prefix: oig_prefix,
+    pubkey: pubkey,
     remove: false
   }
 });

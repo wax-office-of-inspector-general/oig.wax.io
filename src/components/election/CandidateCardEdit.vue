@@ -12,7 +12,7 @@ import {
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 
 import { useVuelidate } from '@vuelidate/core';
-import { required, minLength, url } from '@vuelidate/validators';
+import { required, minLength, maxLength, url } from '@vuelidate/validators';
 
 const props = defineProps({
   candidate: Object,
@@ -25,14 +25,17 @@ const session = useSession();
 
 const formData = reactive({ ...props.candidate });
 
-const regexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
+const handleRegexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
+const oigPrefixRegexValidation = (value) => /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/.test(value);
 
 const rules = {
   name: { required, minLength: minLength(3) },
   descriptor: { required, minLength: minLength(3) },
   picture: { required, url },
-  telegram: { regexValidation },
-  twitter: { regexValidation }
+  telegram: { handleRegexValidation },
+  twitter: { handleRegexValidation },
+  oig_prefix: { required, maxLength: maxLength(8), oigPrefixRegexValidation },
+  pubkey: { required }
 };
 
 const $v = useVuelidate(rules, formData);
@@ -82,7 +85,7 @@ async function submit() {
       @click="openModal"
       class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
     >
-      {{ acceptance ? 'Accept' : 'Edit Candidate Details' }}
+      {{ acceptance ? 'Accept' : 'Edit' }}
     </button>
 
     <TransitionRoot appear :show="isOpen" as="template">
@@ -257,6 +260,55 @@ async function submit() {
                           />
                           <p class="text-red-700" v-if="$v.twitter.$error">
                             Not a valid Twitter/X account
+                          </p>
+                        </dd>
+                      </div>
+                      <div
+                        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+                      >
+                        <dt class="text-sm font-medium leading-6 text-primary">
+                          OIG prefix (Only visible to you)
+                        </dt>
+                        <dd
+                          class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
+                        >
+                          <input
+                            type="text"
+                            v-model="formData.oig_prefix"
+                            class="form-input"
+                            :class="{
+                              'border-red-700': $v.oig_prefix.$errors.length
+                            }"
+                          />
+                          <p class="text-red-700" v-if="$v.oig_prefix.$error">
+                            Not a valid prefix. It is required, has to have a maximum of 8 characters and must abide to the EOSIO naming standard
+                          </p>
+                        </dd>
+                      </div>
+                      <!-- TODO: Investigate Public Key regex validation -->
+                      <div
+                        class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"
+                      >
+                        <dt class="text-sm font-medium leading-6 text-primary">
+                          Public Key (Only visible to you)
+                        </dt>
+                        <dd
+                          class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
+                        >
+                          <input
+                            type="text"
+                            v-model="formData.pubkey"
+                            class="form-input"
+                            :class="{
+                              'border-red-700': $v.pubkey.$errors.length
+                            }"
+                          />
+                          <p
+                            class="text-red-700"
+                            v-for="error in $v.pubkey.$errors"
+                            :key="error.$uid"
+                          >
+                            {{ error.$message }}
                           </p>
                         </dd>
                       </div>

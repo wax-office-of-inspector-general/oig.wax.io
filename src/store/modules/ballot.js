@@ -124,6 +124,8 @@ const actions = {
         telegram: payload.telegram,
         twitter: payload.twitter,
         wechat: payload.wechat,
+        oig_prefix: payload.oig_prefix,
+        pubkey: payload.pubkey,
         remove: false
       })
     ]);
@@ -153,6 +155,8 @@ const actions = {
         telegram: payload.telegram,
         twitter: payload.twitter,
         wechat: payload.wechat,
+        oig_prefix: payload.oig_prefix,
+        pubkey: payload.pubkey,
         remove: payload.remove
       })
     ]);
