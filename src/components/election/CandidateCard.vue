@@ -6,7 +6,7 @@ import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { useSession } from '../../composables/useSession';
 import { XCircleIcon } from '@heroicons/vue/20/solid';
 
-import { DocumentMagnifyingGlassIcon } from '@heroicons/vue/24/outline';
+import { DocumentMagnifyingGlassIcon, StarIcon } from '@heroicons/vue/24/outline';
 
 const props = defineProps({
   candidate: Object
@@ -16,10 +16,15 @@ const store = useStore();
 
 const session = useSession();
 
-const isDeleteConfirmationModalOpen = ref(false);
+const isVotingOpen = computed(
+  () => store.getters['ballot/isVotingOpen']
+);
 
 const router = useRouter();
 const route = useRoute();
+
+const isDeleteConfirmationModalOpen = ref(false);
+const isVotingConfirmationModalOpen = ref(false);
 
 function openModal() {
   router.push(`${route.path}/${props.candidate.owner}/`);
@@ -40,6 +45,20 @@ function confirmDeletion() {
 
 const deleteCandidacy = () =>
   store.dispatch('ballot/proclaim', { decision: false });
+
+function openVotingConfirmationModal() {
+  isVotingConfirmationModalOpen.value = true;
+}
+
+function cancelVoting() {
+  isVotingConfirmationModalOpen.value = false;
+}
+
+function confirmVoting() {
+  vote();
+}
+
+const vote = () => store.dispatch('ballot/vote', candidate);
 </script>
 
 <template>
@@ -53,7 +72,8 @@ const deleteCandidacy = () =>
       <h3 class="mt-6 text-base font-medium text-gray-900">
         {{ props.candidate.name }}
       </h3>
-      <!-- <dl class="mt-1 flex flex-grow flex-col justify-between">
+      <!-- TODO: Implement vote count -->
+      <dl v-if="isVotingOpen" class="mt-1 flex flex-grow flex-col justify-between">
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">
           <span
@@ -61,7 +81,7 @@ const deleteCandidacy = () =>
             >123123 VOTE</span
           >
         </dd>
-      </dl> -->
+      </dl>
     </div>
     <div>
       <div class="-mt-px flex divide-x border-t border-t-gray-200">
@@ -83,15 +103,14 @@ const deleteCandidacy = () =>
             <XCircleIcon class="h-5 w-5" aria-hidden="true" />
             Delete
           </button>
-          <!-- <a
-            v-else
-            href="#"
+          <button
+            v-else-if="isVotingOpen"
+            @click="openVotingConfirmationModal"
             class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-serif text-primary hover:bg-primary hover:text-white"
-            disabled
           >
             <StarIcon class="h-5 w-5" aria-hidden="true" />
             Vote
-          </a> -->
+          </button>
         </div>
       </div>
     </div>
@@ -102,6 +121,13 @@ const deleteCandidacy = () =>
       @cancel="cancelDeletion"
       title="Are you sure you want to delete your candidacy?"
       description="This action is final and cannot be reverted. The WAX amount used for the nomination will not be refunded."
+    />
+    <ConfirmationModal
+      :show="isVotingConfirmationModalOpen"
+      @confirm="confirmVoting"
+      @cancel="cancelVoting"
+      title="Are you sure you want to vote for this candidate?"
+      description="This action will count your staked WAX amount at the end of the election towards this candidate vote total. This vote will overwrite any previous vote."
     />
   </div>
 </template>

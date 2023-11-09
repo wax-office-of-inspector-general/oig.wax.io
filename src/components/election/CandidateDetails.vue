@@ -10,6 +10,7 @@ import {
   DialogTitle
 } from '@headlessui/vue';
 import CandidateCardEdit from './CandidateCardEdit.vue';
+import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const store = useStore();
@@ -23,10 +24,32 @@ const candidate = computed(
     )[0] ?? null
 );
 
+const isVotingOpen = computed(
+  () => store.getters['ballot/isVotingOpen']
+);
+
 const session = useSession();
 
 const router = useRouter();
+
 const closeModal = () => router.push('/election');
+
+const isVotingConfirmationModalOpen = ref(false);
+
+function openVotingConfirmationModal() {
+  isVotingConfirmationModalOpen.value = true;
+}
+
+function cancelVoting() {
+  isVotingConfirmationModalOpen.value = false;
+}
+
+function confirmVoting() {
+  vote();
+}
+
+const vote = () => store.dispatch('ballot/vote', candidate);
+
 </script>
 
 <template>
@@ -199,20 +222,19 @@ const closeModal = () => router.push('/election');
                 >
                   Close
                 </button>
+                <button
+                  v-if="isVotingOpen"
+                  type="button"
+                  class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
+                  @click="openVotingConfirmationModal"
+                >
+                  Vote
+                </button>
                 <CandidateCardEdit
                   v-if="session?.actor?.toString() == candidate?.owner"
                   :candidate="candidate"
                   :acceptance="false"
                 />
-                <!-- <button
-                    v-else
-                    type="button"
-                    class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
-                    @click="closeModal"
-                    disabled
-                  >
-                    Vote for this Candidate!
-                  </button> -->
               </div>
             </DialogPanel>
           </TransitionChild>
@@ -220,4 +242,11 @@ const closeModal = () => router.push('/election');
       </div>
     </Dialog>
   </TransitionRoot>
+  <ConfirmationModal
+    :show="isVotingConfirmationModalOpen"
+    @confirm="confirmVoting"
+    @cancel="cancelVoting"
+    title="Are you sure you want to vote for this candidate?"
+    description="This action will count your staked WAX amount at the end of the election towards this candidate vote total. This vote will overwrite any previous vote."
+  />
 </template>

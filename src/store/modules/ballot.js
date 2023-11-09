@@ -8,6 +8,9 @@ import nominateAction from '@/chainActions/nominateAction';
 import proclaimAction from '@/chainActions/proclaimAction';
 import nominfAction from '@/chainActions/nominfAction';
 import regvoterAction from '@/chainActions/regvoterAction';
+import syncAction from '@/chainActions/syncAction';
+import updtstateAction from '@/chainActions/updtstateAction';
+import castvoteAction from '@/chainActions/castvoteAction';
 
 const TIMEOUT_SECONDS = 2000;
 
@@ -178,6 +181,71 @@ const actions = {
       regvoterAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor
+      })
+    ]);
+  },
+  async sync({ commit }) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      syncAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor
+      })
+    ]);
+  },
+  async updtstate({ commit }) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      updtstateAction({
+        permissionLevel: session.value.permissionLevel
+      })
+    ]);
+  },
+  async castvote({ commit }, payload) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      castvoteAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        ballot: store.state.ballots[0].ballot,
+        candidateAccount: payload?.owner
+      })
+    ]);
+  },
+  async vote(
+    { commit, dispatch },
+    payload
+  ) {
+    const session = useSession();
+
+    if (!session.value) throw new Error('No active session');
+
+    await useTransaction([
+      regvoterAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor
+      }),
+      syncAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor
+      }),
+      updtstateAction({
+        permissionLevel: session.value.permissionLevel
+      }),
+      castvoteAction({
+        permissionLevel: session.value.permissionLevel,
+        actor: session.value.actor,
+        ballot: store.state.ballots[0].ballot,
+        candidateAccount: payload?.owner
       })
     ]);
   }
