@@ -5,6 +5,7 @@ import CandidateCardEdit from './CandidateCardEdit.vue';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { computed, onMounted, ref } from 'vue';
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
+import AccountSearchInput from '../accounts/AccountSearchInput.vue';
 
 import {
   TransitionRoot,
@@ -211,7 +212,7 @@ onMounted(() => {
                   <form ref="form" class="mt-6 sm:flex sm:items-center">
                     <div class="w-full sm:max-w-xs">
                       <label for="email" class="sr-only">Nominee Wallet</label>
-                      <input
+                      <!-- <input
                         type="text"
                         name="nominee"
                         id="nominee"
@@ -222,7 +223,8 @@ onMounted(() => {
                           'focus:border-red-700': !isAccountValid
                         }"
                         placeholder="yourwallet.wam"
-                      />
+                      /> -->
+                      <AccountSearchInput v-model="nominee" />
                       <div
                         v-if="!isAccountValid"
                         class="text-red-700 mt-2 flex gap-1 items-center"
