@@ -24,6 +24,13 @@ const store = useStore();
 const session = useSession();
 
 const nominees = computed(() => store.state.ballot.nominees);
+const candidates = computed(() => store.state.ballot.candidates);
+
+const isActorNotACandidate = computed(() => candidates.value.filter((candidate) => session?.value?.actor?.toString() == candidate?.owner).length == 0);
+
+const isNominationOpen = computed(
+  () => store.getters['ballot/isNominationOpen']
+);
 
 const isOpen = ref(false);
 const isConfirmationModalOpen = ref(false);
@@ -104,8 +111,13 @@ onMounted(() => {
                 <h3 class="truncate text-sm font-medium text-font">
                   {{ nominee.nominee }}
                 </h3>
+                <CandidateCardEdit
+                  v-if="session?.actor?.toString() == nominee?.nominee && nominee.accepted && isActorNotACandidate"
+                  :candidate="nominee"
+                  :acceptance="true"
+                />
                 <span
-                  v-if="nominee.accepted"
+                  v-else-if="nominee.accepted"
                   class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-70 outline-none"
                   >accepted</span
                 >
@@ -125,11 +137,12 @@ onMounted(() => {
         </li>
 
         <li
+          v-if="isNominationOpen"
           class="col-span-1 divide-y divide-primary-50 rounded-lg bg-white hover:bg-primary group border border-dashed border-gray-300"
           @click="openModal"
         >
           <div
-            class="hover:cursor-pointer flex w-full items-center justify-between space-x-6 px-6 py-5"
+            class="hover:cursor-pointer flex w-full h-full items-center justify-between space-x-6 px-6 py-5"
           >
             <div class="flex-1 truncate">
               <div class="flex items-center space-x-3">

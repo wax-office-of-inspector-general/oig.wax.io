@@ -7,7 +7,7 @@ const store = useStore();
 const ballot = computed(() => store.state.ballot.ballots);
 
 onMounted(() => {
-  if (!ballot.value.length) store.dispatch('ballot/fetchBallots', 1);
+  if (!ballot.value.length) store.dispatch('ballot/fetchBallots');
 });
 
 const currentBallot = computed(() => ballot.value[0]);
