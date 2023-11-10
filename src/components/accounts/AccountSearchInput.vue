@@ -16,7 +16,6 @@ const loadAccounts = useAccountsQuery;
 const refreshAccountsList = async () => {
   const accounts = await loadAccounts(query.value);
   accountsList.value = accounts.rows;
-  console.log(accounts);
 };
 
 onMounted(() => {
@@ -31,11 +30,13 @@ watch(query, () => {
 <template>
   <Combobox
     :model-value="modelValue"
-    @update:model-value="(value) => emit('update:modelValue', value)"
+    @update:model-value="(value) => $emit('update:modelValue', value)"
   >
     <ComboboxInput
       @change="query = $event.target.value"
-      :display-value="(account) => account.scope"
+      :display-value="(account) => account"
+      class="block w-full rounded-sm px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-none outline-none sm:text-sm sm:leading-6"
+      placeholder="yourwallet.wam"
     />
     <ComboboxOptions
       class="absolute mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
@@ -53,9 +54,9 @@ watch(query, () => {
         v-slot="{ selected, active }"
       >
         <li
-          class="relative cursor-default select-none py-2 pl-10 pr-4"
+          class="relative cursor-pointer select-none py-2 px-4 w-36"
           :class="{
-            'bg-teal-600 text-white': active,
+            'bg-primary text-white': active,
             'text-gray-900': !active
           }"
         >
