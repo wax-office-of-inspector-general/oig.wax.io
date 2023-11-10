@@ -190,7 +190,7 @@ onMounted(() => {
               leave-to="opacity-0 scale-95"
             >
               <DialogPanel
-                class="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                class="w-full max-w-2xl transform overflow-visible rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
               >
                 <DialogTitle
                   as="h3"
@@ -212,18 +212,6 @@ onMounted(() => {
                   <form ref="form" class="mt-6 sm:flex sm:items-center">
                     <div class="w-full sm:max-w-xs">
                       <label for="email" class="sr-only">Nominee Wallet</label>
-                      <!-- <input
-                        type="text"
-                        name="nominee"
-                        id="nominee"
-                        v-model="nominee"
-                        class="block w-full rounded-sm px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-none outline-none sm:text-sm sm:leading-6"
-                        :class="{
-                          'border-red-700': !isAccountValid,
-                          'focus:border-red-700': !isAccountValid
-                        }"
-                        placeholder="yourwallet.wam"
-                      /> -->
                       <AccountSearchInput v-model="nominee" />
                       <div
                         v-if="!isAccountValid"
