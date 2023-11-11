@@ -27,7 +27,7 @@ const actions = {
 // mutations
 const mutations = {
   pushGuilds(state, guilds) {
-    state.guilds = guilds.sort(() => 0.5 - Math.random());
+    state.guilds = guilds.sort((a, b) => b.score - a.score);
   }
 };
 
