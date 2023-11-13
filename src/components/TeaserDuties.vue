@@ -5,38 +5,32 @@ const duties = [
   {
     title: 'Network Guidelines',
     description:
-      'Establishing the standards and foundations for an efficient and reliable network infrastructure through a unique heuristic approach.',
-    href: '#'
+      'Establishing the standards and foundations for an efficient and reliable network infrastructure through a unique heuristic approach.'
   },
   {
     title: 'Auditing WAX Guilds',
     description:
-      'Thorough evaluations of Guilds to ensure adherence to standards and positive contributions to the ecosystem.',
-    href: '#'
+      'Thorough evaluations of Guilds to ensure adherence to standards and positive contributions to the ecosystem.'
   },
   {
     title: 'WAX Labs Reviews',
     description:
-      "Assessment of WAX Labs projects for viability, impact, and alignment with the network's goals.",
-    href: '#'
+      "Assessment of WAX Labs projects for viability, impact, and alignment with the network's goals."
   },
   {
     title: 'Guild Advisory',
     description:
-      'Sharing experience and offering guidance and expertise on specific domains, helping WAX Guilds make informed and strategic decisions.',
-    href: '#'
+      'Sharing experience and offering guidance and expertise on specific domains, helping WAX Guilds make informed and strategic decisions.'
   },
   {
     title: 'Token Economy Model Design',
     description:
-      'Designing and maintaining the economic incentives and mechanisms within the blockchain network to ensure sustainability and fairness.',
-    href: '#'
+      'Designing and maintaining the economic incentives and mechanisms within the blockchain network to ensure sustainability and fairness.'
   },
   {
     title: 'Education and Awareness',
     description:
-      'Continuously create educational resources and raise awareness around governance on WAX. Encouraging  an inclusive and open ground for collaboration.',
-    href: '#'
+      'Continuously create educational resources and raise awareness around governance on WAX. Encouraging  an inclusive and open ground for collaboration.'
   }
 ];
 </script>
@@ -61,16 +55,16 @@ const duties = [
           </div>
         </div>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-8"
+        >
           <dl
             v-for="duty in duties"
             :key="duty.title"
-            class="flex flex-col gap-y-4 justify-start"
+            class="flex flex-col justify-start"
           >
-            <dd class="text-base font-serif font-bold">
-              <a href="{{ duty.href }}" class="text-font">
-                {{ duty.title }}
-              </a>
+            <dd class="text-base font-serif font-bold text-font mb-3">
+              {{ duty.title }}
             </dd>
             <dt class="text-sm leading-7">
               {{ duty.description }}
