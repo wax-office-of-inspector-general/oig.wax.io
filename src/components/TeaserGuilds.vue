@@ -79,7 +79,7 @@ onMounted(() => {
                   class="text-center absolute bg-gradient-to-t from-gray-50 h-60 w-full bottom-0 left-0 z-30"
                 >
                   <ButtonPrimary
-                    href="#"
+                    href="/guild-reviews"
                     text="View latest Review"
                     cssClass="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0"
                   />

@@ -34,13 +34,13 @@ const title = 'OIG on WAX';
               class="flex flex-col sm:flex-row justify-start items-start mt-8 gap-4"
             >
               <ButtonPrimary
-                href="/"
+                :to="{ name: 'the-wax-oig' }"
                 text="Tell me more"
                 cssClass="text-primary"
               />
 
               <ButtonSecondary
-                href="/"
+                :to="{ name: 'guild-reviews' }"
                 text="View WAX Guilds"
                 cssClass="text-font"
               />
