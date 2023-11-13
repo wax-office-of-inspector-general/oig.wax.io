@@ -28,28 +28,28 @@ const solutions = [
   {
     name: 'The OIG',
     description: "What's the OIG and what does it?",
-    href: '/the-wax-oig',
+    to: { name: 'the-wax-oig' },
     icon: BuildingLibraryIcon,
     highlight: false
   },
   {
     name: 'WAX Guilds',
     description: 'Explore validators on WAX',
-    href: '#',
+    to: { name: 'wax-guilds' },
     icon: CubeTransparentIcon,
     highlight: false
   },
   {
     name: 'Guild Evaluations',
     description: 'What makes a good validator on WAX?',
-    href: '/guild-reviews',
+    to: '/guild-reviews',
     icon: ShieldCheckIcon,
     highlight: false
   },
   {
     name: 'OIG Election',
     description: 'Be part of Blockchain governance',
-    href: '/election',
+    to: '/election',
     icon: ArchiveBoxIcon,
     highlight: true
   }
@@ -88,14 +88,14 @@ const resources = [
         class="z-30 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10"
       >
         <div>
-          <a href="/" class="flex items-center">
+          <router-link :to="{ name: 'home' }" class="flex items-center" tag="a">
             <img
               class="h-8 w-auto sm:h-10"
               src="@/assets/images/oig-logo.png"
               alt="WAX OIG Logo"
             />
             <h1 class="text-md font-serif font-bold ml-6">WAX OIG</h1>
-          </a>
+          </router-link>
         </div>
         <div class="-my-2 -mr-2 md:hidden z-10">
           <PopoverButton
@@ -140,42 +140,44 @@ const resources = [
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
                   >
-                    <a
+                    <router-link
                       v-for="item in solutions"
                       :key="item.name"
-                      :href="item.href"
+                      :to="item.to"
                       class="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-secondary-50"
                     >
-                      <div class="flex md:h-full lg:flex-col">
-                        <div class="flex-shrink-0">
-                          <span
-                            class="inline-flex h-10 w-10 items-center justify-center rounded-md text-white sm:h-12 sm:w-12"
-                          >
-                            <component
-                              :is="item.icon"
-                              class="h-7 w-7 text-font"
-                              aria-hidden="true"
-                            />
-                          </span>
-                        </div>
-                        <div
-                          class="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4"
-                        >
-                          <div class="relative">
+                      <button>
+                        <div class="flex md:h-full lg:flex-col">
+                          <div class="flex-shrink-0">
                             <span
-                              v-if="item.highlight"
-                              class="absolute top-[-5px] left-[-10px] h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
-                            ></span>
-                            <p class="text-md font-serif font-bold text-font">
-                              {{ item.name }}
-                            </p>
-                            <p class="mt-2 text-sm text-font">
-                              {{ item.description }}
-                            </p>
+                              class="inline-flex h-10 w-10 items-center justify-center rounded-md text-white sm:h-12 sm:w-12"
+                            >
+                              <component
+                                :is="item.icon"
+                                class="h-7 w-7 text-font"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </div>
+                          <div
+                            class="ml-4 md:flex md:flex-1 md:flex-col md:justify-between lg:ml-0 lg:mt-4"
+                          >
+                            <div class="relative">
+                              <span
+                                v-if="item.highlight"
+                                class="absolute top-[-5px] left-[-10px] h-2 w-2 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
+                              ></span>
+                              <p class="text-md font-serif font-bold text-font">
+                                {{ item.name }}
+                              </p>
+                              <p class="mt-2 text-sm text-font">
+                                {{ item.description }}
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </a>
+                      </button>
+                    </router-link>
                   </div>
                   <div class="bg-secondary-50">
                     <div

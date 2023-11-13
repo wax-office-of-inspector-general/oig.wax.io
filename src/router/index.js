@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import TheOIGView from '../views/TheOIGView.vue';
 import ElectionView from '../views/ElectionView.vue';
 import EvaluationView from '../views/EvaluationView.vue';
+import GuildsView from '../views/GuildsView.vue';
 import CandidateDetails from '@/components/election/CandidateDetails.vue';
 
 const router = createRouter({
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/the-wax-oig',
       name: 'the-wax-oig',
       component: TheOIGView
+    },
+    {
+      path: '/wax-guilds',
+      name: 'wax-guilds',
+      component: GuildsView
     },
     {
       path: '/election',

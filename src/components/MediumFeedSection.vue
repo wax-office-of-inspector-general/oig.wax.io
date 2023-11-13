@@ -79,11 +79,15 @@ const mediumLink = 'https://waxoig.medium.com/';
       </div>
     </div>
     <div class="mx-auto max-w-xl mt-10 text-center">
-      <ButtonPrimary
+
+      <a
         :href="mediumLink"
-        text="View all Articles"
-        cssClass="text-sm"
-      />
+        target="_blank"
+        class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+      >
+        View all Articles
+        <span class="ml-1" aria-hidden="true"> &rarr;</span>
+    </a>
     </div>
   </div>
 </template>
