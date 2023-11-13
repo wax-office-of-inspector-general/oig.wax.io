@@ -28,33 +28,18 @@
                 individually from and by the community, contributing to further
                 decentralizing the WAX Network.
               </p>
-              <p class="mt-8">
+            </div>
+            <div>
+              <p>
                 The IGs collaborate to handle the responsibilities of the
                 office, issuing detailed criteria, evaluation parameters,
                 scoring mechanisms, and more.
               </p>
-            </div>
-            <div>
-              <p>
+              <p class="mt-8">
                 The mission of the inspector general is to provide quantitative
                 and qualitative assessments of WAX Guild Candidates on a
                 continuous and transparent basis in order to:
               </p>
-              <ul class="mt-8 list-disc list-outside ml-4">
-                <li>
-                  Assist WAX Token holders in their guild voting
-                  decision-making.
-                </li>
-                <li>
-                  Objectively and consistently evaluating all WAX Guild
-                  Candidates across a standard set of relevant performance
-                  criteria.
-                </li>
-                <li>
-                  Ensure Active and Standby Guilds are paid in alignment with
-                  their evaluation and appointed position.
-                </li>
-              </ul>
             </div>
           </div>
         </div>
