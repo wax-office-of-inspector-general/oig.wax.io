@@ -1,7 +1,6 @@
 <script setup>
 import TeaserFeatures from '../components/TeaserFeatures.vue';
 import TeaserGovernance from '../components/TeaserGovernance.vue';
-import TeaserDuties from '../components/TeaserDuties.vue';
 import TeaserGuilds from '../components/TeaserGuilds.vue';
 import MediumFeedSection from '../components/MediumFeedSection.vue';
 import TeaserOIG from '../components/TeaserOIG.vue';
@@ -17,7 +16,6 @@ const desc =
   <TeaserGovernance />
   <TeaserFeatures />
   <TeaserOIG />
-  <TeaserDuties />
   <TeaserGuilds />
   <MediumFeedSection />
 </template>

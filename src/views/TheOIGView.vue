@@ -2,6 +2,7 @@
 import SimpleHero from '../components/hero/SimpleHero.vue';
 import OIGExplanation from '../components/OIGExplanation.vue';
 import OIGElectionProcess from '../components/OIGElectionProcess.vue';
+import TeaserDuties from '../components/TeaserDuties.vue';
 import OIGTeam from '../components/OIGTeam.vue';
 import OIGPillars from '@/components/oig/OIGPillars.vue';
 
@@ -14,6 +15,7 @@ const desc =
   <SimpleHero :title="title" :desc="desc" />
   <OIGExplanation />
   <OIGPillars />
+  <TeaserDuties />
   <OIGTeam />
   <OIGElectionProcess />
 </template>
