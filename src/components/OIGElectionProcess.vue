@@ -20,7 +20,7 @@ import ButtonText from '@/components/button/ButtonText.vue';
                 Inspector General (OIG) is conducted through a transparent and
                 structured process. This process unfolds in the following steps:
               </p>
-              <ButtonText href="/election" text="View current Election" />
+              <ButtonText href="/election" text="When is the next election?" />
             </div>
             <div>
               <ul class="list-disc list-outside ml-4">

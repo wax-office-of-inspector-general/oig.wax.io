@@ -35,7 +35,7 @@ onMounted(() => {
                 ecosystem. These Guilds are more than validators; they're
                 innovators, driving progress in the WAX Network.
               </p>
-              <p class="mt-6">
+              <p class="mt-6 hidden">
                 Dive into their technical operations, community projects, and
                 other contributions shaping the blockchain's future. Whether
                 you're a prospecting developer, or simply interested in WAX,
@@ -71,7 +71,7 @@ onMounted(() => {
                     <GuildCardSmall
                       :title="guild.producer"
                       :score="guild.score"
-                      :pos="index"
+                      :pos="index+1"
                     />
                   </div>
                 </div>
