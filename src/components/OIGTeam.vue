@@ -20,9 +20,8 @@ onMounted(() => {
             The current IGs
           </h2>
           <p class="mt-4 text-base max-w-2xl mx-auto">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
+            Elections are held every six months, with each Inspector General
+            serving an 18-month term. The current active IG's are the following:
           </p>
         </div>
         <div class="lg:col-span-2 mt-12 px-12">
