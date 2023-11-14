@@ -45,20 +45,22 @@ const currentPhase = (ballot) => {
 };
 </script>
 <template>
-  <div v-if="currentBallot" class="my-8 rounded-md drop-shadow bg-white">
+  <div v-if="currentBallot" class="my-8 rounded-md drop-shadow bg-secondary-50">
     <div
       class="p-4 md:p-5 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x"
     >
       <div class="mr-auto py-4 md:py-0 md:pr-6">
-        <p class="text-xs mb-2">Ballot ID</p>
+        <p class="text-xs mb-2 text-font/50 font-bold">Ballot ID</p>
         <p class="text-base font-bold mb-2">{{ currentBallot.ballot }}</p>
       </div>
-      <div class="mx-auto py-4 md:py-0 md:px-6">
-        <p class="text-xs mb-2">Description</p>
+      <div class="mx-auto w-full py-4 md:py-0 md:px-6">
+        <p class="text-xs mb-2 text-font/50 font-bold">Description</p>
         <p class="text-base">{{ currentBallot.description }}</p>
       </div>
       <div class="md:ml-auto py-4 md:py-0 md:pl-6">
-        <p class="text-xs whitespace-nowrap mb-2">Current Phase</p>
+        <p class="text-xs whitespace-nowrap mb-2 text-font/50 font-bold">
+          Phase
+        </p>
         <p class="text-base font-bold">{{ currentPhase(currentBallot) }}</p>
       </div>
     </div>
