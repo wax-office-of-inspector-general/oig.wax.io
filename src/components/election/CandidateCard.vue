@@ -57,6 +57,9 @@ const deleteCandidacy = () =>
       <h3 class="mt-6 text-base font-medium text-gray-900">
         {{ props.candidate.name }}
       </h3>
+      <p class="text-sm text-gray-500">
+        {{ props.candidate.owner }}
+      </p>
       <!-- <dl class="mt-1 flex flex-grow flex-col justify-between">
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">

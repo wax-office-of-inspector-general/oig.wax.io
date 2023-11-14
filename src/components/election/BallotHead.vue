@@ -14,6 +14,12 @@ const currentBallot = computed(() => ballot.value[0]);
 
 const ballotStates = [
   {
+    state: 1,
+    title: 'Preparation',
+    href: '#',
+    desc: 'Nominate someone or get nominated'
+  },
+  {
     state: 2,
     title: 'Nomination',
     href: '#',
@@ -40,7 +46,9 @@ const currentPhase = (ballot) => {
 </script>
 <template>
   <div v-if="currentBallot" class="my-8 rounded-md drop-shadow bg-white">
-    <div class="p-4 md:p-5 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x">
+    <div
+      class="p-4 md:p-5 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x"
+    >
       <div class="mr-auto py-4 md:py-0 md:pr-6">
         <p class="text-xs mb-2">Ballot ID</p>
         <p class="text-base font-bold mb-2">{{ currentBallot.ballot }}</p>

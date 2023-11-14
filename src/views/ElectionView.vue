@@ -5,9 +5,9 @@ import OIGTeam from '../components/OIGTeam.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
-const headline = 'OIG Election';
+const headline = 'Cast your Vote!';
 const subline =
-  'Cast your vote in blockchain governance and have your voice heard in shaping the future of decentralized technology!';
+  'Cast your vote and get engaged in blockchain governance. Have your voice heard in shaping the future of WAX.';
 
 const tabs = shallowRef({
   Election: defineAsyncComponent(() =>
