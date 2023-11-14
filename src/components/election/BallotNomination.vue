@@ -99,8 +99,8 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="border border-gray-200 rounded-md">
-    <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
+  <div class="border bg-white border-gray-200 rounded-md">
+    <div class="border-b border-gray-200 drop-shadow-sm px-4 py-5 sm:px-6">
       <div
         class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap"
       >
@@ -112,8 +112,9 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="p-6 bg-white">
+    <div class="p-6">
       <ul
+        v-if="nominees.length"
         role="list"
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
@@ -181,6 +182,9 @@ onMounted(() => {
           </div>
         </li>
       </ul>
+      <div v-else>
+        <p>No nominees here yet.</p>
+      </div>
     </div>
 
     <TransitionRoot appear :show="isOpen" as="template">
