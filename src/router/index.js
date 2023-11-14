@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import TheOIGView from '../views/TheOIGView.vue';
 import ElectionView from '../views/ElectionView.vue';
@@ -7,7 +7,7 @@ import GuildsView from '../views/GuildsView.vue';
 import CandidateDetails from '@/components/election/CandidateDetails.vue';
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
