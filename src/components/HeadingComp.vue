@@ -42,14 +42,14 @@ const solutions = [
   {
     name: 'Guild Evaluations',
     description: 'What makes a good validator on WAX?',
-    to: '/guild-reviews',
+    to: { name: 'guild-reviews' },
     icon: ShieldCheckIcon,
     highlight: false
   },
   {
     name: 'OIG Election',
     description: 'Be part of Blockchain governance',
-    to: '/election',
+    to: { name: 'election' },
     icon: ArchiveBoxIcon,
     highlight: true
   }
