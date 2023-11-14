@@ -20,7 +20,7 @@ const props = defineProps({
 
 <template>
   <TransitionRoot appear :show="show" as="template">
-    <Dialog as="div" @close="onCancel" class="relative z-10">
+    <Dialog as="div" class="relative z-10">
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -66,7 +66,7 @@ const props = defineProps({
                 <button
                   type="button"
                   class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none"
-                  @click="onCancel"
+                  @click.stop="onCancel"
                 >
                   {{ props.cancelLabel }}
                 </button>

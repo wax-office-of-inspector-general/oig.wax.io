@@ -1,9 +1,9 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import ButtonText from './button/ButtonText.vue';
+import ButtonText from '@/components/button/ButtonText.vue';
 
-const title = 'Most proven Blockchain';
+const title = 'Building a DAO for a robust DPOS ecosystem';
 const subtitle =
   'We craft a technological framework that enables reliable and performant infrastructure for blockchain game developers and digital artists alike. Our foundation is an organic and thriving community of gaming and art enthusiasts.';
 
@@ -30,10 +30,6 @@ onMounted(() => {
         <p class="mt-6 text-base max-w-2xl text-center leading-7">
           {{ subtitle }}
         </p>
-        <div class="grid grid-cols-4">
-          <div></div>
-          <div></div>
-        </div>
       </div>
 
       <div
