@@ -21,7 +21,6 @@ import {
 } from '@heroicons/vue/24/outline';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
 import HeadingArticles from './HeadingArticles.vue';
-import AuthButton from './AuthButton.vue';
 import LoginTrigger from './LoginTrigger.vue';
 
 const solutions = [
@@ -75,8 +74,12 @@ const experts = [
   { name: 'Jobs', href: 'https://t.me/waxjobs', icon: BriefcaseIcon }
 ];
 const resources = [
-  { name: 'Community', href: '#', icon: UserGroupIcon },
-  { name: 'Wallets', href: '#', icon: WalletIcon }
+  {
+    name: 'Community',
+    href: 'https://www.wax.io/community',
+    icon: UserGroupIcon
+  },
+  { name: 'Wallets', href: 'https://www.wax.io/get-a-wallet', icon: WalletIcon }
 ];
 </script>
 
@@ -135,7 +138,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="bg-primary-50 absolute inset-x-0 top-full z-10 hidden transform md:block"
+                  class="bg-white absolute inset-x-0 top-full -translate-y-6 z-10 hidden drop-shadow-md rounded-sm transform md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -242,11 +245,8 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="absolute inset-x-0 bg-primary-50 top-full z-10 hidden transform md:block"
+                  class="bg-white absolute inset-x-0 pt-full top-full -translate-y-6 z-10 hidden drop-shadow-md rounded-sm transform md:block"
                 >
-                  <div class="absolute inset-0 flex bg-primary-50">
-                    <div class="w-1/2" />
-                  </div>
                   <div
                     class="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2"
                   >
@@ -330,19 +330,20 @@ const resources = [
     >
       <PopoverPanel
         focus
-        class="absolute inset-x-0 top-0 z-50 origin-top-right transform bg-secondary p-2 transition md:hidden"
+        class="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition md:hidden"
       >
         <div
-          class="divide-y rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+          class="divide-y rounded-lg bg-white drop-shadow-lg ring-1 ring-black ring-opacity-5"
         >
           <div class="px-5 pt-5 pb-6 sm:pb-8">
             <div class="flex items-center justify-between">
-              <div>
+              <div class="flex flex-row items-center">
                 <img
-                  class="h-8 w-auto"
+                  class="h-10 w-10 flex-1"
                   src="@/assets/images/oig-logo.png"
                   alt="WAX OIG Logo"
                 />
+                <h1 class="text-md font-serif font-bold ml-4">WAX OIG</h1>
               </div>
               <div class="-mr-2">
                 <PopoverButton
@@ -356,18 +357,18 @@ const resources = [
             <div class="mt-6 sm:mt-8">
               <nav>
                 <div class="grid gap-5 sm:grid-cols-2 sm:gap-y-8 sm:gap-x-4">
-                  <a
+                  <router-link
                     v-for="item in solutions"
                     :key="item.name"
-                    :href="item.href"
-                    class="relative -m-3 flex items-center rounded-lg p-3 hover:secondary"
+                    :to="item.to"
+                    class="relative -m-3 flex items-center rounded-lg p-3"
                   >
                     <span
                       v-if="item.highlight"
                       class="absolute top-3 left-3 h-3 w-3 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
                     ></span>
                     <div
-                      class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-secondary text-white sm:h-12 sm:w-12"
+                      class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-secondary-50 sm:h-12 sm:w-12"
                     >
                       <component
                         :is="item.icon"
@@ -375,12 +376,10 @@ const resources = [
                         aria-hidden="true"
                       />
                     </div>
-                    <div
-                      class="ml-3 text-sm font-serif font-bold text-gray-900"
-                    >
+                    <div class="ml-3 text-sm font-serif font-bold text-primary">
                       {{ item.name }}
                     </div>
-                  </a>
+                  </router-link>
                 </div>
                 <div class="mt-8 text-sm flex items-center">
                   <component
@@ -401,28 +400,28 @@ const resources = [
           <div class="py-6 px-5">
             <div class="grid grid-cols-2 gap-4">
               <a
-                href="#"
+                href="https://developer.wax.io/"
                 class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
                 >Docs</a
               >
               <a
-                href="#"
+                href="https://www.wax.io/community"
                 class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
                 >Community</a
               >
               <a
-                href="#"
+                href="https://labs.wax.io/"
                 class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
                 >Labs</a
               >
               <a
-                href="#"
+                href="https://www.wax.io/get-a-wallet"
                 class="rounded-md text-sm font-sans font-medium text-gray-900 hover:text-gray-700"
                 >Wallets</a
               >
             </div>
-            <div class="mt-6">
-              <AuthButton />
+            <div class="mt-6 flex justify-center">
+              <LoginTrigger />
             </div>
           </div>
         </div>

@@ -188,15 +188,8 @@ const scoreCategories = [
       </div>
     </div>
 
-    <div class="mt-12 md:mt-20">
+    <div class="mt-12 md:mt-20 mb-10">
       <GuildActionList />
-    </div>
-
-    <div class="mt-12 md:mt-20">
-      <div class="prose">
-        <h2>Learn what it takes to be a guild</h2>
-        <p>Content</p>
-      </div>
     </div>
   </div>
 </template>
