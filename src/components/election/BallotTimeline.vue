@@ -42,7 +42,7 @@ const ballotStates = [
         <nav aria-label="Progress" v-if="currentBallot">
           <ol
             role="list"
-            class="divide-y divide-gray-300 rounded-md border border-gray-300 md:flex md:divide-y-0"
+            class="drop-shadow-sm border bg-white border-gray-200 divide-y divide-gray-200 rounded-md md:flex md:divide-y-0"
           >
             <li
               v-for="(ballotState, idx) in ballotStates"
@@ -50,7 +50,7 @@ const ballotStates = [
               class="relative md:flex md:flex-1"
             >
               <div
-                v-if="ballotState.state < currentBallot.state"
+                v-if="ballotState.state <= currentBallot.state"
                 :href="ballotState.href"
                 class="group flex w-full items-center flex-wrap"
               >
@@ -66,7 +66,7 @@ const ballotStates = [
                 </span>
               </div>
               <div
-                v-else-if="ballotState.state >= currentBallot.state"
+                v-else-if="ballotState.state > currentBallot.state"
                 :href="ballotState.href"
                 class="flex items-center px-6 py-4 text-sm font-medium"
                 aria-current="step"
@@ -99,7 +99,7 @@ const ballotStates = [
                   >
                 </span>
               </div>
-              <template v-if="idx !== ballotState.length - -1">
+              <template v-if="idx !== ballotStates.length - 1">
                 <!-- Arrow separator for lg screens and up -->
                 <div
                   class="absolute right-0 top-0 hidden h-full w-5 md:block"
