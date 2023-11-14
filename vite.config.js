@@ -13,7 +13,7 @@ const defaultConfig = {
 };
 
 const prodConfig = {
-  base: '/'
+  base: 'https://oig.wax.io/'
 };
 
 export default defineConfig(({ mode }) => {
