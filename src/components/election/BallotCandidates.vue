@@ -19,7 +19,9 @@ onMounted(() => {
       >
         <div class="ml-4 mt-6">
           <h3 class="text-xl font-semibold leading-6">Candidates</h3>
-          <p class="mt-3 text-sm text-gray-500">Lorem ipsum dolor sit amet</p>
+          <p class="mt-3 text-sm text-gray-500">
+            Cast your vote! Decide who will be the next IG.
+          </p>
         </div>
       </div>
     </div>
