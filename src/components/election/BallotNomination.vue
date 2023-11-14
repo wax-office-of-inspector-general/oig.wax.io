@@ -182,9 +182,6 @@ onMounted(() => {
           </div>
         </li>
       </ul>
-      <div v-else>
-        <p>No nominees here yet.</p>
-      </div>
     </div>
 
     <TransitionRoot appear :show="isOpen" as="template">
