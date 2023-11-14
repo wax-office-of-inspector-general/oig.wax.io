@@ -6,7 +6,7 @@ const pillars = [
 ];
 </script>
 <template>
-  <div class="container py-4 sm:py-8">
+  <div class="container py-4 sm:py-10">
     <div
       class="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-x-2 md:divide-y-0 md:px-6"
     >

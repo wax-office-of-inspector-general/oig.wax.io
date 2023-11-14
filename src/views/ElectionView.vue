@@ -49,7 +49,7 @@ const tabs = shallowRef({
         <TabPanel
           v-for="(tab, idx) in Object.values(tabs)"
           :key="idx"
-          :class="['py-12', 'focus:outline-none outline-none']"
+          :class="['focus:outline-none outline-none']"
         >
           <component :is="tab" />
         </TabPanel>
