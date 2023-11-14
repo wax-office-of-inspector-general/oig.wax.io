@@ -1,7 +1,6 @@
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import SimpleHero from '../components/hero/SimpleHero.vue';
-import OIGTeam from '../components/OIGTeam.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
@@ -56,6 +55,5 @@ const tabs = shallowRef({
       </TabPanels>
     </TabGroup>
   </div>
-  <OIGTeam />
   <RouterView />
 </template>
