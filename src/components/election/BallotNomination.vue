@@ -26,7 +26,12 @@ const session = useSession();
 const nominees = computed(() => store.state.ballot.nominees);
 const candidates = computed(() => store.state.ballot.candidates);
 
-const isActorNotACandidate = computed(() => candidates.value.filter((candidate) => session?.value?.actor?.toString() == candidate?.owner).length == 0);
+const isActorNotACandidate = computed(
+  () =>
+    candidates.value.filter(
+      (candidate) => session?.value?.actor?.toString() == candidate?.owner
+    ).length == 0
+);
 
 const isNominationOpen = computed(
   () => store.getters['ballot/isNominationOpen']
@@ -65,8 +70,7 @@ function onSubmitNominationForm() {
 
 function confirmNomination() {
   nominate();
-  // TODO: Only close confirmation modal on nominate action success
-  isConfirmationModalOpen.value = false;
+
   // TODO: Notify on Success and error
   // notify({
   //   title: "Sucess",
@@ -81,7 +85,13 @@ function confirmNomination() {
 }
 
 const nominate = () =>
-  store.dispatch('ballot/nominate', { nominee: nominee.value });
+  store.dispatch('ballot/nominate', {
+    nominee: nominee.value,
+    success: () => {
+      isConfirmationModalOpen.value = false;
+      closeModal();
+    }
+  });
 
 onMounted(() => {
   if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
@@ -118,7 +128,11 @@ onMounted(() => {
                   {{ nominee.nominee }}
                 </h3>
                 <CandidateCardEdit
-                  v-if="session?.actor?.toString() == nominee?.nominee && nominee.accepted && isActorNotACandidate"
+                  v-if="
+                    session?.actor?.toString() == nominee?.nominee &&
+                    nominee.accepted &&
+                    isActorNotACandidate
+                  "
                   :candidate="nominee"
                   :acceptance="true"
                 />

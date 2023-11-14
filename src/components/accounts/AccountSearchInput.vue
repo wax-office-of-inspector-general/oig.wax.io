@@ -8,14 +8,19 @@ import {
 import { onMounted, ref, watch } from 'vue';
 import useAccountsQuery from '../../composables/useAccountsQuery';
 
-const modelValue = ref();
+const props = defineProps({
+  modelValue: String
+});
+
+const emits = defineEmits(['update:modelValue']);
+
 const query = ref('');
 const accountsList = ref([]);
 const loadAccounts = useAccountsQuery;
 
 const refreshAccountsList = async () => {
   const accounts = await loadAccounts(query.value);
-  accountsList.value = accounts.rows;
+  accountsList.value = accounts.rows.map((account) => account.scope);
 };
 
 onMounted(() => {
@@ -29,8 +34,12 @@ watch(query, () => {
 
 <template>
   <Combobox
-    :model-value="modelValue"
-    @update:model-value="(value) => $emit('update:modelValue', value)"
+    :model-value="props.modelValue"
+    @update:model-value="
+      (value) => {
+        emits('update:modelValue', value.toString());
+      }
+    "
   >
     <ComboboxInput
       @change="query = $event.target.value"
@@ -49,8 +58,8 @@ watch(query, () => {
       </div>
       <ComboboxOption
         v-for="account in accountsList"
-        :key="account.scope"
-        :value="account.scope"
+        :key="account"
+        :value="account"
         v-slot="{ selected, active }"
       >
         <li
@@ -64,7 +73,7 @@ watch(query, () => {
             class="block truncate"
             :class="{ 'font-medium': selected, 'font-normal': !selected }"
           >
-            {{ account.scope }}
+            {{ account }}
           </span>
         </li>
       </ComboboxOption>
