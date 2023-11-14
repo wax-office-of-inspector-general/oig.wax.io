@@ -26,8 +26,11 @@ const session = useSession();
 const formData = reactive({ ...props.candidate });
 
 const handleRegexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
-const oigPrefixRegexValidation = (value) => /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/.test(value);
-const pubkeyRegexValidation = (value) => /^PUB_K1_[1-9A-HJ-NP-Za-km-z]{50}$|^EOS[1-9A-HJ-NP-Za-km-z]{50}$/.test(value);
+
+const oigPrefixRegexValidation = (value) =>
+  /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/.test(value);
+const pubkeyRegexValidation = (value) =>
+  /^PUB_K1_[1-9A-HJ-NP-Za-km-z]{50}$|^EOS[1-9A-HJ-NP-Za-km-z]{50}$/.test(value);
 
 const rules = {
   name: { required, minLength: minLength(3) },
@@ -68,10 +71,23 @@ function confirmNominationAcceptance() {
   }
 }
 
-const nominf = () => store.dispatch('ballot/nominf', formData);
+const nominf = () =>
+  store.dispatch('ballot/nominf', {
+    data: formData,
+    success: () => {
+      isConfirmationModalOpen.value = false;
+      closeModal();
+    }
+  });
 
 const proclaimAndNominf = () =>
-  store.dispatch('ballot/proclaimAndNominf', formData);
+  store.dispatch('ballot/proclaimAndNominf', {
+    data: formData,
+    success: () => {
+      isConfirmationModalOpen.value = false;
+      closeModal();
+    }
+  });
 
 async function submit() {
   const result = await $v.value.$validate();
@@ -90,7 +106,7 @@ async function submit() {
     </button>
 
     <TransitionRoot appear :show="isOpen" as="template">
-      <Dialog as="div" @close="closeModal" class="relative z-10">
+      <Dialog as="div" class="relative z-10">
         <TransitionChild
           as="template"
           enter="duration-300 ease-out"
@@ -282,7 +298,9 @@ async function submit() {
                             }"
                           />
                           <p class="text-red-700" v-if="$v.oig_prefix.$error">
-                            Not a valid prefix. It is required, has to have a maximum of 8 characters and must abide to the EOSIO naming standard
+                            Not a valid prefix. It is required, has to have a
+                            maximum of 8 characters and must abide to the EOSIO
+                            naming standard
                           </p>
                         </dd>
                       </div>

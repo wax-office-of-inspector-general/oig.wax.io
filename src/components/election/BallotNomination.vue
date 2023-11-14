@@ -5,6 +5,7 @@ import CandidateCardEdit from './CandidateCardEdit.vue';
 import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { computed, onMounted, ref } from 'vue';
 import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
+import AccountSearchInput from '../accounts/AccountSearchInput.vue';
 
 import {
   TransitionRoot,
@@ -25,7 +26,13 @@ const session = useSession();
 const nominees = computed(() => store.state.ballot.nominees);
 const candidates = computed(() => store.state.ballot.candidates);
 
-const isActorNotACandidate = computed(() => candidates.value.filter((candidate) => session?.value?.actor?.toString() == candidate?.owner).length == 0);
+
+const isActorNotACandidate = computed(
+  () =>
+    candidates.value.filter(
+      (candidate) => session?.value?.actor?.toString() == candidate?.owner
+    ).length == 0
+);
 
 const isNominationOpen = computed(
   () => store.getters['ballot/isNominationOpen']
@@ -56,10 +63,15 @@ function cancelNomination() {
   isConfirmationModalOpen.value = false;
 }
 
+function onSubmitNominationForm() {
+  if (isAccountValid.value && nominee.value.length > 1) {
+    openConfirmationModal();
+  }
+}
+
 function confirmNomination() {
   nominate();
-  // TODO: Only close confirmation modal on nominate action success
-  isConfirmationModalOpen.value = false;
+
   // TODO: Notify on Success and error
   // notify({
   //   title: "Sucess",
@@ -74,7 +86,13 @@ function confirmNomination() {
 }
 
 const nominate = () =>
-  store.dispatch('ballot/nominate', { nominee: nominee.value });
+  store.dispatch('ballot/nominate', {
+    nominee: nominee.value,
+    success: () => {
+      isConfirmationModalOpen.value = false;
+      closeModal();
+    }
+  });
 
 onMounted(() => {
   if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
@@ -111,7 +129,11 @@ onMounted(() => {
                   {{ nominee.nominee }}
                 </h3>
                 <CandidateCardEdit
-                  v-if="session?.actor?.toString() == nominee?.nominee && nominee.accepted && isActorNotACandidate"
+                  v-if="
+                    session?.actor?.toString() == nominee?.nominee &&
+                    nominee.accepted &&
+                    isActorNotACandidate
+                  "
                   :candidate="nominee"
                   :acceptance="true"
                 />
@@ -162,7 +184,7 @@ onMounted(() => {
     </div>
 
     <TransitionRoot appear :show="isOpen" as="template">
-      <Dialog as="div" @close="closeModal" class="relative z-10">
+      <Dialog as="div" class="relative z-10">
         <TransitionChild
           as="template"
           enter="duration-300 ease-out"
@@ -189,7 +211,7 @@ onMounted(() => {
               leave-to="opacity-0 scale-95"
             >
               <DialogPanel
-                class="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
+                class="w-full max-w-2xl transform overflow-visible rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all"
               >
                 <DialogTitle
                   as="h3"
@@ -208,21 +230,14 @@ onMounted(() => {
                       spam. The funds won't be returned after the election.
                     </p>
                   </div>
-                  <form ref="form" class="mt-6 sm:flex sm:items-center">
+                  <form
+                    @submit.prevent="onSubmitNominationForm"
+                    ref="form"
+                    class="mt-6 sm:flex sm:items-center"
+                  >
                     <div class="w-full sm:max-w-xs">
                       <label for="email" class="sr-only">Nominee Wallet</label>
-                      <input
-                        type="text"
-                        name="nominee"
-                        id="nominee"
-                        v-model="nominee"
-                        class="block w-full rounded-sm px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-none outline-none sm:text-sm sm:leading-6"
-                        :class="{
-                          'border-red-700': !isAccountValid,
-                          'focus:border-red-700': !isAccountValid
-                        }"
-                        placeholder="yourwallet.wam"
-                      />
+                      <AccountSearchInput v-model="nominee" />
                       <div
                         v-if="!isAccountValid"
                         class="text-red-700 mt-2 flex gap-1 items-center"
@@ -248,7 +263,7 @@ onMounted(() => {
                   <button
                     type="button"
                     class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none disabled:bg-gray-500"
-                    @click="openConfirmationModal"
+                    @click="onSubmitNominationForm"
                     :disabled="!isAccountValid || nominee.length < 2"
                   >
                     Nominate
