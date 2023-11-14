@@ -66,10 +66,8 @@ const actions = {
     }
   },
   async nominate(
-    { commit, dispatch },
-    payload,
-    success = () => {},
-    error = () => {}
+    { dispatch },
+    { nominee, success = () => {}, error = () => {} }
   ) {
     const session = useSession();
 
@@ -79,22 +77,22 @@ const actions = {
       transferToOigAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        nominee: payload.nominee
+        nominee: nominee
       }),
       nominateAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        nominee: payload.nominee
+        nominee: nominee
       })
     ]);
+
+    success();
 
     setTimeout(() => dispatch('fetchNominees'), TIMEOUT_SECONDS);
   },
   async proclaim(
-    { commit, dispatch },
-    payload,
-    success = () => {},
-    error = () => {}
+    { dispatch },
+    { decision, success = () => {}, error = () => {} }
   ) {
     const session = useSession();
 
@@ -104,18 +102,18 @@ const actions = {
       proclaimAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        decision: payload.decision
+        decision: decision
       })
     ]);
 
-    setTimeout(() => dispatch('fetchCandidates'), TIMEOUT_SECONDS);
+    success();
+
+    setTimeout(() => {
+      dispatch('fetchCandidates');
+      dispatch('fetchNominees');
+    }, TIMEOUT_SECONDS);
   },
-  async nominf(
-    { commit, dispatch },
-    payload,
-    success = () => {},
-    error = () => {}
-  ) {
+  async nominf({ dispatch }, { data, success = () => {}, error = () => {} }) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -124,21 +122,26 @@ const actions = {
       nominfAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        name: payload.name,
-        descriptor: payload.descriptor,
-        picture: payload.picture,
-        telegram: payload.telegram,
-        twitter: payload.twitter,
-        wechat: payload.wechat,
-        oig_prefix: payload.oig_prefix,
-        pubkey: payload.pubkey,
+        name: data.name,
+        descriptor: data.descriptor,
+        picture: data.picture,
+        telegram: data.telegram,
+        twitter: data.twitter,
+        wechat: data.wechat,
+        oig_prefix: data.oig_prefix,
+        pubkey: data.pubkey,
         remove: false
       })
     ]);
 
-    setTimeout(() => dispatch('fetchCandidates'), TIMEOUT_SECONDS);
+    success();
+
+    setTimeout(() => {
+      dispatch('fetchCandidates');
+      dispatch('fetchNominees');
+    }, TIMEOUT_SECONDS);
   },
-  async proclaimAndNominf({ commit, dispatch }, payload) {
+  async proclaimAndNominf({ dispatch }, { data, success = () => {} }) {
     const session = useSession();
 
     if (!session.value) throw new Error('No active session');
@@ -155,19 +158,24 @@ const actions = {
       nominfAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        name: payload.name,
-        descriptor: payload.descriptor,
-        picture: payload.picture,
-        telegram: payload.telegram,
-        twitter: payload.twitter,
-        wechat: payload.wechat,
-        oig_prefix: payload.oig_prefix,
-        pubkey: payload.pubkey,
-        remove: payload.remove
+        name: data.name,
+        descriptor: data.descriptor,
+        picture: data.picture,
+        telegram: data.telegram,
+        twitter: data.twitter,
+        wechat: data.wechat,
+        oig_prefix: data.oig_prefix,
+        pubkey: data.pubkey,
+        remove: data.remove
       })
     ]);
 
-    setTimeout(() => dispatch('fetchCandidates'), TIMEOUT_SECONDS);
+    success();
+
+    setTimeout(() => {
+      dispatch('fetchCandidates');
+      dispatch('fetchNominees');
+    }, TIMEOUT_SECONDS);
   },
   async regvoter({ commit }) {
     const session = useSession();
