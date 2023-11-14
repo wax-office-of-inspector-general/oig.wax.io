@@ -107,7 +107,7 @@ onMounted(() => {
         <div class="ml-4 mt-6">
           <h3 class="text-xl font-semibold leading-6">Nominees</h3>
           <p class="mt-3 text-sm text-gray-500">
-            Nominees become candidates if they acccept their nominations
+            Nominate your best IG. Once accepted, nominees become candidates and can be voted.
           </p>
         </div>
       </div>
