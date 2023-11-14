@@ -16,19 +16,19 @@ console.log(currentBallot.value);
 
 const ballotStates = [
   {
-    state: 1,
+    state: 2,
     title: 'Preparation',
     href: '#',
     desc: 'Prepare yourself and get familiar with guilds and the community'
   },
   {
-    state: 2,
+    state: 4,
     title: 'Nominations',
     href: '#',
     desc: 'Nomiate someone or get nominated...'
   },
   {
-    state: 4,
+    state: 5,
     title: 'Voting',
     href: '#',
     desc: 'The voting happens and the new winner will be announced at the end'
@@ -38,13 +38,21 @@ const ballotStates = [
 
 <template>
   <div class="mt-12">
-    <div class="py-12 sm:py-0">
-      <div class="mb-8 max-w-2xl lg:mx-0">
-        <h2 class="text-xl font-serif tracking-tight text-primary sm:text-4xl">
-          Election Timeline
-        </h2>
+    <div class="border border-gray-200 drop-shadow-sm bg-white rounded-md">
+      <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
+        <div
+          class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap"
+        >
+          <div class="ml-4 mt-6">
+            <h3 class="text-xl font-semibold leading-6">Election Timeline</h3>
+            <p class="mt-3 text-sm text-gray-500">
+              Cast your vote! Decide who will be the next IG.
+            </p>
+          </div>
+        </div>
       </div>
-      <div>
+
+      <div class="p-6">
         <div v-if="currentBallot">
           <div
             class="mx-auto py-2 grid max-w-2xl grid-cols-1 gap-8 overflow-hidden lg:mx-0 lg:max-w-none lg:grid-cols-3"
@@ -78,15 +86,15 @@ const ballotStates = [
                 class="mt-4 text-base leading-8 tracking-tight text-gray-900"
               >
                 <div
-                  v-if="ballotState.state === 1"
+                  v-if="ballotState.state === 2"
                   class="flex flex-col text-sm mb-2"
                 >
                   <div
                     class="bg-secondary-50 px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-2"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-tertiary-50'
-                        : 'bg-secondary-50'
+                        ? 'bg-secondary-50'
+                        : 'bg-green-50'
                     "
                   >
                     <span
@@ -100,13 +108,13 @@ const ballotStates = [
                   </div>
                 </div>
 
-                <div v-if="ballotState.state === 2">
+                <div v-if="ballotState.state === 3">
                   <div
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-2"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-primary-50'
-                        : 'bg-secondary-50'
+                        ? 'bg-green-50'
+                        : 'bg-primary-50'
                     "
                   >
                     <span
@@ -123,8 +131,8 @@ const ballotStates = [
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-3"
                     :class="
                       ballotState.state <= currentBallot.state
-                        ? 'bg-primary-50'
-                        : 'bg-secondary-50'
+                        ? 'bg-green-50'
+                        : 'bg-primary-50'
                     "
                   >
                     <span
@@ -138,12 +146,12 @@ const ballotStates = [
                   </div>
                 </div>
 
-                <div v-if="ballotState.state === 4">
+                <div v-if="ballotState.state >= 4">
                   <div
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-3"
                     :class="
-                      ballotState.state <= currentBallot.state
-                        ? 'bg-primary-50'
+                      ballotState.state >= currentBallot.state
+                        ? 'bg-green-50'
                         : 'bg-secondary-50'
                     "
                   >
@@ -159,8 +167,8 @@ const ballotStates = [
                   <div
                     class="px-3.5 py-2.5 rounded-lg flex flex-col text-sm mb-2"
                     :class="
-                      ballotState.state <= currentBallot.state
-                        ? 'bg-primary-50'
+                      ballotState.state >= currentBallot.state
+                        ? 'bg-green-50'
                         : 'bg-secondary-50'
                     "
                   >
