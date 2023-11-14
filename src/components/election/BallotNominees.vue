@@ -14,7 +14,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="py-12 lg:py-20">
+  <div class="mt-8 md:mt-12">
     <div class="container">
       <div class="border border-primary-100 rounded-md">
         <div class="bg-primary-50 px-5 py-3">
