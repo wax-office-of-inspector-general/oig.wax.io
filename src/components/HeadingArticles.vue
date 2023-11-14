@@ -51,14 +51,13 @@ onMounted(() => {
       </div>
     </div>
     <div class="mt-6 text-sm font-medium">
-      <router-link
+      <a
         href="https://waxoig.medium.com"
         class="text-tertiary font-serif text-xs font-bold"
-        tag="a"
       >
         View all Articles
         <span aria-hidden="true"> &rarr;</span>
-    </router-link>
+    </a>
     </div>
   </div>
 </template>
