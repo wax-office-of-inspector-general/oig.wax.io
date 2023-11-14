@@ -235,6 +235,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@kyvg/vue3-notification@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@kyvg/vue3-notification/-/vue3-notification-3.0.2.tgz#abe18ab9533eaa2b26054f8e4fbfb8824c6f0e20"
+  integrity sha512-t6PWPWggVqehX0BJZbqOttfKe3oUOrkgYoNQWSx8gwz8+pIRygQNT5MrewaIATdiU3bf//Yyto/wEm7vYl17Uw==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -444,6 +449,20 @@
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.3.7.tgz#0091852fe5cc4237c8440fe32f3ab6bc920ae6d9"
   integrity sha512-N/tbkINRUDExgcPTBvxNkvHGu504k8lzlNQRITVnm6YjOjwa4r0nnbd4Jb01sNpur5hAllyRJzSK5PvB9PPwRg==
+
+"@vuelidate/core@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.3.tgz#40468c5ed15b72bde880a026b0699c2f0f1ecede"
+  integrity sha512-AN6l7KF7+mEfyWG0doT96z+47ljwPpZfi9/JrNMkOGLFv27XVZvKzRLXlmDPQjPl/wOB1GNnHuc54jlCLRNqGA==
+  dependencies:
+    vue-demi "^0.13.11"
+
+"@vuelidate/validators@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.4.tgz#0a88a7b2b18f15fd9c384095593f369a6f7384e9"
+  integrity sha512-odTxtUZ2JpwwiQ10t0QWYJkkYrfd0SyFYhdHH44QQ1jDatlZgTh/KRzrWVmn/ib9Gq7H4hFD4e8ahoo5YlUlDw==
+  dependencies:
+    vue-demi "^0.13.11"
 
 "@wharfkit/abicache@^1.1.1":
   version "1.1.1"
@@ -2330,6 +2349,11 @@ vite@^4.4.11:
     rollup "^3.27.1"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vue-demi@^0.13.11:
+  version "0.13.11"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.13.11.tgz#7d90369bdae8974d87b1973564ad390182410d99"
+  integrity sha512-IR8HoEEGM65YY3ZJYAjMlKygDQn25D5ajNFNoKh9RSDMQtlzCxtfQjdQgv9jjK+m3377SsJXY8ysq8kLCZL25A==
 
 vue-eslint-parser@^9.3.1:
   version "9.3.2"
