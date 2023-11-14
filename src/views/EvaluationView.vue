@@ -1,23 +1,23 @@
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
-import SmallHeader from '../components/hero/SmallHeader.vue';
+import SimpleHero from '@/components/hero/SimpleHero.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 
 const title = 'Guild Reviews';
-const desc = `We regularly asses every guilds positive contributions to the network and heuristically analyse their performance and SLA's.<br />View our recent evaluation reports or learn how it works.`;
+const desc = `Explore the latest Guild Reviews to uncover how WAX blockchain guilds excel in technical operations, innovation, and community engagement.`;
 
 const tabs = shallowRef({
-  'Recent Evaluations': defineAsyncComponent(() =>
+  'Guild Reviews': defineAsyncComponent(() =>
     import('../components/evaluation/EvaluationResults.vue')
   ),
-  'How it works': defineAsyncComponent(() =>
+  'The Review Process': defineAsyncComponent(() =>
     import('../components/evaluation/EvaluationProcess.vue')
   )
 });
 </script>
 
 <template>
-  <SmallHeader :title="title" :desc="desc" />
+  <SimpleHero :title="title" :desc="desc" />
 
   <div class="container pt-12 pb-16">
     <TabGroup>

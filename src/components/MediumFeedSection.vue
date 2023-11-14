@@ -1,8 +1,8 @@
 <script setup>
 import { useStore } from 'vuex';
 import { onMounted, computed } from 'vue';
-import ButtonText from './button/ButtonText.vue';
-import ButtonSecondary from './button/ButtonSecondary.vue';
+import ButtonText from '@/components/button/ButtonText.vue';
+import ButtonPrimary from '@/components/button/ButtonPrimary.vue';
 import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
@@ -38,10 +38,7 @@ const mediumLink = 'https://waxoig.medium.com/';
           :key="article.guid"
           class="relative flex group"
         >
-          <div
-            class="absolute w-full h-full bg-primary-50 z-10 rounded-md drop-shadow-sm translate-x-[-8px] translate-y-[8px] group-hover:translate-x-0 group-hover:translate-y-0 transition-transform"
-          ></div>
-          <div class="bg-secondary-50 px-5 py-6 rounded-md relative z-20">
+          <div class="bg-white drop-shadow-sm hover:drop-shadow-md px-5 py-6 rounded-md relative z-20">
             <div class="relative w-full hidden z-20">
               <img
                 :src="article.thumbnail"
@@ -71,7 +68,7 @@ const mediumLink = 'https://waxoig.medium.com/';
                 <div class="align-self-end">
                   <ButtonText
                     :href="article.link"
-                    text="Read full Article"
+                    text="View Article"
                     cssClass="mt-5 text-xs inline-block"
                   />
                 </div>
@@ -82,11 +79,15 @@ const mediumLink = 'https://waxoig.medium.com/';
       </div>
     </div>
     <div class="mx-auto max-w-xl mt-10 text-center">
-      <ButtonSecondary
+
+      <a
         :href="mediumLink"
-        text="Continue Reading"
-        cssClass="text-sm"
-      />
+        target="_blank"
+        class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+      >
+        View all Articles
+        <span class="ml-1" aria-hidden="true"> &rarr;</span>
+    </a>
     </div>
   </div>
 </template>

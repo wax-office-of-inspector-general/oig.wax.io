@@ -40,11 +40,15 @@ function cancelDeletion() {
 
 function confirmDeletion() {
   deleteCandidacy();
-  isDeleteConfirmationModalOpen.value = false;
 }
 
 const deleteCandidacy = () =>
-  store.dispatch('ballot/proclaim', { decision: false });
+  store.dispatch('ballot/proclaim', {
+    decision: false,
+    success: () => {
+      isDeleteConfirmationModalOpen.value = false;
+    }
+  });
 
 function openVotingConfirmationModal() {
   isVotingConfirmationModalOpen.value = true;

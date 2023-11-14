@@ -11,7 +11,6 @@
           <a
             :href="item.href"
             class="text-sm text-font font-serif hover:text-tertiary-800 hover:underline"
-            target="_blank"
             >{{ item.name }}</a
           >
         </div>
@@ -41,11 +40,12 @@ const currentYear = new Date().getFullYear();
 
 const navigation = {
   main: [
-    { name: 'Governance', href: '#' },
-    { name: 'Docs', href: '#' },
-    { name: 'Community', href: '#' },
-    { name: 'Labs', href: '#' },
-    { name: 'Jobs', href: '#' }
+    { name: 'Governance', href: '/election' },
+    { name: 'Docs', href: 'https://developer.wax.io/' },
+    { name: 'Community', href: 'https://www.wax.io/community' },
+    { name: 'Labs', href: 'https://labs.wax.io/' },
+    { name: 'Jobs', href: 'https://t.me/waxjobs' },
+    { name: 'Privacy Policy & Terms', href: '/about' }
   ],
   social: [
     {

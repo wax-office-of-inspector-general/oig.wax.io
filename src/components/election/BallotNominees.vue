@@ -2,7 +2,7 @@
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/vue/24/outline';
-import ButtonAction from '../button/ButtonAction.vue';
+import ButtonAction from '.@/components/button/ButtonAction.vue';
 
 const store = useStore();
 
