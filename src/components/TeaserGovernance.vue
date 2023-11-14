@@ -49,7 +49,7 @@ onMounted(() => {
               Learn what it takes to become a validator on WAX
             </p>
             <ButtonText
-              href="#"
+              href="https://www.notion.so/wax-oig/Initial-Evaluation-Process-7fa321f057004a6cbd884144285e7f49"
               text="Apply"
               cssClass="text-primary mt-6"
             ></ButtonText>
@@ -69,7 +69,7 @@ onMounted(() => {
               Contribute your expertise to enhance the WAX network
             </p>
             <ButtonText
-              href="#"
+              href="https://labs.wax.io/"
               text="View Proposals"
               cssClass="text-white hover:text-white/80 mt-6"
             ></ButtonText>
@@ -92,7 +92,7 @@ onMounted(() => {
               networks standards
             </p>
             <ButtonText
-              href="#"
+              href="/the-wax-oig"
               text="Tell me more"
               cssClass="text-secondary-800 mt-6"
             ></ButtonText>
