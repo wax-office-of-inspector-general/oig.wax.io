@@ -3,7 +3,8 @@ import { defineProps } from 'vue';
 
 const props = defineProps({
   title: String,
-  score: Number
+  score: Number,
+  pos: Number
 });
 </script>
 
@@ -13,12 +14,12 @@ const props = defineProps({
       class="relative bg-secondary-50 py-5 px-7rounded-md drop-shadow-sm z-20"
     >
       <p
-        class="text-center text-sm font-serif font-medium text-primary leading-6"
+        class="text-center text-sm font-serif font-bold text-primary leading-6"
       >
         {{ props.title }}
       </p>
       <p v-if="props.score" class="text-center text-xs text-primary mt-1">
-        {{ parseFloat(props.score / 10000).toFixed(4) }}
+        #{{ pos }} / {{ parseFloat(props.score / 10000).toFixed(0) }}p
       </p>
     </div>
 

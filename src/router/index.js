@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import TheOIGView from '../views/TheOIGView.vue';
 import ElectionView from '../views/ElectionView.vue';
 import EvaluationView from '../views/EvaluationView.vue';
+import GuildsView from '../views/GuildsView.vue';
 import CandidateDetails from '@/components/election/CandidateDetails.vue';
 
 const router = createRouter({
@@ -17,6 +18,11 @@ const router = createRouter({
       path: '/the-wax-oig',
       name: 'the-wax-oig',
       component: TheOIGView
+    },
+    {
+      path: '/wax-guilds',
+      name: 'wax-guilds',
+      component: GuildsView
     },
     {
       path: '/election',
@@ -39,12 +45,12 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  }
 });
 
 export default router;
