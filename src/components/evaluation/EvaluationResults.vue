@@ -2,19 +2,27 @@
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import moment from 'moment';
-import ButtonPrimary from '../button/ButtonPrimary.vue';
+import { ChevronRightIcon } from '@heroicons/vue/24/outline';
+import EvaluationActionList from '@/components/evaluation/EvaluationActionList.vue';
 
 const store = useStore();
 
 const evaluations = computed(() => store.state.evaluations.evaluations);
 
-const topGuilds = (guilds) => {
-  let top = guilds.sort((a, b) => b.score - a.score).slice(0, 20);
+const topGuilds = (evaluation) => {
+  let top = evaluation.scores
+    .sort((a, b) => b.score - a.score)
+    .filter((g) => g.score > evaluation.minimum);
 
-  return top.map((t) => t.guild).join(', ');
+  return top.map((t, idx) => `#${idx + 1} ${t.guild}`).join(', ');
 };
 
-const tableHeaders = ['Timestamp', 'Threshold', 'Type', 'Top 21 Guilds'];
+const standbyCount = (evaluation) => {
+  let passedGuilds = evaluation.scores.filter(
+    (g) => g.score > evaluation.minimum
+  );
+  return passedGuilds.length - 21;
+};
 
 onMounted(() => {
   if (!evaluations.value.length) store.dispatch('evaluations/fetchEvaluations');
@@ -25,77 +33,81 @@ onMounted(() => {
   <div class="">
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
-        <h2 class="text-xl font-serif tracking-tight text-primary">
-          List of Evaluations
+        <h2 class="text-lg font-serif tracking-tight text-primary">
+          List of Reviews
         </h2>
-        <p class="mt-6 text-sm">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-          nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
-          sed diam voluptua.
-        </p>
-        <p class="mt-2 text-sm">
-          Whenever a full evaluation concludes, we typically announce the final
-          scores
-          <a class="underline" href="https://waxoig.medium.com/"
-            >on our medium blog</a
-          >.
+        <p class="mt-4 text-sm">
+          All Guild Reviews since January 2023 are listed below.
         </p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-        <ButtonPrimary
+        <a
+          target="_blank"
           href="https://www.notion.so/wax-oig/Guild-Ratings-0e51defdf10641748a253ccc7f5146b1"
-          text="View full Rating"
-        />
+          class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+        >
+          Full Reviews
+          <span class="ml-1" aria-hidden="true"> &rarr;</span>
+        </a>
       </div>
     </div>
-    <div class="mt-8 flow-root">
-      <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-          <table class="min-w-full divide-y divide-gray-300">
-            <thead>
-              <tr>
-                <th
-                  v-for="tableHeader in tableHeaders"
-                  :key="tableHeader"
-                  scope="col"
-                  class="py-3.5 pl-4 pr-4 text-left text-sm font-bold font-serif sm:pl-0"
+
+    <div class="mt-6 flow-root bg-white rounded-md">
+      <ul role="list" class="divide-y divide-gray-100">
+        <li
+          v-for="evaluation in evaluations"
+          :key="evaluation.id"
+          class="relative flex justify-between flex-col sm:flex-row py-5 px-5"
+        >
+          <div class="flex gap-x-4 pr-6 sm:w-1/4 md:w-1/5 sm:flex-none">
+            <div class="min-w-0 flex-auto">
+              <p
+                class="text-sm font-serif tracking-5 font-bold leading-6 text-gray-900"
+              >
+                {{ moment(evaluation.timestamp).startOf('day').fromNow() }}
+              </p>
+              <p class="mt-2 flex text-xs leading-5 text-gray-500">
+                <span
+                  v-if="evaluation.type === 0"
+                  class="inline-flex items-center rounded-md bg-secondary-50 px-2 py-1 text-xs font-medium text-font"
+                  >Half Review</span
                 >
-                  {{ tableHeader }}
-                </th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200">
-              <tr v-for="evaluation in evaluations" :key="evaluation.timestamp">
-                <td class="whitespace-nowrap pr-5 py-4 text-sm">
-                  {{
-                    moment(evaluation.timestamp).format('YYYY-MM-DD, h:mm:ss a')
-                  }}
-                </td>
-                <td
-                  class="whitespace-nowrap pr-5 marker:py-4 text-sm text-gray-500"
+                <span
+                  v-else
+                  class="inline-flex items-center rounded-md bg-primary-50 px-2 py-1 text-xs font-medium text-font"
+                  >Full Review</span
                 >
-                  {{ parseFloat(evaluation.minimum / 10000) }} points
-                </td>
-                <td class="whitespace-nowrap pr-5 py-3 text-sm">
-                  <span
-                    v-if="evaluation.type === 0"
-                    class="inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20"
-                    >Half</span
-                  >
-                  <span
-                    v-else
-                    class="inline-flex items-center rounded-md bg-blue-400/10 px-2 py-1 text-xs font-medium text-blue-400 ring-1 ring-inset ring-blue-400/30"
-                    >Full</span
-                  >
-                </td>
-                <td class="whitespace-nowrap pr-4 py-4 text-sm">
-                  {{ topGuilds(evaluation.scores) }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+              </p>
+            </div>
+          </div>
+          <div
+            class="mt-4 sm:mt-0 flex items-center justify-between gap-x-4 sm:w-3/4 md:w-4/5 sm:flex-none"
+          >
+            <div class="sm:block">
+              <p class="text-sm leading-6 text-font">Passing Guilds</p>
+              <p class="mt-1 text-xs leading-5 text-gray-500">
+                {{ topGuilds(evaluation) }}
+              </p>
+              <p class="mt-3 text-sm leading-6 text-font">Standby Count</p>
+              <p class="mt-1 text-xs leading-5 text-gray-500">
+                {{ standbyCount(evaluation) }} Guilds
+              </p>
+            </div>
+            <a
+              :href="'https://www.notion.so/wax-oig/Guild-Ratings-0e51defdf10641748a253ccc7f5146b1'"
+            >
+              <ChevronRightIcon
+                class="h-5 w-5 flex-none text-primary/50"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mt-8">
+      <EvaluationActionList />
     </div>
   </div>
 </template>

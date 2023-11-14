@@ -1,5 +1,5 @@
 import useTableRows from '@/composables/useTableRows';
-import { OIG_ACCOUNT } from '../constants';
+import { OIG_ACCOUNT } from '@/constants';
 
 export default async () => {
   return await useTableRows({

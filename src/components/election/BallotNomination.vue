@@ -26,6 +26,7 @@ const session = useSession();
 const nominees = computed(() => store.state.ballot.nominees);
 const candidates = computed(() => store.state.ballot.candidates);
 
+
 const isActorNotACandidate = computed(
   () =>
     candidates.value.filter(

@@ -26,6 +26,7 @@ const session = useSession();
 const formData = reactive({ ...props.candidate });
 
 const handleRegexValidation = (value) => /^@[a-zA-Z0-9_]{0,15}/.test(value);
+
 const oigPrefixRegexValidation = (value) =>
   /^[a-z1-5.]{1,11}[a-z1-5]$|(^[a-z1-5.]{12}[a-j1-5]$)/.test(value);
 const pubkeyRegexValidation = (value) =>
