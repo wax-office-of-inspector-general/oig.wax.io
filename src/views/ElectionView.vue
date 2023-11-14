@@ -32,7 +32,7 @@ const tabs = shallowRef({
         >
           <button
             :class="[
-              'px-12 py-2.5 text-sm font-serif leading-5',
+              'px-6 md:px-12 py-2.5 text-sm font-serif leading-5',
               'focus:outline-none outline-none',
               selected
                 ? 'text-primary font-bold border-b-2 border-primary'
