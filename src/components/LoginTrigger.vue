@@ -45,13 +45,15 @@ const session = useSession();
 
     <PopoverPanel
       v-if="session"
-      class="absolute z-10 w-full drop-shadow-md bg-white rounded-b-md -translate-y-1"
+      class="absolute z-10 w-full drop-shadow-md bg-white rounded-b-md -translate-y-0.5"
     >
       <div class="flex flex-col items-stretch">
-        <div class="p-3  flex flex-col">
+        <div class="p-3 flex flex-col">
           <p class="text-xs text-font/50">wallet connected</p>
           <p class="text-sm">
-            <strong>{{ session.actor }}</strong>@{{ session.permission }}</p>
+            <strong>{{ session.actor }}</strong
+            >@{{ session.permission }}
+          </p>
         </div>
         <div class="mt-2 flex flex-col divide-y">
           <a
