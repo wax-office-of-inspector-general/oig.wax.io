@@ -76,8 +76,7 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
       <h3 class="mt-6 text-base font-medium text-gray-900">
         {{ props.candidate.name }}
       </h3>
-      <!-- TODO: Implement vote count -->
-      <dl v-if="isVotingOpen" class="mt-1 flex flex-grow flex-col justify-between">
+      <!-- <dl v-if="isVotingOpen" class="mt-1 flex flex-grow flex-col justify-between">
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">
           <span
@@ -85,7 +84,7 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
             >123123 VOTE</span
           >
         </dd>
-      </dl>
+      </dl> -->
     </div>
     <div>
       <div class="-mt-px flex divide-x border-t border-t-gray-200">
