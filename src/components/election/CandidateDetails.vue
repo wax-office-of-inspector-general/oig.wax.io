@@ -48,8 +48,7 @@ function confirmVoting() {
   vote();
 }
 
-const vote = () => store.dispatch('ballot/vote', candidate);
-
+const vote = () => store.dispatch('ballot/vote', candidate.value);
 </script>
 
 <template>

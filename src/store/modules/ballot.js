@@ -230,7 +230,7 @@ const actions = {
     ]);
   },
   async vote(
-    { commit, dispatch },
+    { commit, dispatch, state },
     payload
   ) {
     const session = useSession();
@@ -252,7 +252,7 @@ const actions = {
       castvoteAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        ballot: store.state.ballots[0].ballot,
+        ballot: state.ballots[0].ballot,
         candidateAccount: payload?.owner
       })
     ]);
