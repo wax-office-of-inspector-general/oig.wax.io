@@ -47,11 +47,14 @@ onMounted(() => {
           </div>
 
           <div class="mt-10 flex">
-            <ButtonText
-              class="mx-auto"
-              href="#"
-              text="Learn more about WAX Guilds"
-            />
+            <RouterLink :to="{ name: 'wax-guilds'}" class="mx-auto">
+              <a
+                class="font-serif mt-3 text-sm text-tertiary border-b border-current no-underline hover:text-font hover:opacity-80"
+              >
+                Learn more about WAX Guilds
+                <span aria-hidden="true"> &rarr;</span>
+              </a>
+            </RouterLink>
           </div>
         </div>
         <div class="lg:pr-4">

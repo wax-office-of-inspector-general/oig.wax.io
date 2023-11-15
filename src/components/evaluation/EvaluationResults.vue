@@ -68,9 +68,9 @@ onMounted(() => {
               </p>
               <p class="mt-2 flex text-xs leading-5 text-gray-500">
                 <span
-                  v-if="evaluation.type === 0"
+                  v-if="evaluation.type === 1"
                   class="inline-flex items-center rounded-md bg-secondary-50 px-2 py-1 text-xs font-medium text-font"
-                  >Half Review</span
+                  >Tech Review</span
                 >
                 <span
                   v-else

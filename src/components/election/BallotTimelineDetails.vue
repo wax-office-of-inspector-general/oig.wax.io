@@ -22,7 +22,7 @@ const ballotStates = [
     desc: 'Prepare yourself and get familiar with guilds and the community'
   },
   {
-    state: 4,
+    state: 3,
     title: 'Nominations',
     href: '#',
     desc: 'Nomiate someone or get nominated...'
