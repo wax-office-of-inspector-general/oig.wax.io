@@ -40,12 +40,12 @@ const currentYear = new Date().getFullYear();
 
 const navigation = {
   main: [
-    { name: 'Governance', href: '/election' },
+    { name: 'Governance', href: '/#/election' },
     { name: 'Docs', href: 'https://developer.wax.io/' },
     { name: 'Community', href: 'https://www.wax.io/community' },
     { name: 'Labs', href: 'https://labs.wax.io/' },
     { name: 'Jobs', href: 'https://t.me/waxjobs' },
-    { name: 'Privacy Policy & Terms', href: '/about' }
+    { name: 'Privacy Policy & Terms', href: '/#/about' }
   ],
   social: [
     {
