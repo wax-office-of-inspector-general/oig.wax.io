@@ -78,11 +78,7 @@ const ballotStates = [
               ballotState.title
             }}</span>
           </div>
-          <div
-            v-else
-            :href="ballotState.href"
-            class="group flex items-center"
-          >
+          <div v-else :href="ballotState.href" class="group flex items-center">
             <span class="flex items-center px-6 py-4 text-sm font-medium">
               <span
                 class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 group-hover:border-gray-400"
