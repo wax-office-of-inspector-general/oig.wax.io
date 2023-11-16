@@ -138,6 +138,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
+                  v-slot="{ close }"
                   class="bg-white absolute inset-x-0 top-full z-10 hidden drop-shadow-md rounded-sm transform md:block"
                 >
                   <div
@@ -147,6 +148,7 @@ const resources = [
                       v-for="item in solutions"
                       :key="item.name"
                       :to="item.to"
+                      :onClick="close"
                       class="-m-3 flex flex-col justify-between rounded-lg p-3 hover:bg-secondary-50"
                     >
                       <button>
