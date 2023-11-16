@@ -37,6 +37,14 @@ const getters = {
   }
 };
 
+const notifyNoSessionError = () => {
+  notify({
+    title: 'Error',
+    text: 'No active session. Please log in first.',
+    type: 'error'
+  });
+};
+
 // actions
 const actions = {
   async fetchBallots({ commit }, forcedState) {
@@ -75,13 +83,7 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       transferToOigAction({
@@ -106,13 +108,7 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       proclaimAction({
@@ -132,13 +128,7 @@ const actions = {
   async nominf({ dispatch }, { data, success = () => {}, error = () => {} }) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       nominfAction({
@@ -166,13 +156,7 @@ const actions = {
   async proclaimAndNominf({ dispatch }, { data, success = () => {} }) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       proclaimAction({
@@ -208,13 +192,7 @@ const actions = {
   async regvoter({ commit }) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       regvoterAction({
@@ -226,13 +204,7 @@ const actions = {
   async sync({ commit }) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       syncAction({
@@ -244,13 +216,7 @@ const actions = {
   async updtstate({ commit }) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       updtstateAction({
@@ -261,13 +227,7 @@ const actions = {
   async castvote({ commit, state }, payload) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       castvoteAction({
@@ -284,13 +244,7 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) {
-      notify({
-        title: 'Error',
-        text: 'No active session. Please log in first.',
-        type: 'error'
-      });
-    };
+    if (!session.value) notifyNoSessionError();
 
     await useTransaction([
       regvoterAction({
