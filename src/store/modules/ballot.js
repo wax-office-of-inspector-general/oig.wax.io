@@ -83,7 +83,10 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       transferToOigAction({
@@ -108,7 +111,10 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       proclaimAction({
@@ -128,7 +134,10 @@ const actions = {
   async nominf({ dispatch }, { data, success = () => {}, error = () => {} }) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       nominfAction({
@@ -156,7 +165,10 @@ const actions = {
   async proclaimAndNominf({ dispatch }, { data, success = () => {} }) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       proclaimAction({
@@ -192,7 +204,10 @@ const actions = {
   async regvoter({ commit }) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       regvoterAction({
@@ -204,7 +219,10 @@ const actions = {
   async sync({ commit }) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       syncAction({
@@ -216,7 +234,10 @@ const actions = {
   async updtstate({ commit }) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       updtstateAction({
@@ -227,7 +248,10 @@ const actions = {
   async castvote({ commit, state }, payload) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       castvoteAction({
@@ -244,7 +268,10 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) notifyNoSessionError();
+    if (!session.value) {
+      notifyNoSessionError();
+      return;
+    }
 
     await useTransaction([
       regvoterAction({
