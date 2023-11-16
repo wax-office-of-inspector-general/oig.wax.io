@@ -2,8 +2,6 @@
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
 import LoadingSpinner from './LoadingSpinner.vue';
-import ButtonPrimary from '@/components/button/ButtonPrimary.vue';
-import ButtonText from '@/components/button/ButtonText.vue';
 import GuildCardSmall from './guild/GuildCardSmall.vue';
 
 const store = useStore();
@@ -47,7 +45,7 @@ onMounted(() => {
           </div>
 
           <div class="mt-10 flex">
-            <RouterLink :to="{ name: 'wax-guilds'}" class="mx-auto">
+            <RouterLink :to="{ name: 'wax-guilds' }" class="mx-auto">
               <a
                 class="font-serif mt-3 text-sm text-tertiary border-b border-current no-underline hover:text-font hover:opacity-80"
               >
@@ -74,18 +72,21 @@ onMounted(() => {
                     <GuildCardSmall
                       :title="guild.producer"
                       :score="guild.score"
-                      :pos="index+1"
+                      :pos="index + 1"
                     />
                   </div>
                 </div>
                 <div
                   class="text-center absolute bg-gradient-to-t from-gray-50 h-60 w-full bottom-0 left-0 z-30"
                 >
-                  <ButtonPrimary
-                    href="/guild-reviews"
-                    text="View latest Review"
-                    cssClass="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0"
-                  />
+                  <router-link :to="{ name: 'wax-guilds' }">
+                    <button
+                      class="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0 inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+                    >
+                      View latest Review
+                      <span class="ml-1" aria-hidden="true"> &rarr;</span>
+                    </button>
+                  </router-link>
                 </div>
               </div>
             </Transition>
