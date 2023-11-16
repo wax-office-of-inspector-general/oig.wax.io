@@ -41,7 +41,7 @@ const ballotStates = [
 
 const currentPhase = (ballot) => {
   let currentState = ballotStates.filter((b) => b.state >= ballot.state);
-  return currentState.pop().title;
+  return currentState.shift().title;
 };
 </script>
 <template>

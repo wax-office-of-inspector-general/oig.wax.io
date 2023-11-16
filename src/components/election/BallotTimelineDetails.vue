@@ -46,7 +46,8 @@ const ballotStates = [
           <div class="ml-4 mt-6">
             <h3 class="text-xl font-semibold leading-6">Timeline</h3>
             <p class="mt-3 text-sm text-gray-500">
-              Cast your vote! Decide who will be the next IG.
+              After the election is before the election! All dates are set in
+              <strong>UTC</strong> time.
             </p>
           </div>
         </div>
