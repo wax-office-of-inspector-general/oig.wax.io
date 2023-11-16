@@ -1,5 +1,6 @@
 import useTransaction from '@/composables/useTransaction';
 import { useSession } from '@/composables/useSession';
+import { notify } from '@kyvg/vue3-notification';
 import useBallots from '@/composables/useBallots';
 import useCandidates from '@/composables/useCandidates';
 import useNominees from '@/composables/useNominees';
@@ -74,7 +75,13 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       transferToOigAction({
@@ -99,7 +106,13 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       proclaimAction({
@@ -119,7 +132,13 @@ const actions = {
   async nominf({ dispatch }, { data, success = () => {}, error = () => {} }) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       nominfAction({
@@ -147,7 +166,13 @@ const actions = {
   async proclaimAndNominf({ dispatch }, { data, success = () => {} }) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       proclaimAction({
@@ -183,7 +208,13 @@ const actions = {
   async regvoter({ commit }) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       regvoterAction({
@@ -195,7 +226,13 @@ const actions = {
   async sync({ commit }) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       syncAction({
@@ -207,7 +244,13 @@ const actions = {
   async updtstate({ commit }) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       updtstateAction({
@@ -215,16 +258,22 @@ const actions = {
       })
     ]);
   },
-  async castvote({ commit }, payload) {
+  async castvote({ commit, state }, payload) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       castvoteAction({
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
-        ballot: store.state.ballots[0].ballot,
+        ballot: state.ballots[0].ballot,
         candidateAccount: payload?.owner
       })
     ]);
@@ -235,7 +284,13 @@ const actions = {
   ) {
     const session = useSession();
 
-    if (!session.value) throw new Error('No active session');
+    if (!session.value) {
+      notify({
+        title: 'Error',
+        text: 'No active session. Please log in first.',
+        type: 'error'
+      });
+    };
 
     await useTransaction([
       regvoterAction({
