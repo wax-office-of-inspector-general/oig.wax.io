@@ -5,6 +5,8 @@ export default ({ permissionLevel, actor }) => ({
   name: 'regvoter',
   authorization: [permissionLevel],
   data: {
-    voter: actor
+    voter: actor,
+    treasury_symbol: '8,VOTE',
+    referrer: OIG_ACCOUNT
   }
 });
