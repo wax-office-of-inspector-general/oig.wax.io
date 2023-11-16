@@ -138,7 +138,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="bg-white absolute inset-x-0 top-full -translate-y-6 z-10 hidden drop-shadow-md rounded-sm transform md:block"
+                  class="bg-white absolute inset-x-0 top-full z-10 hidden drop-shadow-md rounded-sm transform md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -245,7 +245,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="bg-white absolute inset-x-0 pt-full top-full -translate-y-6 z-10 hidden drop-shadow-md rounded-sm transform md:block"
+                  class="bg-white absolute inset-x-0 pt-full top-full z-10 hidden drop-shadow-md rounded-sm transform md:block"
                 >
                   <div
                     class="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2"

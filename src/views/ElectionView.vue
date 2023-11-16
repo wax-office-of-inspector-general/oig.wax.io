@@ -1,13 +1,12 @@
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
 import SimpleHero from '../components/hero/SimpleHero.vue';
-import OIGTeam from '../components/OIGTeam.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
-const headline = 'OIG Election';
+const headline = 'Cast your Vote!';
 const subline =
-  'Cast your vote in blockchain governance and have your voice heard in shaping the future of decentralized technology!';
+  'Cast your vote and get engaged in blockchain governance. Have your voice heard in shaping the future of WAX.';
 
 const tabs = shallowRef({
   Election: defineAsyncComponent(() =>
@@ -33,7 +32,7 @@ const tabs = shallowRef({
         >
           <button
             :class="[
-              'px-12 py-2.5 text-sm font-serif leading-5',
+              'px-6 md:px-12 py-2.5 text-sm font-serif leading-5',
               'focus:outline-none outline-none',
               selected
                 ? 'text-primary font-bold border-b-2 border-primary'
@@ -49,13 +48,12 @@ const tabs = shallowRef({
         <TabPanel
           v-for="(tab, idx) in Object.values(tabs)"
           :key="idx"
-          :class="['py-12', 'focus:outline-none outline-none']"
+          :class="['focus:outline-none outline-none']"
         >
           <component :is="tab" />
         </TabPanel>
       </TabPanels>
     </TabGroup>
   </div>
-  <OIGTeam />
   <RouterView />
 </template>
