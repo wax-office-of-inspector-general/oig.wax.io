@@ -92,7 +92,7 @@ onMounted(() => {
               networks standards
             </p>
             <ButtonText
-              href="/the-wax-oig"
+              href="/#/the-wax-oig"
               text="Tell me more"
               cssClass="text-secondary-800 mt-6"
             ></ButtonText>
