@@ -9,7 +9,7 @@ const electionProcess = [
   'As soon as a new IG is elected, the previous IG&#39;s tenure ends and they are rotated out.',
   'The rotation of OIG seats takes place on the first day of February and August every year.',
   'Nomination and Voting period is set to 7 full days each. Ideally the election concludes 3 full months before the seat is replaced.'
-]
+];
 </script>
 <template>
   <div class="py-16 sm:py-20">
@@ -30,7 +30,10 @@ const electionProcess = [
                 Inspector General (OIG) is conducted through a transparent and
                 structured process. This process unfolds in the following steps:
               </p>
-              <ButtonText href="/election" text="When is the next election?" />
+              <ButtonText
+                href="/#/election"
+                text="When is the next election?"
+              />
             </div>
             <div>
               <ul role="list" class="space-y-8 text-gray-600">
