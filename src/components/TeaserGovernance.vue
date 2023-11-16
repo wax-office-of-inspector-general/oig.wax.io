@@ -79,7 +79,7 @@ onMounted(() => {
           class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-secondary-50 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28"
         >
           <p class="flex-none text-xl font-serif tracking-tight text-tertiary">
-            3 IG's
+            3 IGs
           </p>
           <div class="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
             <p
