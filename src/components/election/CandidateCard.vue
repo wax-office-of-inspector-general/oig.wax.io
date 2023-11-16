@@ -69,7 +69,7 @@ const vote = () => store.dispatch('ballot/vote', props.candidate);
   <div class="">
     <div class="flex flex-1 flex-col p-8">
       <img
-        class="mx-auto h-32 w-32 flex-shrink-0 rounded-full"
+        class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
         :src="props.candidate.picture"
         alt=""
       />

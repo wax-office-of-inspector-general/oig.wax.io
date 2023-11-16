@@ -215,7 +215,7 @@ async function submit() {
                           </p>
                           <img
                             v-else-if="!acceptance"
-                            class="h-32 w-32 flex-shrink-0 rounded-full"
+                            class="mb-6 h-32 w-32 object-cover flex-shrink-0 rounded-full"
                             :src="props.candidate.picture"
                             alt=""
                           />
