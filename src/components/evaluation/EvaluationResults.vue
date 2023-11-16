@@ -34,10 +34,10 @@ onMounted(() => {
     <div class="sm:flex sm:items-center">
       <div class="sm:flex-auto">
         <h2 class="text-lg font-serif tracking-tight text-primary">
-          List of Reviews
+          Latest Reviews
         </h2>
         <p class="mt-4 text-sm">
-          All Guild Reviews since January 2023 are listed below.
+          All Guild Reviews since January 2023 are listed below. That's when the processing of guilds scores has moved on-chain. For previous review please visit the respective guild archives on notion.
         </p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -68,9 +68,9 @@ onMounted(() => {
               </p>
               <p class="mt-2 flex text-xs leading-5 text-gray-500">
                 <span
-                  v-if="evaluation.type === 0"
+                  v-if="evaluation.type === 1"
                   class="inline-flex items-center rounded-md bg-secondary-50 px-2 py-1 text-xs font-medium text-font"
-                  >Half Review</span
+                  >Tech Review</span
                 >
                 <span
                   v-else
