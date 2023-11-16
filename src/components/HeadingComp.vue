@@ -84,11 +84,11 @@ const resources = [
 </script>
 
 <template>
-  <Popover class="container mx-auto relative z-50">
-    <div class="pointer-events-none absolute inset-0 z-30" aria-hidden="true" />
-    <div class="relative bg-transparent z-50 border-b border-b-primary/20">
+  <Popover class="container mx-auto relative z-9">
+    <div class="pointer-events-none absolute inset-0 z-8" aria-hidden="true" />
+    <div class="relative bg-transparent z-9 border-b border-b-primary/20">
       <div
-        class="z-30 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10"
+        class="z-8 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10"
       >
         <div>
           <router-link :to="{ name: 'home' }" class="flex items-center" tag="a">
@@ -100,7 +100,7 @@ const resources = [
             <h1 class="text-md font-serif font-bold ml-6">WAX OIG</h1>
           </router-link>
         </div>
-        <div class="-my-2 -mr-2 md:hidden z-10">
+        <div class="-my-2 -mr-2 md:hidden z-9">
           <PopoverButton
             class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none"
           >
@@ -109,7 +109,7 @@ const resources = [
           </PopoverButton>
         </div>
         <div
-          class="hidden md:flex md:flex-1 md:items-center md:justify-end z-10"
+          class="hidden md:flex md:flex-1 md:items-center md:justify-end z-9"
         >
           <PopoverGroup as="nav" class="flex items-center space-x-10">
             <Popover v-slot="{ open }">
@@ -139,7 +139,7 @@ const resources = [
               >
                 <PopoverPanel
                   v-slot="{ close }"
-                  class="bg-white absolute inset-x-0 top-full z-10 hidden drop-shadow-md rounded-sm transform md:block"
+                  class="bg-white absolute inset-x-0 top-full z-9 hidden drop-shadow-md rounded-sm transform md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -247,7 +247,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="bg-white absolute inset-x-0 pt-full top-full z-10 hidden drop-shadow-md rounded-sm transform md:block"
+                  class="bg-white absolute inset-x-0 pt-full top-full z-9 hidden drop-shadow-md rounded-sm transform md:block"
                 >
                   <div
                     class="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2"
@@ -332,7 +332,7 @@ const resources = [
     >
       <PopoverPanel
         focus
-        class="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition md:hidden"
+        class="absolute inset-x-0 top-0 z-9 origin-top-right transform p-2 transition md:hidden"
       >
         <div
           class="divide-y rounded-lg bg-white drop-shadow-lg ring-1 ring-black ring-opacity-5"
