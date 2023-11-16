@@ -99,7 +99,7 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                       class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                     >
                       <img
-                        class="h-32 w-32 flex-shrink-0 rounded-full"
+                        class="h-32 w-32 object-cover flex-shrink-0 rounded-full"
                         :src="candidate?.picture"
                         alt=""
                       />

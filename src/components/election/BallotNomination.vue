@@ -123,7 +123,7 @@ onMounted(() => {
           :key="nominee.nominee"
           class="col-span-1 divide-y divide-primary-50 rounded-lg bg-secondary-50 drop-shadow-md"
         >
-          <div class="flex w-full items-center justify-between space-x-6 p-6">
+          <div class="flex w-full h-full items-center justify-between space-x-6 p-6">
             <div class="flex-1 truncate">
               <div class="flex items-center space-x-3">
                 <h3 class="truncate text-sm font-medium text-font">
