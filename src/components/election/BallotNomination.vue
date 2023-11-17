@@ -26,7 +26,6 @@ const session = useSession();
 const nominees = computed(() => store.state.ballot.nominees);
 const candidates = computed(() => store.state.ballot.candidates);
 
-
 const isActorNotACandidate = computed(
   () =>
     candidates.value.filter(
@@ -95,7 +94,7 @@ const nominate = () =>
   });
 
 onMounted(() => {
-  if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
+  store.dispatch('ballot/fetchNominees');
 });
 </script>
 <template>
@@ -107,14 +106,14 @@ onMounted(() => {
         <div class="ml-4 mt-6">
           <h3 class="text-xl font-semibold leading-6">Nominees</h3>
           <p class="mt-3 text-sm text-gray-500">
-            Nominate your best IG. Once accepted, nominees become candidates and can be voted.
+            Nominate your best IG. Once accepted, nominees become candidates and
+            can be voted.
           </p>
         </div>
       </div>
     </div>
     <div class="p-6">
       <ul
-        v-if="nominees.length"
         role="list"
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
@@ -123,7 +122,9 @@ onMounted(() => {
           :key="nominee.nominee"
           class="col-span-1 divide-y divide-primary-50 rounded-lg bg-secondary-50 drop-shadow-md"
         >
-          <div class="flex w-full h-full items-center justify-between space-x-6 p-6">
+          <div
+            class="flex w-full h-full items-center justify-between space-x-6 p-6"
+          >
             <div class="flex-1 truncate">
               <div class="flex items-center space-x-3">
                 <h3 class="truncate text-sm font-medium text-font">
