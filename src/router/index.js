@@ -2,7 +2,9 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import TheOIGView from '../views/TheOIGView.vue';
 import ElectionView from '../views/ElectionView.vue';
-import EvaluationView from '../views/EvaluationView.vue';
+import LatestReviewsView from '../views/review/LatestReviewsView.vue';
+import ReviewProcessView from '../views/review/ReviewProcessView.vue';
+import ReviewTimelineView from '../views/review/ReviewTimelineView.vue';
 import GuildsView from '../views/GuildsView.vue';
 import CandidateDetails from '@/components/election/CandidateDetails.vue';
 
@@ -27,22 +29,22 @@ const router = createRouter({
     {
       path: '/guild-reviews',
       name: 'guild-reviews',
-      component: EvaluationView,
+      component: LatestReviewsView,
       children: [
         {
           path: 'latest',
           name: 'guild-reviews-latest',
-          component: EvaluationView
+          component: LatestReviewsView
         },
         {
           path: 'timeline',
           name: 'guild-reviews-timeline',
-          component: EvaluationView
+          component: ReviewTimelineView
         },
         {
           path: 'process',
           name: 'guild-reviews-process',
-          component: EvaluationView
+          component: ReviewProcessView
         }
       ]
     },
