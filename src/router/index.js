@@ -25,6 +25,28 @@ const router = createRouter({
       component: GuildsView
     },
     {
+      path: '/guild-reviews',
+      name: 'guild-reviews',
+      component: EvaluationView,
+      children: [
+        {
+          path: 'latest',
+          name: 'guild-reviews-latest',
+          component: EvaluationView
+        },
+        {
+          path: 'timeline',
+          name: 'guild-reviews-timeline',
+          component: EvaluationView
+        },
+        {
+          path: 'process',
+          name: 'guild-reviews-process',
+          component: EvaluationView
+        }
+      ]
+    },
+    {
       path: '/election',
       name: 'election',
       component: ElectionView,
@@ -35,12 +57,6 @@ const router = createRouter({
           component: CandidateDetails
         }
       ]
-    },
-
-    {
-      path: '/guild-reviews',
-      name: 'guild-reviews',
-      component: EvaluationView
     },
     {
       path: '/about',

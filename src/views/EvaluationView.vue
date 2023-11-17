@@ -1,7 +1,8 @@
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
-import SimpleHero from '@/components/hero/SimpleHero.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
+import SimpleHeroNavigation from '@/components/hero/SimpleHeroNavigation.vue';
+import ButtonNavLink from '../components/button/ButtonNavLink.vue';
 
 const title = 'Guild Reviews';
 const desc = `Explore the latest Guild Reviews to uncover how WAX blockchain guilds excel in technical operations, innovation, and community engagement.`;
@@ -10,6 +11,9 @@ const tabs = shallowRef({
   'Guild Reviews': defineAsyncComponent(() =>
     import('../components/evaluation/EvaluationResults.vue')
   ),
+  'Review Calendar': defineAsyncComponent(() =>
+    import('../components/evaluation/ReviewCalendar.vue')
+  ),
   'The Review Process': defineAsyncComponent(() =>
     import('../components/evaluation/EvaluationProcess.vue')
   )
@@ -17,7 +21,22 @@ const tabs = shallowRef({
 </script>
 
 <template>
-  <SimpleHero :title="title" :desc="desc" />
+  <SimpleHeroNavigation :title="title" :desc="desc">
+    <template v-slot:nav>
+      <ButtonNavLink
+        :route="{ name: 'guild-reviews-latest' }"
+        text="Latest Reviews"
+      />
+      <ButtonNavLink
+        :route="{ name: 'guild-reviews-timeline' }"
+        text="Timeline"
+      />
+      <ButtonNavLink
+        :route="{ name: 'guild-reviews-process' }"
+        text="Process"
+      />
+    </template>
+  </SimpleHeroNavigation>
 
   <div class="container pt-12 pb-16">
     <TabGroup>
