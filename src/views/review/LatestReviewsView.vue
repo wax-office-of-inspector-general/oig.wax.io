@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import PageContainer from '@/compponents/Pagecontainer.vue';
+</script>
 <template>
-  <p>Latest Reviews</p>
+  <PageContainer>
+    <p>Latest Reviews</p>
+  </PageContainer>
 </template>
