@@ -24,15 +24,11 @@ const candidate = computed(
     )[0] ?? null
 );
 
-const isVotingOpen = computed(
-  () => store.getters['ballot/isVotingOpen']
-);
+const isVotingOpen = computed(() => store.getters['ballot/isVotingOpen']);
 
 const session = useSession();
 
 const router = useRouter();
-
-const closeModal = () => router.push('/election');
 
 const isVotingConfirmationModalOpen = ref(false);
 
@@ -49,11 +45,19 @@ function confirmVoting() {
 }
 
 const vote = () => store.dispatch('ballot/vote', candidate.value);
+
+const dialogOpen = ref(true);
+const closeModal = () => router.push('/election');
 </script>
 
 <template>
   <TransitionRoot appear :show="true" as="template">
-    <Dialog as="div" class="relative z-10">
+    <Dialog
+      as="div"
+      :open="dialogOpen"
+      @close="closeModal"
+      class="relative z-10"
+    >
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -128,7 +132,7 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     >
                       <a
                         v-if="candidate?.owner"
-                        href="`https://waxblock.io/account/{candidate?.owner}`"
+                        :href="`https://waxblock.io/account/${candidate.owner}`"
                         >{{ candidate?.owner }}</a
                       >
                     </dd>
@@ -144,7 +148,7 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     >
                       <a
                         v-if="candidate?.telegram"
-                        href="`https://t.me/{candidate?.telegram}`"
+                        :href="`https://t.me/${candidate.telegram}`"
                         >{{ candidate?.telegram }}</a
                       >
                       <span v-else>–</span>
@@ -161,7 +165,7 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     >
                       <a
                         v-if="candidate?.twitter"
-                        href="`https://twitter.com/{candidate?.twitter}`"
+                        :href="`https://twitter.com/${candidate.twitter}`"
                       >
                         {{ candidate?.twitter }}
                       </a>
@@ -178,7 +182,9 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     <dd
                       class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                     >
-                      <span v-if="candidate?.oig_prefix">{{ candidate?.oig_prefix }}</span>
+                      <span v-if="candidate?.oig_prefix">{{
+                        candidate?.oig_prefix
+                      }}</span>
                       <span v-else>–</span>
                     </dd>
                   </div>
@@ -192,7 +198,9 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     <dd
                       class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                     >
-                      <span v-if="candidate?.pubkey">{{ candidate?.pubkey }}</span>
+                      <span v-if="candidate?.pubkey">{{
+                        candidate?.pubkey
+                      }}</span>
                       <span v-else>–</span>
                     </dd>
                   </div>
