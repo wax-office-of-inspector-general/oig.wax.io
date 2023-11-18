@@ -332,6 +332,7 @@ const resources = [
     >
       <PopoverPanel
         focus
+        v-slot="{ close }"
         class="absolute inset-x-0 top-0 z-9 origin-top-right transform p-2 transition md:hidden"
       >
         <div
@@ -340,12 +341,20 @@ const resources = [
           <div class="px-5 pt-5 pb-6 sm:pb-8">
             <div class="flex items-center justify-between">
               <div class="flex flex-row items-center">
-                <img
-                  class="h-10 w-10 flex-1"
-                  src="@/assets/images/oig-logo.png"
-                  alt="WAX OIG Logo"
-                />
-                <h1 class="text-md font-serif font-bold ml-4">WAX OIG</h1>
+                <router-link
+                  :to="{ name: 'home' }"
+                  :onClick="close"
+                  class="flex items-center"
+                  tag="a"
+                >
+                  <img
+                    class="h-10 w-10 flex-1"
+                    src="@/assets/images/oig-logo.png"
+                    alt="WAX OIG Logo"
+                  />
+
+                  <h1 class="text-md font-serif font-bold ml-4">WAX OIG</h1>
+                </router-link>
               </div>
               <div class="-mr-2">
                 <PopoverButton
@@ -363,6 +372,7 @@ const resources = [
                     v-for="item in solutions"
                     :key="item.name"
                     :to="item.to"
+                    :onClick="close"
                     class="relative -m-3 flex items-center rounded-lg p-3"
                   >
                     <span
