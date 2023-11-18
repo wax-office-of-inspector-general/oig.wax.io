@@ -1,6 +1,7 @@
 <script setup>
-const CalendarUrl =
-  'https://calendar.google.com/calendar/embed?src=wax.oig%40gmail.com&ctz=Europe%2FAmsterdam';
+import { VITE_OIG_CALENDAR_EMBED } from '@/constants.js';
+
+const CalendarUrl = VITE_OIG_CALENDAR_EMBED || '';
 </script>
 <template>
   <div class="p-5 bg-white drop-shadow rounded-md">
