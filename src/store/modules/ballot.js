@@ -71,13 +71,14 @@ const actions = {
       state.candidates.forEach((candidate) => {
         votingBallots.forEach((votes) => {
           if (votes.key === candidate.owner) {
-            candidatesWithVotes.push({ ...candidate, votes: votes.value });
+            candidatesWithVotes.push({
+              ...candidate,
+              votes: parseFloat(votes.value.split(' ')[0]).toFixed(2) + ' VOTE'
+            });
           }
-        })
-      })
+        });
+      });
 
-      console.log(candidatesWithVotes);
-      
       commit('pushCandidates', candidatesWithVotes);
     } catch (err) {
       console.log(err);
@@ -105,10 +106,7 @@ const actions = {
       console.log(err);
     }
   },
-  async nominate(
-    { dispatch },
-    { nominee, success = () => {}, error = () => {} }
-  ) {
+  async nominate({ dispatch }, { nominee, success = () => {} }) {
     const session = useSession();
 
     if (!session.value) {
@@ -133,10 +131,7 @@ const actions = {
 
     setTimeout(() => dispatch('fetchNominees'), TIMEOUT_SECONDS);
   },
-  async proclaim(
-    { dispatch },
-    { decision, success = () => {}, error = () => {} }
-  ) {
+  async proclaim({ dispatch }, { decision, success = () => {} }) {
     const session = useSession();
 
     if (!session.value) {
@@ -159,7 +154,7 @@ const actions = {
       dispatch('fetchNominees');
     }, TIMEOUT_SECONDS);
   },
-  async nominf({ dispatch }, { data, success = () => {}, error = () => {} }) {
+  async nominf({ dispatch }, { data, success = () => {} }) {
     const session = useSession();
 
     if (!session.value) {
@@ -229,7 +224,7 @@ const actions = {
       dispatch('fetchNominees');
     }, TIMEOUT_SECONDS);
   },
-  async regvoter({ commit }) {
+  async regvoter() {
     const session = useSession();
 
     if (!session.value) {
@@ -244,7 +239,7 @@ const actions = {
       })
     ]);
   },
-  async sync({ commit }) {
+  async sync() {
     const session = useSession();
 
     if (!session.value) {
@@ -259,7 +254,7 @@ const actions = {
       })
     ]);
   },
-  async updtstate({ commit }) {
+  async updtstate() {
     const session = useSession();
 
     if (!session.value) {
@@ -273,7 +268,7 @@ const actions = {
       })
     ]);
   },
-  async castvote({ commit, state }, payload) {
+  async castvote({ state }, candidate) {
     const session = useSession();
 
     if (!session.value) {
@@ -286,14 +281,11 @@ const actions = {
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         ballot: state.ballots[0].ballot,
-        candidateAccount: payload?.owner
+        candidateAccount: candidate?.owner
       })
     ]);
   },
-  async vote(
-    { commit, dispatch, state },
-    payload
-  ) {
+  async vote({ dispatch, state }, { candidate, success = () => {} }) {
     const session = useSession();
 
     if (!session.value) {
@@ -317,9 +309,15 @@ const actions = {
         permissionLevel: session.value.permissionLevel,
         actor: session.value.actor,
         ballot: state.ballots[0].ballot,
-        candidateAccount: payload?.owner
+        candidateAccount: candidate?.owner
       })
     ]);
+
+    success();
+
+    setTimeout(() => {
+      dispatch('fetchVotingBallots');
+    }, TIMEOUT_SECONDS);
   }
 };
 

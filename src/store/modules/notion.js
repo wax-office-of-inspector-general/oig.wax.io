@@ -21,7 +21,7 @@ const getters = {
 
 // actions
 const actions = {
-  fetchGuidelines({ commit }) {
+  fetchGuidelines() {
     /*
     const databaseId = 'aec8e648244c4b42a19d172f9fe9f1aa';
     const response = notion.databases.retrieve({ database_id: databaseId });
@@ -31,6 +31,7 @@ const actions = {
     (async () => {
       const pageId = '0e51defdf10641748a253ccc7f5146b1';
       const response = await notion.pages.retrieve({ page_id: pageId });
+      console.debug(response);
     })();
   }
 };

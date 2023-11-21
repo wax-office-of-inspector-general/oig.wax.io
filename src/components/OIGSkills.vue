@@ -7,7 +7,7 @@
           <h2
             class="mt-2 text-2xl font-bold tracking-tight text-primary sm:text-4xl"
           >
-            Job skills 
+            Job skills
           </h2>
           <div
             class="mt-8 grid max-w-xl grid-cols-1 gap-8 gap-y-12 text-base leading-7 lg:max-w-none lg:grid-cols-2"
