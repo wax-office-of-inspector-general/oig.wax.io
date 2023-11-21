@@ -4,6 +4,7 @@ import { notify } from '@kyvg/vue3-notification';
 import useBallots from '@/composables/useBallots';
 import useCandidates from '@/composables/useCandidates';
 import useNominees from '@/composables/useNominees';
+import useVotingBallots from '@/composables/useVotingBallots';
 import transferToOigAction from '@/chainActions/transferToOigAction';
 import nominateAction from '@/chainActions/nominateAction';
 import proclaimAction from '@/chainActions/proclaimAction';
@@ -59,11 +60,38 @@ const actions = {
       console.log(err);
     }
   },
-  async fetchCandidates({ commit }) {
+  async fetchVotingBallots({ commit, state }) {
+    try {
+      const { rows } = await useVotingBallots(state.ballots[0].ballot);
+
+      const votingBallots = rows[0].options;
+
+      let candidatesWithVotes = [];
+
+      state.candidates.forEach((candidate) => {
+        votingBallots.forEach((votes) => {
+          if (votes.key === candidate.owner) {
+            candidatesWithVotes.push({ ...candidate, votes: votes.value });
+          }
+        })
+      })
+
+      console.log(candidatesWithVotes);
+      
+      commit('pushCandidates', candidatesWithVotes);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  async fetchCandidates({ commit, dispatch, getters }) {
     try {
       const { rows } = await useCandidates();
 
       commit('pushCandidates', rows);
+
+      if (getters.isVotingOpen) {
+        dispatch('fetchVotingBallots');
+      }
     } catch (err) {
       console.log(err);
     }

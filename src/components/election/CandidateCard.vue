@@ -20,6 +20,8 @@ const isVotingOpen = computed(
   () => store.getters['ballot/isVotingOpen']
 );
 
+const votingBallots = computed(() => store.state.ballot.votingBallots);
+
 const router = useRouter();
 const route = useRoute();
 
@@ -79,15 +81,15 @@ const vote = () => store.dispatch('ballot/vote', props.candidate);
       <p class="text-sm text-gray-500">
         {{ props.candidate.owner }}
       </p>
-      <!-- <dl v-if="isVotingOpen" class="mt-1 flex flex-grow flex-col justify-between">
+      <dl v-if="isVotingOpen" class="mt-1 flex flex-grow flex-col justify-between">
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">
           <span
             class="inline-flex items-center rounded-full bg-green-50 px-4 py-2 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
-            >123123 VOTE</span
+            >{{ props.candidate.votes }}</span
           >
         </dd>
-      </dl> -->
+      </dl>
     </div>
     <div>
       <div class="-mt-px flex divide-x border-t border-t-gray-200">
