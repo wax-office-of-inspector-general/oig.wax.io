@@ -4,8 +4,7 @@ import { shallowRef, defineAsyncComponent } from 'vue';
 import SimpleHero from '../components/hero/SimpleHero.vue';
 
 const headline = 'About this site';
-const subline =
-  'Safe and Sound, no tracking and no user footprints';
+const subline = 'Safe and Sound, no tracking and no user footprints';
 
 const tabs = shallowRef({
   'Privacy Policy': defineAsyncComponent(() =>

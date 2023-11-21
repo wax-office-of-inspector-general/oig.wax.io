@@ -56,7 +56,7 @@ import {
   ChatBubbleLeftRightIcon,
   DocumentTextIcon,
   ShieldCheckIcon,
-  TrophyIcon,
+  TrophyIcon
 } from '@heroicons/vue/24/outline';
 
 const actions = [

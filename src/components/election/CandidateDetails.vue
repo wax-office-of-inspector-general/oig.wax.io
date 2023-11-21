@@ -24,9 +24,7 @@ const candidate = computed(
     )[0] ?? null
 );
 
-const isVotingOpen = computed(
-  () => store.getters['ballot/isVotingOpen']
-);
+const isVotingOpen = computed(() => store.getters['ballot/isVotingOpen']);
 
 const session = useSession();
 
@@ -48,7 +46,13 @@ function confirmVoting() {
   vote();
 }
 
-const vote = () => store.dispatch('ballot/vote', candidate.value);
+const vote = () =>
+  store.dispatch('ballot/vote', {
+    candidate: candidate.value,
+    success: () => {
+      isVotingConfirmationModalOpen.value = false;
+    }
+  });
 </script>
 
 <template>
@@ -178,7 +182,9 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     <dd
                       class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                     >
-                      <span v-if="candidate?.oig_prefix">{{ candidate?.oig_prefix }}</span>
+                      <span v-if="candidate?.oig_prefix">{{
+                        candidate?.oig_prefix
+                      }}</span>
                       <span v-else>–</span>
                     </dd>
                   </div>
@@ -192,7 +198,9 @@ const vote = () => store.dispatch('ballot/vote', candidate.value);
                     <dd
                       class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                     >
-                      <span v-if="candidate?.pubkey">{{ candidate?.pubkey }}</span>
+                      <span v-if="candidate?.pubkey">{{
+                        candidate?.pubkey
+                      }}</span>
                       <span v-else>–</span>
                     </dd>
                   </div>
