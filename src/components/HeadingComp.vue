@@ -345,7 +345,6 @@ const resources = [
                   :to="{ name: 'home' }"
                   :onClick="close"
                   class="flex items-center"
-                  tag="a"
                 >
                   <img
                     class="h-10 w-10 flex-1"
