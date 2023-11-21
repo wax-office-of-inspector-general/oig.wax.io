@@ -94,7 +94,7 @@ const nominate = () =>
   });
 
 onMounted(() => {
-  if (!nominees.value.length) store.dispatch('ballot/fetchNominees');
+  store.dispatch('ballot/fetchNominees');
 });
 </script>
 <template>
@@ -114,7 +114,6 @@ onMounted(() => {
     </div>
     <div class="p-6">
       <ul
-        v-if="nominees.length"
         role="list"
         class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
       >
