@@ -30,9 +30,11 @@ const session = useSession();
 
 const router = useRouter();
 
-const closeModal = () => router.push('/election');
+const dialogOpen = ref(true);
 
 const isVotingConfirmationModalOpen = ref(false);
+
+const closeModal = () => router.push('/election');
 
 function openVotingConfirmationModal() {
   isVotingConfirmationModalOpen.value = true;
@@ -57,7 +59,12 @@ const vote = () =>
 
 <template>
   <TransitionRoot appear :show="true" as="template">
-    <Dialog as="div" class="relative z-10">
+    <Dialog
+      as="div"
+      :open="dialogOpen"
+      @close="closeModal"
+      class="relative z-10"
+    >
       <TransitionChild
         as="template"
         enter="duration-300 ease-out"
@@ -132,7 +139,7 @@ const vote = () =>
                     >
                       <a
                         v-if="candidate?.owner"
-                        href="`https://waxblock.io/account/{candidate?.owner}`"
+                        :href="`https://waxblock.io/account/${candidate.owner}`"
                         >{{ candidate?.owner }}</a
                       >
                     </dd>
@@ -148,7 +155,7 @@ const vote = () =>
                     >
                       <a
                         v-if="candidate?.telegram"
-                        href="`https://t.me/{candidate?.telegram}`"
+                        :href="`https://t.me/${candidate.telegram}`"
                         >{{ candidate?.telegram }}</a
                       >
                       <span v-else>–</span>
@@ -165,7 +172,7 @@ const vote = () =>
                     >
                       <a
                         v-if="candidate?.twitter"
-                        href="`https://twitter.com/{candidate?.twitter}`"
+                        :href="`https://twitter.com/${candidate.twitter}`"
                       >
                         {{ candidate?.twitter }}
                       </a>
