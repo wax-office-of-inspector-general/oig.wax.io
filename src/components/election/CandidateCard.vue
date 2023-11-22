@@ -6,7 +6,10 @@ import ConfirmationModal from '../modal/ConfirmationModal.vue';
 import { useSession } from '../../composables/useSession';
 import { XCircleIcon } from '@heroicons/vue/20/solid';
 
-import { DocumentMagnifyingGlassIcon, StarIcon } from '@heroicons/vue/24/outline';
+import {
+  DocumentMagnifyingGlassIcon,
+  StarIcon
+} from '@heroicons/vue/24/outline';
 
 const props = defineProps({
   candidate: Object
@@ -16,9 +19,7 @@ const store = useStore();
 
 const session = useSession();
 
-const isVotingOpen = computed(
-  () => store.getters['ballot/isVotingOpen']
-);
+const isVotingOpen = computed(() => store.getters['ballot/isVotingOpen']);
 
 const router = useRouter();
 const route = useRoute();
@@ -62,7 +63,13 @@ function confirmVoting() {
   vote();
 }
 
-const vote = () => store.dispatch('ballot/vote', props.candidate);
+const vote = () =>
+  store.dispatch('ballot/vote', {
+    candidate: props.candidate,
+    success: () => {
+      isVotingConfirmationModalOpen.value = false;
+    }
+  });
 </script>
 
 <template>
@@ -79,15 +86,19 @@ const vote = () => store.dispatch('ballot/vote', props.candidate);
       <p class="text-sm text-gray-500">
         {{ props.candidate.owner }}
       </p>
-      <!-- <dl v-if="isVotingOpen" class="mt-1 flex flex-grow flex-col justify-between">
+      <dl
+        v-if="isVotingOpen"
+        class="mt-1 flex flex-grow flex-col justify-between"
+      >
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">
           <span
             class="inline-flex items-center rounded-full bg-green-50 px-4 py-2 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
-            >123123 VOTE</span
           >
+            {{ props?.candidate?.votes }}
+          </span>
         </dd>
-      </dl> -->
+      </dl>
     </div>
     <div>
       <div class="-mt-px flex divide-x border-t border-t-gray-200">

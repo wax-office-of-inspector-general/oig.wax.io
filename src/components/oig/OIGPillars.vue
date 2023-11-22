@@ -15,7 +15,7 @@ const pillars = [
         :key="index"
         class="prose px-8 py-6 md:py-4"
       >
-        <h2 class="mb-3">{{ index+1 }}</h2>
+        <h2 class="mb-3">{{ index + 1 }}</h2>
         <p>{{ pillar }}</p>
       </div>
     </div>

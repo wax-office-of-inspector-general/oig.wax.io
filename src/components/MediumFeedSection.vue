@@ -2,7 +2,6 @@
 import { useStore } from 'vuex';
 import { onMounted, computed } from 'vue';
 import ButtonText from '@/components/button/ButtonText.vue';
-import ButtonPrimary from '@/components/button/ButtonPrimary.vue';
 import LoadingSpinner from './LoadingSpinner.vue';
 
 const store = useStore();
@@ -38,7 +37,9 @@ const mediumLink = 'https://waxoig.medium.com/';
           :key="article.guid"
           class="relative flex group"
         >
-          <div class="bg-white drop-shadow-sm hover:drop-shadow-md px-5 py-6 rounded-md relative z-20">
+          <div
+            class="bg-white drop-shadow-sm hover:drop-shadow-md px-5 py-6 rounded-md relative z-20"
+          >
             <div class="relative w-full hidden z-20">
               <img
                 :src="article.thumbnail"
@@ -79,7 +80,6 @@ const mediumLink = 'https://waxoig.medium.com/';
       </div>
     </div>
     <div class="mx-auto max-w-xl mt-10 text-center">
-
       <a
         :href="mediumLink"
         target="_blank"
@@ -87,7 +87,7 @@ const mediumLink = 'https://waxoig.medium.com/';
       >
         View all Articles
         <span class="ml-1" aria-hidden="true"> &rarr;</span>
-    </a>
+      </a>
     </div>
   </div>
 </template>

@@ -30,7 +30,11 @@ const session = useSession();
 
 const router = useRouter();
 
+const dialogOpen = ref(true);
+
 const isVotingConfirmationModalOpen = ref(false);
+
+const closeModal = () => router.push('/election');
 
 function openVotingConfirmationModal() {
   isVotingConfirmationModalOpen.value = true;
@@ -44,10 +48,13 @@ function confirmVoting() {
   vote();
 }
 
-const vote = () => store.dispatch('ballot/vote', candidate.value);
-
-const dialogOpen = ref(true);
-const closeModal = () => router.push('/election');
+const vote = () =>
+  store.dispatch('ballot/vote', {
+    candidate: candidate.value,
+    success: () => {
+      isVotingConfirmationModalOpen.value = false;
+    }
+  });
 </script>
 
 <template>
