@@ -57,7 +57,7 @@ onMounted(() => {
       >
         View all Articles
         <span aria-hidden="true"> &rarr;</span>
-    </a>
+      </a>
     </div>
   </div>
 </template>

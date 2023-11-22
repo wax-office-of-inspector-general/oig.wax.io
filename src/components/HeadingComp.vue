@@ -91,7 +91,7 @@ const resources = [
         class="z-8 flex items-center justify-between py-10 sm:py-12 md:justify-start md:space-x-10"
       >
         <div>
-          <router-link :to="{ name: 'home' }" class="flex items-center" tag="a">
+          <router-link :to="{ name: 'home' }" class="flex items-center">
             <img
               class="h-8 w-auto sm:h-10"
               src="@/assets/images/oig-logo.png"
@@ -345,7 +345,6 @@ const resources = [
                   :to="{ name: 'home' }"
                   :onClick="close"
                   class="flex items-center"
-                  tag="a"
                 >
                   <img
                     class="h-10 w-10 flex-1"

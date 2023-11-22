@@ -37,7 +37,9 @@ onMounted(() => {
           Latest Reviews
         </h2>
         <p class="mt-4 text-sm">
-          All Guild Reviews since January 2023 are listed below. That's when the processing of guilds scores has moved on-chain. For previous review please visit the respective guild archives on notion.
+          All Guild Reviews since January 2023 are listed below. That's when the
+          processing of guilds scores has moved on-chain. For previous review
+          please visit the respective guild archives on notion.
         </p>
       </div>
       <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">

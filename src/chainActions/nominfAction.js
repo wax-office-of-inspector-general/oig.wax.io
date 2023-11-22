@@ -9,7 +9,7 @@ export default ({
   telegram,
   twitter,
   oig_prefix,
-  pubkey,
+  pubkey
 }) => ({
   account: OIG_ACCOUNT,
   name: 'nominf',
