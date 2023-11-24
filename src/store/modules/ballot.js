@@ -48,7 +48,7 @@ const notifyNoSessionError = () => {
 
 // actions
 const actions = {
-  async fetchBallots({ commit }, forcedState) {
+  async fetchBallots({ commit, dispatch }, forcedState) {
     try {
       const { rows } = await useBallots();
 
@@ -59,6 +59,8 @@ const actions = {
     } catch (err) {
       console.log(err);
     }
+
+    dispatch('fetchCandidates');
   },
   async fetchVotingBallots({ commit, state }) {
     try {
