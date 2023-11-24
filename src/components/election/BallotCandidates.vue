@@ -9,6 +9,8 @@ const candidates = computed(() => store.state.ballot.candidates);
 
 onMounted(() => {
   if (!candidates.value.length) store.dispatch('ballot/fetchCandidates');
+
+  setTimeout(() => store.dispatch('ballot/fetchVotingBallots'), 3000);
 });
 </script>
 <template>
