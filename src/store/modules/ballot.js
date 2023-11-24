@@ -72,10 +72,14 @@ const actions = {
 
       state.candidates.forEach((candidate) => {
         votingBallots.forEach((votes) => {
+          let voteToCurrency = parseFloat(votes.value.split(' ')[0])
+            .toFixed(2)
+            .replace(/\d(?=(\d{3})+\.)/g, '$&,')
+
           if (votes.key === candidate.owner) {
             candidatesWithVotes.push({
               ...candidate,
-              votes: parseFloat(votes.value.split(' ')[0]).toFixed(2) + ' VOTE'
+              votes: voteToCurrency + ' WAX'
             });
           }
         });
