@@ -1,17 +1,11 @@
 <script setup>
 import CandidateCard from './CandidateCard.vue';
 import { useStore } from 'vuex';
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 
 const store = useStore();
 
 const candidates = computed(() => store.state.ballot.candidates);
-
-onMounted(() => {
-  if (!candidates.value.length) store.dispatch('ballot/fetchCandidates');
-
-  setTimeout(() => store.dispatch('ballot/fetchVotingBallots'), 3000);
-});
 </script>
 <template>
   <div
