@@ -32,7 +32,7 @@ const candidates = computed(() => store.state.ballot.candidates);
         <li
           v-for="candidate in candidates"
           :key="candidate.name"
-          class="col-span-1 flex flex-col divide-y divide-gray-200 rounded-lg bg-secondary-50 text-center shadow"
+          class="col-span-1 flex flex-col divide-y divide-gray-200"
         >
           <CandidateCard :candidate="candidate" />
         </li>
