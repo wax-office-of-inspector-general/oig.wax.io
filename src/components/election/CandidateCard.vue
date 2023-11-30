@@ -78,7 +78,7 @@ const vote = () =>
     class="rounded-lg text-center shadow bg-gray-50"
     :class="{
       '!bg-secondary-50': isVotingOpen,
-      '!bg-primary-50': isVotingClosed
+      '!bg-green-50 shadow-lg': isVotingClosed
     }"
   >
     <div class="flex flex-1 flex-col p-8">
