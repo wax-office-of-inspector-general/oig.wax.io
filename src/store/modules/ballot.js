@@ -27,6 +27,9 @@ const getters = {
   candidates: (state) => {
     return state.candidates;
   },
+  candidatesSorted: (state) => {
+    return state.candidates.sort((a, b) => b.votesRaw - a.votesRaw);
+  },
   ballots: (state) => {
     return state.ballots;
   },
@@ -77,11 +80,12 @@ const actions = {
         votingBallots.forEach((votes) => {
           let voteToCurrency = parseFloat(votes.value.split(' ')[0])
             .toFixed(2)
-            .replace(/\d(?=(\d{3})+\.)/g, '$&,')
+            .replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
           if (votes.key === candidate.owner) {
             candidatesWithVotes.push({
               ...candidate,
+              votesRaw: parseInt(votes.value.split(' ')[0]),
               votes: voteToCurrency + ' WAX'
             });
           }
