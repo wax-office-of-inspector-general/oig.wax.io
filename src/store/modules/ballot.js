@@ -35,6 +35,9 @@ const getters = {
   },
   isVotingOpen: (state) => {
     return state.ballots[0]?.state === 4 ?? false;
+  },
+  isVotingClosed: (state) => {
+    return state.ballots[0]?.state === 5 ?? false;
   }
 };
 
