@@ -103,7 +103,7 @@ const actions = {
 
       commit('pushCandidates', rows);
 
-      if (getters.isVotingOpen) {
+      if (getters.isVotingOpen || getters.isVotingClosed) {
         dispatch('fetchVotingBallots');
       }
     } catch (err) {
