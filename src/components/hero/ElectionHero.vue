@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 import CandidateCard from '@/components/election/CandidateCard.vue';
 
@@ -14,6 +14,8 @@ const isVotingClosed = computed(() => store.getters['ballot/isVotingClosed']);
 const candidatesSorted = computed(
   () => store.getters['ballot/candidatesSorted']
 );
+
+const ballot = computed(() => store.state.ballot.ballots);
 
 const content = {
   isNominationOpen: {
@@ -30,6 +32,11 @@ const content = {
     subline: 'The election has concluded. A new IG has been elected - Exciting times ahead!'
   }
 };
+
+onMounted(() => {
+  if (!ballot.value.length) store.dispatch('ballot/fetchBallots');
+});
+
 </script>
 
 <template>

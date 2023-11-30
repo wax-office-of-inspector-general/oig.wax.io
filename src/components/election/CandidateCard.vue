@@ -78,7 +78,7 @@ const vote = () =>
     class="rounded-lg text-center shadow bg-gray-50"
     :class="{
       '!bg-secondary-50': isVotingOpen,
-      '!bg-green-50 shadow-lg': isVotingClosed
+      '!bg-white shadow-lg': isVotingClosed
     }"
   >
     <div class="flex flex-1 flex-col p-8">
@@ -94,7 +94,7 @@ const vote = () =>
         {{ props.candidate.owner }}
       </p>
       <dl
-        v-if="isVotingOpen"
+        v-if="isVotingOpen || isVotingClosed"
         class="mt-1 flex flex-grow flex-col justify-between"
       >
         <dt class="sr-only">Role</dt>
