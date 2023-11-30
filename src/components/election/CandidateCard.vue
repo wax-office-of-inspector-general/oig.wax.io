@@ -73,7 +73,13 @@ const vote = () =>
 </script>
 
 <template>
-  <div class="">
+  <div
+    class="rounded-lg text-center shadow bg-gray-50"
+    :class="{
+      '!bg-secondary-50': isVotingOpen,
+      '!bg-primary-50': isVotingClosed
+    }"
+  >
     <div class="flex flex-1 flex-col p-8">
       <img
         class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
