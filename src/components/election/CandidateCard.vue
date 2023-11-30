@@ -20,6 +20,7 @@ const store = useStore();
 const session = useSession();
 
 const isVotingOpen = computed(() => store.getters['ballot/isVotingOpen']);
+const isVotingClosed = computed(() => store.getters['ballot/isVotingClosed']);
 
 const router = useRouter();
 const route = useRoute();

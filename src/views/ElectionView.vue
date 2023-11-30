@@ -1,12 +1,8 @@
 <script setup>
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue';
-import SimpleHero from '../components/hero/SimpleHero.vue';
+import ElectionHero from '../components/hero/ElectionHero.vue';
 import { shallowRef, defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
-
-const headline = 'Cast your Vote!';
-const subline =
-  'Cast your vote and get engaged in blockchain governance. Have your voice heard in shaping the future of WAX.';
 
 const tabs = shallowRef({
   Election: defineAsyncComponent(() =>
@@ -19,7 +15,7 @@ const tabs = shallowRef({
 </script>
 
 <template>
-  <SimpleHero :title="headline" :desc="subline" />
+  <ElectionHero />
 
   <div class="container pt-12 pb-16">
     <TabGroup>
