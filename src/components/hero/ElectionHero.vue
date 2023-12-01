@@ -29,20 +29,22 @@ const content = {
   },
   isVotingClosed: {
     headline: 'Winner Announced!',
-    subline: 'The election has concluded. A new IG has been elected - Exciting times ahead!'
+    subline:
+      'The election has concluded. A new IG has been elected - Exciting times ahead!'
   }
 };
 
 onMounted(() => {
   if (!ballot.value.length) store.dispatch('ballot/fetchBallots');
 });
-
 </script>
 
 <template>
   <div class="container">
-    <div class="container grid grid-cols-5 gap-12 bg-primary-50 py-12 sm:py-16">
-      <div class="col-span-3">
+    <div
+      class="container grid grid-cols-1 md:grid-cols-5 gap-12 bg-primary-50 py-12 sm:py-16"
+    >
+      <div class="col-span-5 md:col-span-3 flex flex-col justify-center">
         <template v-if="isNominationOpen">
           <h2 class="text-2xl font-bold tracking-tight text-primary">
             {{ content.isNominationOpen.headline }}
@@ -71,10 +73,10 @@ onMounted(() => {
           ></p>
         </template>
       </div>
-      <div v-if="isVotingClosed" class="col-span-2">
+      <div v-if="isVotingClosed" class="col-span-5 md:col-span-2">
         <template v-if="isVotingClosed && candidatesSorted.length">
           <CandidateCard
-            class="transform rotate-[5deg] max-w-[250px]"
+            class="transform rotate-[5deg] translate-x-6 md:translate-x-0 max-w-[250px]"
             :candidate="candidatesSorted[0]"
           />
         </template>
