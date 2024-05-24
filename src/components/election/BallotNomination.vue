@@ -228,7 +228,7 @@ onMounted(() => {
                   </h3>
                   <div class="mt-2 text-sm max-w-lg text-gray-500">
                     <p>
-                      We charge 100.0000 WAX for every nomination to prevent
+                      We charge 100 WAX for every nomination to prevent
                       spam. The funds won't be returned after the election.
                     </p>
                   </div>
