@@ -76,10 +76,10 @@ const experts = [
 const resources = [
   {
     name: 'Community',
-    href: 'https://www.wax.io/community',
+    href: 'https://www.wax.io/',
     icon: UserGroupIcon
   },
-  { name: 'Wallets', href: 'https://www.wax.io/get-a-wallet', icon: WalletIcon }
+  { name: 'Wallets', href: 'https://www.mycloudwallet.com/', icon: WalletIcon }
 ];
 </script>
 
