@@ -34,13 +34,13 @@ const getters = {
     return state.ballots;
   },
   isNominationOpen: (state) => {
-    return state.ballots[0]?.state === 2 ?? false;
+    return state.ballots[0]?.state === 2;
   },
   isVotingOpen: (state) => {
-    return state.ballots[0]?.state === 4 ?? false;
+    return state.ballots[0]?.state === 4;
   },
   isVotingClosed: (state) => {
-    return state.ballots[0]?.state === 5 ?? false;
+    return state.ballots[0]?.state === 5;
   }
 };
 
@@ -349,8 +349,6 @@ const mutations = {
     state.ballots[0].state = forcedState;
   }
 };
-
-window.nominate = actions.nominate;
 
 export default {
   namespaced: true,

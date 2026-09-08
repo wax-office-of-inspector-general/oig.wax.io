@@ -1,7 +1,7 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import moment from 'moment';
+import dayjs from '@/lib/dayjs';
 import { ChevronRightIcon } from '@heroicons/vue/24/outline';
 import EvaluationActionList from '@/components/evaluation/EvaluationActionList.vue';
 
@@ -46,7 +46,7 @@ onMounted(() => {
         <a
           target="_blank"
           href="https://www.notion.so/wax-oig/Guild-Ratings-0e51defdf10641748a253ccc7f5146b1"
-          class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+          class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-xs hover:bg-primary-700 hover:text-white focus-visible:outline-hidden outline-hidden"
         >
           Full Reviews
           <span class="ml-1" aria-hidden="true"> &rarr;</span>
@@ -66,7 +66,7 @@ onMounted(() => {
               <p
                 class="text-sm font-serif tracking-5 font-bold leading-6 text-gray-900"
               >
-                {{ moment(evaluation.timestamp).startOf('day').fromNow() }}
+                {{ dayjs(evaluation.timestamp).startOf('day').fromNow() }}
               </p>
               <p class="mt-2 flex text-xs leading-5 text-gray-500">
                 <span

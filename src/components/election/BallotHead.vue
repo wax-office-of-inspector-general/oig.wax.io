@@ -47,7 +47,7 @@ const currentPhase = (ballot) => {
 <template>
   <div
     v-if="currentBallot"
-    class="mt-8 md:mt-12 rounded-md drop-shadow bg-secondary-50"
+    class="mt-8 md:mt-12 rounded-md drop-shadow-sm bg-secondary-50"
   >
     <div
       class="p-4 md:p-5 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x"

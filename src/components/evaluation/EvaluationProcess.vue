@@ -66,7 +66,7 @@ import { CheckCircleIcon } from '@heroicons/vue/24/outline';
     >
       <div>
         <img
-          class="w-full rounded-md drop-shadow-sm md:mt-20 border border-primary-100"
+          class="w-full rounded-md drop-shadow-xs md:mt-20 border border-primary-100"
           src="@/assets/images/guild-reqs.png"
         />
         <p class="text-xs italic text-center mt-2">
@@ -215,7 +215,7 @@ import { CheckCircleIcon } from '@heroicons/vue/24/outline';
       </div>
       <div>
         <img
-          class="w-full rounded-md drop-shadow-sm md:mt-20 border border-primary-100"
+          class="w-full rounded-md drop-shadow-xs md:mt-20 border border-primary-100"
           src="@/assets/images/guild-table.png"
         />
         <p class="text-xs italic text-center mt-2">

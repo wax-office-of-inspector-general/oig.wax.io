@@ -74,7 +74,7 @@ const vote = () =>
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-black bg-opacity-25" />
+        <div class="fixed inset-0 bg-black/25" />
       </TransitionChild>
 
       <div class="fixed inset-0 overflow-y-auto">
@@ -110,7 +110,7 @@ const vote = () =>
                       class="mt-1 text-sm leading-6 text-font sm:col-span-2 sm:mt-0"
                     >
                       <img
-                        class="h-32 w-32 object-cover flex-shrink-0 rounded-full"
+                        class="h-32 w-32 object-cover shrink-0 rounded-full"
                         :src="candidate?.picture"
                         alt=""
                       />
@@ -231,7 +231,7 @@ const vote = () =>
               <div class="mt-6 flex justify-end gap-4">
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none"
+                  class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-hidden"
                   @click="closeModal"
                 >
                   Close
@@ -239,7 +239,7 @@ const vote = () =>
                 <button
                   v-if="isVotingOpen"
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
+                  class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-hidden"
                   @click="openVotingConfirmationModal"
                 >
                   Vote

@@ -30,10 +30,7 @@ const electionProcess = [
                 Inspector General (OIG) is conducted through a transparent and
                 structured process. This process unfolds in the following steps:
               </p>
-              <ButtonText
-                href="/#/election"
-                text="When is the next election?"
-              />
+              <ButtonText href="#/election" text="When is the next election?" />
             </div>
             <div>
               <ul role="list" class="space-y-8 text-gray-600">

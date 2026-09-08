@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from '@/lib/dayjs';
 
 export default {
   currencyUSD(value) {
@@ -6,7 +6,6 @@ export default {
   },
 
   localeDate(value) {
-    let m = moment(value);
-    return m.format('LLL');
+    return dayjs(value).format('LLL');
   }
 };

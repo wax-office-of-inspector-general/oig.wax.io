@@ -7,11 +7,11 @@ const headline = 'About this site';
 const subline = 'Safe and Sound, no tracking and no user footprints';
 
 const tabs = shallowRef({
-  'Privacy Policy': defineAsyncComponent(() =>
-    import('../components/legal/PrivacyPolicy.vue')
+  'Privacy Policy': defineAsyncComponent(
+    () => import('../components/legal/PrivacyPolicy.vue')
   ),
-  'Terms & Service': defineAsyncComponent(() =>
-    import('../components/legal/TermsService.vue')
+  'Terms & Service': defineAsyncComponent(
+    () => import('../components/legal/TermsService.vue')
   )
 });
 </script>
@@ -30,7 +30,7 @@ const tabs = shallowRef({
           <button
             :class="[
               'px-12 py-2.5 text-sm font-serif leading-5',
-              'focus:outline-none outline-none',
+              'focus:outline-hidden outline-hidden',
               selected
                 ? 'text-primary font-bold border-b-2 border-primary'
                 : 'text-primary hover:font-bold'
@@ -45,7 +45,7 @@ const tabs = shallowRef({
         <TabPanel
           v-for="(tab, idx) in Object.values(tabs)"
           :key="idx"
-          :class="['py-12', 'focus:outline-none outline-none']"
+          :class="['py-12', 'focus:outline-hidden outline-hidden']"
         >
           <component :is="tab" />
         </TabPanel>

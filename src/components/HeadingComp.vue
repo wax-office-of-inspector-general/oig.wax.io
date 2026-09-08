@@ -102,7 +102,7 @@ const resources = [
         </div>
         <div class="-my-2 -mr-2 md:hidden z-9">
           <PopoverButton
-            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none"
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-hidden"
           >
             <span class="sr-only">Open menu</span>
             <Bars3Icon class="h-6 w-6" aria-hidden="true" />
@@ -116,7 +116,7 @@ const resources = [
               <PopoverButton
                 :class="[
                   open ? 'text-primary underline' : 'text-primary',
-                  'group inline-flex hover:underline items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-none'
+                  'group inline-flex hover:underline items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-hidden'
                 ]"
               >
                 <span class="font-serif">Governance</span>
@@ -139,7 +139,7 @@ const resources = [
               >
                 <PopoverPanel
                   v-slot="{ close }"
-                  class="bg-white absolute inset-x-0 top-full z-9 hidden drop-shadow-md rounded-sm transform md:block"
+                  class="bg-white absolute inset-x-0 top-full z-9 hidden drop-shadow-md rounded-xs transform md:block"
                 >
                   <div
                     class="mx-auto grid max-w-7xl gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
@@ -153,7 +153,7 @@ const resources = [
                     >
                       <button>
                         <div class="flex md:h-full lg:flex-col">
-                          <div class="flex-shrink-0">
+                          <div class="shrink-0">
                             <span
                               class="inline-flex h-10 w-10 items-center justify-center rounded-md text-white sm:h-12 sm:w-12"
                             >
@@ -199,7 +199,7 @@ const resources = [
                         >
                           <component
                             :is="item.icon"
-                            class="h-5 w-5 flex-shrink-0 text-font"
+                            class="h-5 w-5 shrink-0 text-font"
                             aria-hidden="true"
                           />
                           <span
@@ -225,7 +225,7 @@ const resources = [
               <PopoverButton
                 :class="[
                   open ? 'text-primary underline' : 'text-primary',
-                  'group inline-flex hover:underline items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-none'
+                  'group inline-flex hover:underline items-center rounded-md text-sm font-medium hover:text-gray-900 focus:outline-hidden'
                 ]"
               >
                 <span class="font-serif"> More </span>
@@ -247,7 +247,7 @@ const resources = [
                 leave-to-class="opacity-0 -translate-y-1"
               >
                 <PopoverPanel
-                  class="bg-white absolute inset-x-0 pt-full top-full z-9 hidden drop-shadow-md rounded-sm transform md:block"
+                  class="bg-white absolute inset-x-0 pt-full top-full z-9 hidden drop-shadow-md rounded-xs transform md:block"
                 >
                   <div
                     class="relative mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2"
@@ -271,7 +271,7 @@ const resources = [
                             >
                               <component
                                 :is="item.icon"
-                                class="h-6 w-6 flex-shrink-0 text-font"
+                                class="h-6 w-6 shrink-0 text-font"
                                 aria-hidden="true"
                               />
                               <span class="ml-4">{{ item.name }}</span>
@@ -295,7 +295,7 @@ const resources = [
                             >
                               <component
                                 :is="item.icon"
-                                class="h-6 w-6 flex-shrink-0 text-font"
+                                class="h-6 w-6 shrink-0 text-font"
                                 aria-hidden="true"
                               />
                               <span class="ml-4">{{ item.name }}</span>
@@ -336,7 +336,7 @@ const resources = [
         class="absolute inset-x-0 top-0 z-9 origin-top-right transform p-2 transition md:hidden"
       >
         <div
-          class="divide-y rounded-lg bg-white drop-shadow-lg ring-1 ring-black ring-opacity-5"
+          class="divide-y rounded-lg bg-white drop-shadow-lg ring-1 ring-black/5"
         >
           <div class="px-5 pt-5 pb-6 sm:pb-8">
             <div class="flex items-center justify-between">
@@ -357,7 +357,7 @@ const resources = [
               </div>
               <div class="-mr-2">
                 <PopoverButton
-                  class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:primary"
+                  class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-hidden focus:ring-2 focus:ring-inset focus:primary"
                 >
                   <span class="sr-only">Close menu</span>
                   <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -379,7 +379,7 @@ const resources = [
                       class="absolute top-3 left-3 h-3 w-3 bg-tertiary rounded-full animate-ping duration-1000 delay-500"
                     ></span>
                     <div
-                      class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-md bg-secondary-50 sm:h-12 sm:w-12"
+                      class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-secondary-50 sm:h-12 sm:w-12"
                     >
                       <component
                         :is="item.icon"
@@ -395,7 +395,7 @@ const resources = [
                 <div class="mt-8 text-sm flex items-center">
                   <component
                     :is="ChatBubbleLeftRightIcon"
-                    class="h-4 w-4 mr-3 flex-shrink-0 text-gray-400"
+                    class="h-4 w-4 mr-3 shrink-0 text-gray-400"
                     aria-hidden="true"
                   />
                   <a

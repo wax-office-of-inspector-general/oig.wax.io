@@ -38,13 +38,13 @@ const mediumLink = 'https://waxoig.medium.com/';
           class="relative flex group"
         >
           <div
-            class="bg-white drop-shadow-sm hover:drop-shadow-md px-5 py-6 rounded-md relative z-20"
+            class="bg-white drop-shadow-xs hover:drop-shadow-md px-5 py-6 rounded-md relative z-20"
           >
             <div class="relative w-full hidden z-20">
               <img
                 :src="article.thumbnail"
                 alt=""
-                class="aspect-[16/9] w-full rounded-lg bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                class="aspect-video w-full rounded-lg bg-gray-100 object-cover sm:aspect-2/1 lg:aspect-3/2"
               />
             </div>
             <div class="relative z-20">
@@ -83,7 +83,7 @@ const mediumLink = 'https://waxoig.medium.com/';
       <a
         :href="mediumLink"
         target="_blank"
-        class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+        class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-xs hover:bg-primary-700 hover:text-white focus-visible:outline-hidden outline-hidden"
       >
         View all Articles
         <span class="ml-1" aria-hidden="true"> &rarr;</span>

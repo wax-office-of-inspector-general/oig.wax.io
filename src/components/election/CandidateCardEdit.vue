@@ -100,7 +100,7 @@ async function submit() {
   <div>
     <button
       @click="openModal"
-      class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
+      class="inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-hidden"
     >
       {{ acceptance ? 'Accept' : 'Edit' }}
     </button>
@@ -116,7 +116,7 @@ async function submit() {
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <div class="fixed inset-0 bg-black bg-opacity-25" />
+          <div class="fixed inset-0 bg-black/25" />
         </TransitionChild>
 
         <div class="fixed inset-0 overflow-y-auto">
@@ -215,7 +215,7 @@ async function submit() {
                           </p>
                           <img
                             v-else-if="!acceptance"
-                            class="mb-6 h-32 w-32 object-cover flex-shrink-0 rounded-full"
+                            class="mb-6 h-32 w-32 object-cover shrink-0 rounded-full"
                             :src="props.candidate.picture"
                             alt=""
                           />
@@ -369,14 +369,14 @@ async function submit() {
                         >
                           <button
                             type="button"
-                            class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none"
+                            class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-hidden"
                             @click="closeModal"
                           >
                             Close
                           </button>
                           <button
                             type="submit"
-                            class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none"
+                            class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-hidden"
                           >
                             {{ acceptance ? 'Accept' : 'Update Details' }}
                           </button>

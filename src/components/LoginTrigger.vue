@@ -12,7 +12,7 @@ const session = useSession();
     <PopoverButton
       :class="[
         session ? 'text-white' : 'text-white',
-        'group inline-flex items-center rounded-md text-sm hover:text-gray-900 focus:outline-none'
+        'group inline-flex items-center rounded-md text-sm hover:text-gray-900 focus:outline-hidden'
       ]"
     >
       <div

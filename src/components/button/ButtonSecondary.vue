@@ -13,7 +13,7 @@ const props = defineProps({
     :target="props.href ? '_blank' : false"
   >
     <button
-      class="inline-block rounded-md border border-tertiary px-3.5 py-2.5 text-sm text-font shadow-sm hover:bg-primary hover:text-white focus-visible:outline-none outline-none"
+      class="inline-block rounded-md border border-tertiary px-3.5 py-2.5 text-sm text-font shadow-xs hover:bg-primary hover:text-white focus-visible:outline-hidden outline-hidden"
       :class="props.cssClass"
     >
       {{ props.text }}
