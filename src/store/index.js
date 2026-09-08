@@ -5,7 +5,6 @@ import medium from './modules/medium';
 import guilds from './modules/guilds';
 import evaluations from './modules/evaluations';
 import proposals from './modules/proposals';
-import notion from './modules/notion';
 
 export default new Vuex.Store({
   modules: {
@@ -14,7 +13,6 @@ export default new Vuex.Store({
     guilds,
     medium,
     evaluations,
-    proposals,
-    notion
+    proposals
   }
 });

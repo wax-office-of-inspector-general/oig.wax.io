@@ -350,8 +350,6 @@ const mutations = {
   }
 };
 
-window.nominate = actions.nominate;
-
 export default {
   namespaced: true,
   state,
