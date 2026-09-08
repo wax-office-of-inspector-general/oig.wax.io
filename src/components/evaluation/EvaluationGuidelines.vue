@@ -57,7 +57,7 @@ import {
       </div>
       <div>
         <img
-          class="w-full rounded-md drop-shadow-sm md:mt-20 border border-primary-100"
+          class="w-full rounded-md drop-shadow-xs md:mt-20 border border-primary-100"
           src="@/assets/images/guild-table.png"
         />
         <p class="text-xs italic text-center mt-2">

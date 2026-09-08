@@ -28,7 +28,7 @@
       </div>
       <div class="mt-8">
         <h3 class="text-base font-bold leading-6 text-gray-900">
-          <a :href="action.href" class="focus:outline-none" target="_blank">
+          <a :href="action.href" class="focus:outline-hidden" target="_blank">
             <!-- Extend touch target to entire panel -->
             <span class="absolute inset-0" aria-hidden="true" />
             {{ action.title }}

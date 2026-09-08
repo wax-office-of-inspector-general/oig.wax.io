@@ -40,7 +40,7 @@ const ballotStates = [
     <nav aria-label="Progress" v-if="currentBallot">
       <ol
         role="list"
-        class="drop-shadow-sm border bg-white border-gray-200 divide-y divide-gray-200 rounded-md md:flex md:divide-y-0"
+        class="drop-shadow-xs border bg-white border-gray-200 divide-y divide-gray-200 rounded-md md:flex md:divide-y-0"
       >
         <li
           v-for="(ballotState, idx) in ballotStates"
@@ -54,7 +54,7 @@ const ballotStates = [
           >
             <span class="flex items-center px-6 py-4 text-sm font-medium">
               <span
-                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary group-hover:bg-indigo-800"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary group-hover:bg-indigo-800"
               >
                 <CheckIcon class="h-6 w-6 text-white" aria-hidden="true" />
               </span>
@@ -70,7 +70,7 @@ const ballotStates = [
             aria-current="step"
           >
             <span
-              class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-primary"
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-primary"
             >
               <span class="text-primary">{{ idx + 1 }}</span>
             </span>
@@ -81,7 +81,7 @@ const ballotStates = [
           <div v-else :href="ballotState.href" class="group flex items-center">
             <span class="flex items-center px-6 py-4 text-sm font-medium">
               <span
-                class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-gray-300 group-hover:border-gray-400"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-300 group-hover:border-gray-400"
               >
                 <span class="text-gray-500 group-hover:text-gray-900">{{
                   idx + 1

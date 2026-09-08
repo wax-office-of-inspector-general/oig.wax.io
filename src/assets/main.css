@@ -1,2 +1,186 @@
-@import './base.css';
+@import 'tailwindcss';
 @import './fonts.css';
+
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+
+@theme {
+  /*
+    The project replaces Tailwind's default font-size scale outright
+    (it used `theme.fontSize` rather than `theme.extend.fontSize`), so the
+    default `--text-*` tokens are reset before the custom scale is defined.
+    Like the original config, these sizes deliberately carry no line-height.
+  */
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-md: 1.25rem;
+  --text-lg: 1.563rem;
+  --text-xl: 1.953rem;
+  --text-2xl: 2.441rem;
+  --text-3xl: 3.052rem;
+
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif:
+    'MonoLisa', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  /* Tailwind v3 default ring colour (blue-500 at 50%); v4 changed it to currentcolor. */
+  --default-ring-color: rgb(59 130 246 / 0.5);
+
+  --color-primary: #1e3f5c;
+  --color-primary-50: #f3f7fc;
+  --color-primary-100: #e6eff8;
+  --color-primary-200: #c6def1;
+  --color-primary-300: #94c3e5;
+  --color-primary-400: #5ba3d5;
+  --color-primary-500: #3688c1;
+  --color-primary-600: #266ca3;
+  --color-primary-700: #1e517b;
+  --color-primary-800: #1e4a6e;
+  --color-primary-900: #1e3f5c;
+  --color-primary-950: #14293d;
+
+  --color-secondary: #f59e0b;
+  --color-secondary-50: #fffbeb;
+  --color-secondary-100: #fef3c7;
+  --color-secondary-200: #fde68a;
+  --color-secondary-300: #fcd34d;
+  --color-secondary-400: #fbbf24;
+  --color-secondary-500: #f59e0b;
+  --color-secondary-600: #d97706;
+  --color-secondary-700: #b45309;
+  --color-secondary-800: #92400e;
+  --color-secondary-900: #78350f;
+  --color-secondary-950: #451a03;
+
+  --color-tertiary: #22313f;
+  --color-tertiary-50: #f2f8f9;
+  --color-tertiary-100: #deebef;
+  --color-tertiary-200: #c0d7e1;
+  --color-tertiary-300: #94bacc;
+  --color-tertiary-400: #6194af;
+  --color-tertiary-500: #467994;
+  --color-tertiary-600: #3d647d;
+  --color-tertiary-700: #365368;
+  --color-tertiary-800: #334757;
+  --color-tertiary-900: #2e3d4b;
+  --color-tertiary-950: #22313f;
+
+  --color-font: #222222;
+  --color-font-50: #f6f6f6;
+  --color-font-100: #e7e7e7;
+  --color-font-200: #d1d1d1;
+  --color-font-300: #b0b0b0;
+  --color-font-400: #888888;
+  --color-font-500: #6d6d6d;
+  --color-font-600: #5d5d5d;
+  --color-font-700: #4f4f4f;
+  --color-font-800: #454545;
+  --color-font-900: #3d3d3d;
+  --color-font-950: #222222;
+}
+
+/*
+  Tailwind v4 dropped the `container.center`, `container.padding` and
+  `container.screens` options. This reproduces the CSS the v3 config
+  generated: centered, 1rem gutters growing to 2rem/4rem, capped at 1240px.
+*/
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >= 1240px) {
+    max-width: 1240px;
+    padding-inline: 4rem;
+  }
+
+  @media (width >= 80rem) {
+    max-width: 1240px;
+  }
+
+  @media (width >= 96rem) {
+    max-width: 1240px;
+  }
+}
+
+@utility bg-hive {
+  background-image: url('./images/oig-hive.svg');
+}
+
+@layer base {
+  /*
+    Tailwind v4 changed the default border colour (gray-200 -> currentcolor)
+    and no longer gives buttons a pointer cursor. The site was designed
+    around the v3 defaults, so they are restored here.
+  */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  html {
+    background-color: var(--color-gray-50);
+    color: var(--color-font-700);
+    font-weight: 300;
+  }
+
+  a {
+    color: var(--color-primary-950);
+
+    &:hover,
+    &:active {
+      color: var(--color-tertiary-900);
+    }
+  }
+
+  p {
+    font-weight: 300;
+    font-family: var(--font-sans);
+    color: var(--color-font-700);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-weight: 700;
+    font-family: var(--font-serif);
+    color: var(--color-primary);
+  }
+}
+
+/*
+  Project overrides for @tailwindcss/forms. They live in the components
+  layer so they beat the plugin's base styles but still yield to utilities.
+*/
+@layer components {
+  .form-input,
+  .form-textarea {
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    min-width: 300px;
+  }
+
+  .form-input[disabled] {
+    background-color: var(--color-font-100);
+    border: none;
+    min-width: 300px;
+  }
+}

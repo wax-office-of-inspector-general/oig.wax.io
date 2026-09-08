@@ -75,15 +75,15 @@ const vote = () =>
 
 <template>
   <div
-    class="rounded-lg text-center shadow bg-gray-50"
+    class="rounded-lg text-center shadow-sm bg-gray-50"
     :class="{
-      '!bg-secondary-50': isVotingOpen,
-      '!bg-white shadow-lg': isVotingClosed
+      'bg-secondary-50!': isVotingOpen,
+      'bg-white! shadow-lg': isVotingClosed
     }"
   >
     <div class="flex flex-1 flex-col p-8">
       <img
-        class="mx-auto h-32 w-32 object-cover flex-shrink-0 rounded-full"
+        class="mx-auto h-32 w-32 object-cover shrink-0 rounded-full"
         :src="props.candidate.picture"
         alt=""
       />
@@ -95,7 +95,7 @@ const vote = () =>
       </p>
       <dl
         v-if="isVotingOpen || isVotingClosed"
-        class="mt-1 flex flex-grow flex-col justify-between"
+        class="mt-1 flex grow flex-col justify-between"
       >
         <dt class="sr-only">Role</dt>
         <dd class="mt-3">

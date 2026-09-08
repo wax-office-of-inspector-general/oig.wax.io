@@ -99,7 +99,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="border bg-white border-gray-200 rounded-md mt-8 md:mt-12">
-    <div class="border-b border-gray-200 drop-shadow-sm px-4 py-5 sm:px-6">
+    <div class="border-b border-gray-200 drop-shadow-xs px-4 py-5 sm:px-6">
       <div
         class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap"
       >
@@ -141,7 +141,7 @@ onMounted(() => {
                 />
                 <span
                   v-else-if="nominee.accepted"
-                  class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-70 outline-none"
+                  class="inline-flex shrink-0 items-center rounded-full border border-gray-200 bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-70 outline-hidden"
                   >accepted</span
                 >
                 <CandidateCardEdit
@@ -151,7 +151,7 @@ onMounted(() => {
                 />
                 <span
                   v-else
-                  class="inline-flex flex-shrink-0 items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-medium text-font outline-none"
+                  class="inline-flex shrink-0 items-center rounded-full border border-gray-200 bg-gray-50 px-2.5 py-0.5 text-xs font-medium text-font outline-hidden"
                   >not accepted</span
                 >
               </div>
@@ -196,7 +196,7 @@ onMounted(() => {
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <div class="fixed inset-0 bg-black bg-opacity-25" />
+          <div class="fixed inset-0 bg-black/25" />
         </TransitionChild>
 
         <div class="fixed inset-0 overflow-y-auto">
@@ -257,14 +257,14 @@ onMounted(() => {
                 <div class="mt-6 flex justify-end">
                   <button
                     type="button"
-                    class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-none"
+                    class="inline-flex justify-center rounded-md border border-transparent bg-gray-200 px-4 py-2 text-sm font-medium text-primary hover:bg-blue-200 focus:outline-hidden"
                     @click="closeModal"
                   >
                     Close
                   </button>
                   <button
                     type="button"
-                    class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-none disabled:bg-gray-500"
+                    class="ml-4 inline-flex justify-center rounded-md border border-transparent bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 focus:outline-hidden disabled:bg-gray-500"
                     @click="onSubmitNominationForm"
                     :disabled="!isAccountValid || nominee.length < 2"
                   >

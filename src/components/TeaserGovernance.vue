@@ -36,7 +36,7 @@ onMounted(() => {
         class="mx-auto mt-16 flex max-w-2xl flex-col gap-8 lg:mx-0 lg:mt-20 lg:max-w-none lg:flex-row lg:items-end"
       >
         <div
-          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-primary-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start"
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-xs bg-primary-50 p-8 sm:w-3/4 sm:max-w-md sm:flex-row-reverse sm:items-end lg:w-72 lg:max-w-none lg:flex-none lg:flex-col lg:items-start"
         >
           <p class="flex-none text-xl font-serif tracking-tight text-primary">
             {{ guilds.length }} Guilds
@@ -56,7 +56,7 @@ onMounted(() => {
           </div>
         </div>
         <div
-          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-primary p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44"
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-xs bg-primary p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start lg:gap-y-44"
         >
           <p class="flex-none text-xl font-serif tracking-tight text-white">
             {{ proposals.length }} Proposals
@@ -76,7 +76,7 @@ onMounted(() => {
           </div>
         </div>
         <div
-          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-sm bg-secondary-50 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28"
+          class="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-lg drop-shadow-xs bg-secondary-50 p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28"
         >
           <p class="flex-none text-xl font-serif tracking-tight text-tertiary">
             3 IGs

@@ -46,7 +46,7 @@ onMounted(() => {
         <a
           target="_blank"
           href="https://www.notion.so/wax-oig/Guild-Ratings-0e51defdf10641748a253ccc7f5146b1"
-          class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+          class="inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-xs hover:bg-primary-700 hover:text-white focus-visible:outline-hidden outline-hidden"
         >
           Full Reviews
           <span class="ml-1" aria-hidden="true"> &rarr;</span>

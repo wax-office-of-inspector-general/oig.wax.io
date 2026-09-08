@@ -77,11 +77,11 @@ onMounted(() => {
                   </div>
                 </div>
                 <div
-                  class="text-center absolute bg-gradient-to-t from-gray-50 h-60 w-full bottom-0 left-0 z-30"
+                  class="text-center absolute bg-linear-to-t from-gray-50 h-60 w-full bottom-0 left-0 z-30"
                 >
                   <router-link :to="{ name: 'wax-guilds' }">
                     <button
-                      class="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0 inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-sm hover:bg-primary-700 hover:text-white focus-visible:outline-none outline-none"
+                      class="absolute left-[50%] translate-x-[-50%] translate-y-5 bottom-0 inline-block rounded-md whitespace-nowrap bg-primary px-3.5 py-2.5 text-sm text-white shadow-xs hover:bg-primary-700 hover:text-white focus-visible:outline-hidden outline-hidden"
                     >
                       View latest Review
                       <span class="ml-1" aria-hidden="true"> &rarr;</span>

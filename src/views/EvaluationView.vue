@@ -31,7 +31,7 @@ const tabs = shallowRef({
           <button
             :class="[
               'px-12 py-2.5 text-sm font-serif leading-5',
-              'focus:outline-none outline-none',
+              'focus:outline-hidden outline-hidden',
               selected
                 ? 'text-primary font-bold border-b-2 border-primary'
                 : 'text-primary hover:font-bold'
@@ -46,7 +46,7 @@ const tabs = shallowRef({
         <TabPanel
           v-for="(tab, idx) in Object.values(tabs)"
           :key="idx"
-          :class="['py-12', 'focus:outline-none outline-none']"
+          :class="['py-12', 'focus:outline-hidden outline-hidden']"
         >
           <component :is="tab" />
         </TabPanel>

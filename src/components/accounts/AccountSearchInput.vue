@@ -44,11 +44,11 @@ watch(query, () => {
     <ComboboxInput
       @change="query = $event.target.value"
       :display-value="(account) => account"
-      class="block w-full rounded-sm px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-none outline-none sm:text-sm sm:leading-6"
+      class="block w-full rounded-xs px-3 py-1.5 text-gray-900 border border-gray-200 placeholder:text-gray-400 focus:outline-hidden outline-hidden sm:text-sm sm:leading-6"
       placeholder="yourwallet.wam"
     />
     <ComboboxOptions
-      class="absolute mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm"
+      class="absolute mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden sm:text-sm"
     >
       <div
         v-if="accountsList.length === 0 && query !== ''"

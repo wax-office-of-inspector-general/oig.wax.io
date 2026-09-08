@@ -9,7 +9,7 @@ const candidates = computed(() => store.state.ballot.candidates);
 </script>
 <template>
   <div
-    class="border border-gray-200 drop-shadow-sm bg-white rounded-md mt-8 md:mt-12"
+    class="border border-gray-200 drop-shadow-xs bg-white rounded-md mt-8 md:mt-12"
   >
     <div class="border-b border-gray-200 px-4 py-5 sm:px-6">
       <div

@@ -27,7 +27,7 @@ onMounted(() => {
               :href="article.link"
               class="-m-3 flex rounded-lg p-3 hover:bg-gray-100"
             >
-              <div class="hidden flex-shrink-0 sm:block">
+              <div class="hidden shrink-0 sm:block">
                 <img
                   class="hidden h-20 w-32 rounded-md object-cover"
                   :src="article.thumbnail"

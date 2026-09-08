@@ -7,7 +7,7 @@ const title = 'OIG on WAX';
 
 <template>
   <div
-    class="container mx-auto rounded-lg drop-shadow-sm bg-white py-12 lg:py-20"
+    class="container mx-auto rounded-lg drop-shadow-xs bg-white py-12 lg:py-20"
   >
     <div class="">
       <div class="">
