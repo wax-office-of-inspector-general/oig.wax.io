@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import './fonts.css';
 
 @plugin '@tailwindcss/typography';
 @plugin '@tailwindcss/forms';
@@ -25,8 +24,8 @@
     'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif:
-    'MonoLisa', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
 
   /* Tailwind v3 default ring colour (blue-500 at 50%); v4 changed it to currentcolor. */
   --default-ring-color: rgb(59 130 246 / 0.5);
