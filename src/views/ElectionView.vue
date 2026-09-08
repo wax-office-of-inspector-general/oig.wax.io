@@ -5,11 +5,11 @@ import { shallowRef, defineAsyncComponent } from 'vue';
 import { RouterView } from 'vue-router';
 
 const tabs = shallowRef({
-  Election: defineAsyncComponent(() =>
-    import('../components/election/BallotView.vue')
+  Election: defineAsyncComponent(
+    () => import('../components/election/BallotView.vue')
   ),
-  'Candidate Requirements': defineAsyncComponent(() =>
-    import('../components/election/CandidateRequirements.vue')
+  'Candidate Requirements': defineAsyncComponent(
+    () => import('../components/election/CandidateRequirements.vue')
   )
 });
 </script>

@@ -7,11 +7,11 @@ const title = 'Guild Reviews';
 const desc = `Explore the latest Guild Reviews to uncover how WAX blockchain guilds excel in technical operations, innovation, and community engagement.`;
 
 const tabs = shallowRef({
-  'Guild Reviews': defineAsyncComponent(() =>
-    import('../components/evaluation/EvaluationResults.vue')
+  'Guild Reviews': defineAsyncComponent(
+    () => import('../components/evaluation/EvaluationResults.vue')
   ),
-  'The Review Process': defineAsyncComponent(() =>
-    import('../components/evaluation/EvaluationProcess.vue')
+  'The Review Process': defineAsyncComponent(
+    () => import('../components/evaluation/EvaluationProcess.vue')
   )
 });
 </script>

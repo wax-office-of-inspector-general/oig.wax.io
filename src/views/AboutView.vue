@@ -7,11 +7,11 @@ const headline = 'About this site';
 const subline = 'Safe and Sound, no tracking and no user footprints';
 
 const tabs = shallowRef({
-  'Privacy Policy': defineAsyncComponent(() =>
-    import('../components/legal/PrivacyPolicy.vue')
+  'Privacy Policy': defineAsyncComponent(
+    () => import('../components/legal/PrivacyPolicy.vue')
   ),
-  'Terms & Service': defineAsyncComponent(() =>
-    import('../components/legal/TermsService.vue')
+  'Terms & Service': defineAsyncComponent(
+    () => import('../components/legal/TermsService.vue')
   )
 });
 </script>
