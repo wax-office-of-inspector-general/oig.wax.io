@@ -1,9 +1,9 @@
 <script setup>
-import moment from 'moment';
+import dayjs from '@/lib/dayjs';
 
 const appName = '"WAX OIG website"';
 const appMail = 'ig[at]wax.io';
-const lastUpdated = moment('2023-11-15').format('MMM Do YYYY');
+const lastUpdated = dayjs('2023-11-15').format('MMM Do YYYY');
 </script>
 <template>
   <div class="prose">

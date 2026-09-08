@@ -1,7 +1,7 @@
 <script setup>
 import { useStore } from 'vuex';
 import { computed, onMounted } from 'vue';
-import moment from 'moment';
+import dayjs from '@/lib/dayjs';
 import { ChevronRightIcon } from '@heroicons/vue/24/outline';
 import EvaluationActionList from '@/components/evaluation/EvaluationActionList.vue';
 
@@ -66,7 +66,7 @@ onMounted(() => {
               <p
                 class="text-sm font-serif tracking-5 font-bold leading-6 text-gray-900"
               >
-                {{ moment(evaluation.timestamp).startOf('day').fromNow() }}
+                {{ dayjs(evaluation.timestamp).startOf('day').fromNow() }}
               </p>
               <p class="mt-2 flex text-xs leading-5 text-gray-500">
                 <span
